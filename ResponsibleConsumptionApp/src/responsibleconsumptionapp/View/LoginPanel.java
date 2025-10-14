@@ -251,17 +251,21 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_existingUserPasswordMouseClicked
 
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
+        //checks if password is not empty or default
         char[] passwordChars = newUserPassword.getPassword();
         String passwordText = new String(passwordChars);
         if (!passwordText.equals("") || !passwordText.equals("jPasswordField1")) {
+            //prints to console user information
             System.out.println("Registering New User:");
             System.out.println("username: " + newUserUsername.getText());
             System.out.println("password: " + passwordText);
             System.out.println("fullname: " + newUserFullName.getText());
             
+            //instantiates LoginService object to being user creation
             LoginService newUserLogin = new LoginService();
             newUserLogin.registerNewUser(newUserUsername.getText(), passwordText, newUserFullName.getText());
             
+            //sets registration fields to empty
             newUserUsername.setText("");
             newUserPassword.setText("");
             newUserFullName.setText("");
