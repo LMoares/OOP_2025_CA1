@@ -5,7 +5,7 @@
 
 package responsibleconsumptionapp.Controller;
 
-import responsibleconsumptionapp.View.UserInterfaceView;
+import responsibleconsumptionapp.View.*;
 
 /*
  * Classname UserInterfaceController.java
@@ -17,6 +17,8 @@ public class UserInterfaceController {
     
     public UserInterfaceController() {
         ui = new UserInterfaceView();
+        
+        initializePanels();
         ui.generateNavbar();
         ui.generateCards();
     }
@@ -30,4 +32,8 @@ public class UserInterfaceController {
         ui.revalidate();
     }
     
+    public void initializePanels(){
+        LoginPanel t_panel = new LoginPanel();// login panel testing
+        ui.initializeCards(t_panel, "Login");
+    }
 }

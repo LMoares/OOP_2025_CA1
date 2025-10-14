@@ -18,7 +18,7 @@ import java.awt.event.*;
 public class UserInterfaceView extends JFrame{
     private JPanel navbar_panel;
     private JLabel navbar_home_label;
-    private JLabel navbar_menu1_label;
+    private JLabel navbar_login_label;
     private JLabel navbar_menu2_label;
     private JLabel navbar_menu3_label;
     private JPanel cards;
@@ -42,12 +42,12 @@ public class UserInterfaceView extends JFrame{
         navbar_panel.setBackground(Color.GRAY);
         
         navbar_home_label = new JLabel("Home");
-        navbar_menu1_label = new JLabel("Menu1");
+        navbar_login_label = new JLabel("Login");
         navbar_menu2_label = new JLabel("Menu2");
         navbar_menu3_label = new JLabel("Menu3");
         
         //iterate through all navbar labels and set common attributes - Lorenzo
-        JLabel[] labels = new JLabel[]{navbar_home_label, navbar_menu1_label, navbar_menu2_label, navbar_menu3_label};
+        JLabel[] labels = new JLabel[]{navbar_home_label, navbar_login_label, navbar_menu2_label, navbar_menu3_label};
 
         for (int i = 0; i < labels.length; i++) {
             JLabel label = labels[i];
@@ -72,14 +72,11 @@ public class UserInterfaceView extends JFrame{
         //method saves unique panels to cards and enables mouse click events for user interaction on navbar labels - Lorenzo
         JPanel home = new JPanel();
         home.add(new JLabel("Welcome to the Home Page"));
-        JPanel menu1 = new JPanel();
-        menu1.add(new JLabel("Welcome to the Menu 1 Page"));
         JPanel menu2 = new JPanel();
         menu2.add(new JLabel("Welcome to the Menu 2 Page"));
         JPanel menu3 = new JPanel();
         menu3.add(new JLabel("Welcome to the Menu 3 Page"));
         cards.add(home, "Home");
-        cards.add(menu1, "menu1");
         cards.add(menu2, "menu2");
         cards.add(menu3, "menu3");
         
@@ -91,9 +88,9 @@ public class UserInterfaceView extends JFrame{
             }
         });
         
-        navbar_menu1_label.addMouseListener(new MouseAdapter(){
+        navbar_login_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "menu1");
+                layout.show(cards, "Login");
             }
         });
         
@@ -110,6 +107,10 @@ public class UserInterfaceView extends JFrame{
         });
         
         add(cards, BorderLayout.CENTER);
+    }
+    
+    public void initializeCards(JPanel panel, String title){
+        cards.add(panel, title);
     }
     
 }
