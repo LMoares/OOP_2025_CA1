@@ -11,5 +11,56 @@ package responsibleconsumptionapp.Model;
  * @author Lorenzo Moares Nunez, 23378441
  */
 public class User {
+    private String name, username, password;
+    private int cf_score;
+    
+    //constructor for registering new users that requires their cfscore to be set after registry - Lorenzo
+    public User(String name, String username, String password){
+        System.out.println("New user created");
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.cf_score = 0;
+    }
+    //constructor for existing users whose information will be provided by leaderboard data - Lorenzo
+    public User(String name, String username, String password, int cf_score) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.cf_score = cf_score;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getCf_score() {
+        return cf_score;
+    }
+
+    public void setCf_score(int cf_score) {
+        this.cf_score = cf_score;
+    }
+    
+    
 }

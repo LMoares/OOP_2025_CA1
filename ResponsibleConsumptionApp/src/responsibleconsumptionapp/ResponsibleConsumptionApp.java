@@ -4,16 +4,12 @@
  */
 
 package responsibleconsumptionapp;
-
+import responsibleconsumptionapp.Controller.UserInterfaceController;
 /*
  * Classname ResponsibleConsumptionApp.java
  * Date 09/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
 public class ResponsibleConsumptionApp {
 
@@ -21,8 +17,9 @@ public class ResponsibleConsumptionApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
+        //initialize main window
+        UserInterfaceController window = new UserInterfaceController();
+        window.show();
     }
 
 }

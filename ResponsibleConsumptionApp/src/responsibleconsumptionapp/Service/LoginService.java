@@ -11,5 +11,18 @@ package responsibleconsumptionapp.Service;
  * @author Lorenzo Moares Nunez, 23378441
  */
 public class LoginService {
-
+    private UserService userService;
+    
+    //requires some connection to leaderboard service to query for existing users
+    public LoginService(){
+        userService = new UserService();
+    }
+    
+    public void registerNewUser(String name, String username, String password) {
+        System.out.println("Login passing user data to user service");
+        userService.registerNewUser(name, username, password);
+    }
+    
+    
+    
 }
