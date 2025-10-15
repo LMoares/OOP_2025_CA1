@@ -9,18 +9,92 @@ package responsibleconsumptionapp.View;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-
-import responsibleconsumptionapp.Service.LoginService;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import responsibleconsumptionapp.Controller.UserInterfaceController;
 
 public class LoginPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TestPanel
      */
+    private UserInterfaceController UIListener;
+    
+    
+
     public LoginPanel() {
         initComponents();
+        
+        //built in mouse listener from MouseAdapter library. Triggers if user clicks registration button
+        registerButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (UIListener != null) {
+                    UIListener.onRegisterButtonClicked(evt);
+                }
+            }
+        });
+        //built in mouse listener from MouseAdapter library. Triggers if user clicks login button
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (UIListener != null) {
+                    UIListener.onLoginButtonClicked(evt);
+                }
+            }
+        });
+    }
+    
+    //required for userinterfacecontroller to react to events on Login Panel
+    //subscriber is ui controller - awaiting event to run code
+    public void setLoginPanelListener(UserInterfaceController UIListener) {
+        this.UIListener = UIListener;
     }
 
+    public JPasswordField getExistingUserPassword() {
+        return existingUserPassword;
+    }
+
+    public JTextField getExistingUserUsername() {
+        return existingUserUsername;
+    }
+
+    public JTextField getNewUserFullName() {
+        return newUserFullName;
+    }
+
+    public JPasswordField getNewUserPassword() {
+        return newUserPassword;
+    }
+
+    public JTextField getNewUserUsername() {
+        return newUserUsername;
+    }
+
+    public void resetExistingUserPassword() {
+        this.existingUserPassword.setText("");
+    }
+
+    public void resetExistingUserUsername() {
+        this.existingUserUsername.setText("");
+    }
+
+    public void resetNewUserFullName() {
+        this.newUserFullName.setText("");
+    }
+
+    public void resetNewUserPassword() {
+        this.newUserPassword.setText("");
+    }
+
+    public void resetNewUserUsername() {
+        this.newUserUsername.setText("");
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,9 +154,9 @@ public class LoginPanel extends javax.swing.JPanel {
 
         existingUserPassword.setColumns(8);
         existingUserPassword.setText("jPasswordField1");
-        existingUserPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                existingUserPasswordMouseClicked(evt);
+        existingUserPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                existingUserPasswordFocusGained(evt);
             }
         });
         existingUserPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -95,9 +169,9 @@ public class LoginPanel extends javax.swing.JPanel {
         newUserPassword.setText("jPasswordField2");
         newUserPassword.setToolTipText("Enter Password");
         newUserPassword.setActionCommand("<Not Set>");
-        newUserPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newUserPasswordMouseClicked(evt);
+        newUserPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newUserPasswordFocusGained(evt);
             }
         });
         newUserPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -242,34 +316,7 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_existingUserPasswordActionPerformed
 
-    private void newUserPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newUserPasswordMouseClicked
-        newUserPassword.setText(""); //removes all text and dots from password field when user clicks
-    }//GEN-LAST:event_newUserPasswordMouseClicked
-
-    private void existingUserPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_existingUserPasswordMouseClicked
-        existingUserPassword.setText(""); //removes all text and dots from password field when user clicks
-    }//GEN-LAST:event_existingUserPasswordMouseClicked
-
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
-        //checks if password is not empty or default
-        char[] passwordChars = newUserPassword.getPassword();
-        String passwordText = new String(passwordChars);
-        if (!passwordText.equals("") || !passwordText.equals("jPasswordField1")) {
-            //prints to console user information
-            System.out.println("Registering New User:");
-            System.out.println("username: " + newUserUsername.getText());
-            System.out.println("password: " + passwordText);
-            System.out.println("fullname: " + newUserFullName.getText());
-            
-            //instantiates LoginService object to being user creation
-            LoginService newUserLogin = new LoginService();
-            newUserLogin.registerNewUser(newUserUsername.getText(), passwordText, newUserFullName.getText());
-            
-            //sets registration fields to empty
-            newUserUsername.setText("");
-            newUserPassword.setText("");
-            newUserFullName.setText("");
-        }
 
     }//GEN-LAST:event_registerButtonMouseClicked
 
@@ -278,19 +325,16 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_newUserPasswordActionPerformed
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        char[] passwordChars = existingUserPassword.getPassword();
-        String passwordText = new String(passwordChars);
-        if (!passwordText.equals("") || !passwordText.equals("jPasswordField1")) {
-            System.out.println("Login Existing User:");
-            System.out.println("username: " + existingUserUsername.getText());
-            System.out.println("password: " + passwordText);
-
-            newUserUsername.setText("");
-            newUserPassword.setText("");
-            newUserFullName.setText("");
-        }
 
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void newUserPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUserPasswordFocusGained
+        newUserPassword.setText("");
+    }//GEN-LAST:event_newUserPasswordFocusGained
+
+    private void existingUserPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_existingUserPasswordFocusGained
+        existingUserPassword.setText("");
+    }//GEN-LAST:event_existingUserPasswordFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
