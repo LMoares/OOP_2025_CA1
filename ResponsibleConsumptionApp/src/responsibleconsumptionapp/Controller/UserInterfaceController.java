@@ -38,7 +38,7 @@ public class UserInterfaceController {
 
     public void initializePanels() {
         login_panel = new LoginPanel();
-        login_panel.setPanelListener(this); //gives uicontroller reference to login_panel obj for event listening
+        login_panel.setPanelListener(this); //gives uicontroller reference to login_panel obj for event listening - requires panel to implement IControllable interace
         ui.initializeCards(login_panel, "Login");
 
         SustConPanel sustCon_panel = new SustConPanel();
@@ -68,6 +68,10 @@ public class UserInterfaceController {
             login_panel.resetNewUserUsername();
             login_panel.resetNewUserPassword();
             login_panel.resetNewUserFullName();
+            
+            ui.displayNavbar();
+            ui.showCard("Home");
+            repaint();
         } else {
             System.out.println("Registration requires password");
         }

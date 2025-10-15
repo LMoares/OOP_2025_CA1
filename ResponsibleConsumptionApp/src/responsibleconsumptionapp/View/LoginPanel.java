@@ -19,7 +19,7 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
     /**
      * Creates new form TestPanel
      */
-    private UserInterfaceController UIListener;
+    private UserInterfaceController UICListener;
     
     
 
@@ -30,8 +30,9 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
         registerButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
-                if (UIListener != null) {
-                    UIListener.onRegisterButtonClicked(evt);
+                //Ensures UICListener has been correctly referenced
+                if (UICListener != null) {
+                    UICListener.onRegisterButtonClicked(evt);
                 }
             }
         });
@@ -39,8 +40,9 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
-                if (UIListener != null) {
-                    UIListener.onLoginButtonClicked(evt);
+                //Ensures UICListener has been correctly referenced
+                if (UICListener != null) {
+                    UICListener.onLoginButtonClicked(evt);
                 }
             }
         });
@@ -49,8 +51,8 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
     //required for userinterfacecontroller to react to events on Login Panel
     //subscriber is ui controller - awaiting event to run code
     @Override
-    public void setPanelListener(UserInterfaceController UIListener) {
-        this.UIListener = UIListener;
+    public void setPanelListener(UserInterfaceController UICListener) {
+        this.UICListener = UICListener;
     }
 
     public String getExistingUserPassword() {

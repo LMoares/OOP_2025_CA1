@@ -22,6 +22,7 @@ public class UserInterfaceView extends JFrame{
     private JLabel navbar_menu2_label;
     private JLabel navbar_menu3_label;
     private JPanel cards;
+    private CardLayout layout;
     
     public UserInterfaceView() {
         super("Responsible Consumption");
@@ -38,16 +39,16 @@ public class UserInterfaceView extends JFrame{
         //create default navbar - Lorenzo
         navbar_panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         navbar_panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); //adds padding within panel
-        add(navbar_panel, BorderLayout.NORTH);
+        //add(navbar_panel, BorderLayout.NORTH);
         navbar_panel.setBackground(Color.GRAY);
         
         navbar_home_label = new JLabel("Home");
-        navbar_login_label = new JLabel("Login");
+        //navbar_login_label = new JLabel("Login");
         navbar_menu2_label = new JLabel("Menu2");
         navbar_menu3_label = new JLabel("Menu3");
         
         //iterate through all navbar labels and set common attributes - Lorenzo
-        JLabel[] labels = new JLabel[]{navbar_home_label, navbar_login_label, navbar_menu2_label, navbar_menu3_label};
+        JLabel[] labels = new JLabel[]{navbar_home_label, /*navbar_login_label,*/ navbar_menu2_label, navbar_menu3_label};
 
         for (int i = 0; i < labels.length; i++) {
             JLabel label = labels[i];
@@ -81,18 +82,18 @@ public class UserInterfaceView extends JFrame{
         cards.add(menu3, "menu3");
         
         //adds event listener for mouse click on navbar to change main window panel 
-        CardLayout layout = (CardLayout)(cards.getLayout());
+        layout = (CardLayout)(cards.getLayout());
         navbar_home_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
                 layout.show(cards, "Home");
             }
         });
         
-        navbar_login_label.addMouseListener(new MouseAdapter(){
+        /*navbar_login_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
                 layout.show(cards, "Login");
             }
-        });
+        });*/
         
         navbar_menu2_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
@@ -113,4 +114,11 @@ public class UserInterfaceView extends JFrame{
         cards.add(panel, title);
     }
     
+    public void displayNavbar() {
+        add(navbar_panel, BorderLayout.NORTH);
+    }
+    
+    public void showCard(String card) {
+        layout.show(cards, card);
+    }
 }
