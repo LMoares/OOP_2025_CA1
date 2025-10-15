@@ -161,22 +161,18 @@
     <Component class="javax.swing.JPasswordField" name="existingUserPassword">
       <Properties>
         <Property name="columns" type="int" value="8"/>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="existingUserPasswordMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="existingUserPasswordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="newUserPassword">
       <Properties>
         <Property name="columns" type="int" value="8"/>
-        <Property name="text" type="java.lang.String" value="jPasswordField2"/>
         <Property name="toolTipText" type="java.lang.String" value="Enter Password"/>
         <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newUserPasswordMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newUserPasswordActionPerformed"/>
       </Events>
     </Component>
