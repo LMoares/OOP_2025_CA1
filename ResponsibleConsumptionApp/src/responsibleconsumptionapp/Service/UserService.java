@@ -28,4 +28,8 @@ public class UserService {
         
         user = new User(name, username, password, cf_score);
     }
+    
+    public User getUser(){
+        return user;
+    }
 }

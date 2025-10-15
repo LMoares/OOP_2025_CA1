@@ -5,6 +5,8 @@
 
 package responsibleconsumptionapp.Service;
 
+import responsibleconsumptionapp.Model.User;
+
 /*
  * Classname LoginService.java
  * Date 11/10/2025
@@ -23,6 +25,9 @@ public class LoginService {
         userService.registerNewUser(name, username, password);
     }
     
+    public User getUser() {
+        return userService.getUser();
+    }
     
     
 }

@@ -7,6 +7,7 @@ package responsibleconsumptionapp.Controller;
 import java.awt.event.MouseEvent;
 import responsibleconsumptionapp.View.*;
 import responsibleconsumptionapp.Lorenzo_Package.*;
+import responsibleconsumptionapp.Model.User;
 import responsibleconsumptionapp.Service.LoginService;
 
 /*
@@ -17,7 +18,9 @@ import responsibleconsumptionapp.Service.LoginService;
 public class UserInterfaceController {
 
     private UserInterfaceView ui;
+    private User user;
     private LoginPanel login_panel;
+    private UserPortal up_panel;
 
     public UserInterfaceController() {
         ui = new UserInterfaceView();
@@ -25,6 +28,8 @@ public class UserInterfaceController {
         initializePanels();
         ui.generateNavbar();
         ui.generateCards();
+        //initial ui view panel
+        ui.showCard("Login");
     }
 
     public void showWindow() {
@@ -43,6 +48,9 @@ public class UserInterfaceController {
 
         SustConPanel sustCon_panel = new SustConPanel();
         ui.initializeCards(sustCon_panel, "menu2");
+        
+        up_panel = new UserPortal();
+        ui.initializeCards(up_panel, "UserPortal");
     }
 
     public void onRegisterButtonClicked(MouseEvent evt) {
@@ -60,17 +68,25 @@ public class UserInterfaceController {
 
             LoginService newUserLogin = new LoginService();
             newUserLogin.registerNewUser(
+                    fullname,
                     username,
-                    password,
-                    fullname
+                    password
             );
+            
+            user = newUserLogin.getUser();
+            up_panel.setUser(user);
+            up_panel.setFullName();
+            
+            
             //resets input fields to default
             login_panel.resetNewUserUsername();
             login_panel.resetNewUserPassword();
             login_panel.resetNewUserFullName();
             
+            //on successful login, panel changes to home panel, navbar made visible
             ui.displayNavbar();
-            ui.showCard("Home");
+            ui.showCard("UserPortal");
+            //repaints userinterface view to display new panels
             repaint();
         } else {
             System.out.println("Registration requires password");
@@ -90,6 +106,12 @@ public class UserInterfaceController {
             //resets input fields to default
             login_panel.resetExistingUserUsername();
             login_panel.resetExistingUserPassword();
+            
+            //on successful login, panel changes to home panel, navbar made visible 
+            ui.displayNavbar();
+            ui.showCard("UserPortal");
+            repaint();
+            
         } else {
             System.out.println("Login requires password");
         }
