@@ -27,7 +27,7 @@ public class UserInterfaceController {
         ui.generateCards();
     }
 
-    public void show() {
+    public void showWindow() {
         ui.setVisible(true);
     }
 
@@ -37,8 +37,8 @@ public class UserInterfaceController {
     }
 
     public void initializePanels() {
-        login_panel = new LoginPanel();// login panel testing
-        login_panel.setLoginPanelListener(this);
+        login_panel = new LoginPanel();
+        login_panel.setPanelListener(this); //gives uicontroller reference to login_panel obj for event listening
         ui.initializeCards(login_panel, "Login");
 
         SustConPanel sustCon_panel = new SustConPanel();
@@ -46,47 +46,47 @@ public class UserInterfaceController {
     }
 
     public void onRegisterButtonClicked(MouseEvent evt) {
-        
-        String username = login_panel.getNewUserUsername().getText();
-        String fullname = login_panel.getNewUserFullName().getText();
-        char[] passwordChars = login_panel.getNewUserPassword().getPassword();
-        String passwordText = new String(passwordChars);
-        
-        if (!passwordText.equals("")) {
+        //this method runs once login panel detects user interaction with register button
+        String username = login_panel.getNewUserUsername();
+        String fullname = login_panel.getNewUserFullName();
+
+        String password = login_panel.getNewUserPassword();
+
+        if (!password.equals("")) {
             System.out.println("Registering New User:");
             System.out.println("username: " + username);
-            System.out.println("password: " + passwordText);
+            System.out.println("password: " + password);
             System.out.println("fullname: " + fullname);
 
             LoginService newUserLogin = new LoginService();
             newUserLogin.registerNewUser(
-                username,
-                passwordText,
-                fullname
+                    username,
+                    password,
+                    fullname
             );
             //resets input fields to default
             login_panel.resetNewUserUsername();
             login_panel.resetNewUserPassword();
             login_panel.resetNewUserFullName();
-        }else {
+        } else {
             System.out.println("Registration requires password");
         }
     }
-    
+
     public void onLoginButtonClicked(MouseEvent evt) {
-        
-        String username = login_panel.getExistingUserUsername().getText();
-        char[] passwordChars = login_panel.getExistingUserPassword().getPassword();
-        String passwordText = new String(passwordChars);
-        
-        if (!passwordText.equals("")) {
+        //this method runs once login panel detects user interaction with login button
+
+        String username = login_panel.getExistingUserUsername();
+        String password = login_panel.getExistingUserPassword();
+
+        if (!password.equals("")) {
             System.out.println("Login Existing User:");
             System.out.println("username: " + username);
-            System.out.println("password: " + passwordText);
+            System.out.println("password: " + password);
             //resets input fields to default
             login_panel.resetExistingUserUsername();
             login_panel.resetExistingUserPassword();
-        }else {
+        } else {
             System.out.println("Login requires password");
         }
     }

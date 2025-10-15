@@ -161,7 +161,6 @@
     <Component class="javax.swing.JPasswordField" name="existingUserPassword">
       <Properties>
         <Property name="columns" type="int" value="8"/>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="existingUserPasswordFocusGained"/>
@@ -171,7 +170,6 @@
     <Component class="javax.swing.JPasswordField" name="newUserPassword">
       <Properties>
         <Property name="columns" type="int" value="8"/>
-        <Property name="text" type="java.lang.String" value="jPasswordField2"/>
         <Property name="toolTipText" type="java.lang.String" value="Enter Password"/>
         <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
       </Properties>

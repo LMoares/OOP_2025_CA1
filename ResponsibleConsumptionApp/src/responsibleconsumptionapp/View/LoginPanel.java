@@ -11,11 +11,10 @@ package responsibleconsumptionapp.View;
  */
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
-public class LoginPanel extends javax.swing.JPanel {
+public class LoginPanel extends javax.swing.JPanel implements IControllable{
 
     /**
      * Creates new form TestPanel
@@ -49,28 +48,35 @@ public class LoginPanel extends javax.swing.JPanel {
     
     //required for userinterfacecontroller to react to events on Login Panel
     //subscriber is ui controller - awaiting event to run code
-    public void setLoginPanelListener(UserInterfaceController UIListener) {
+    @Override
+    public void setPanelListener(UserInterfaceController UIListener) {
         this.UIListener = UIListener;
     }
 
-    public JPasswordField getExistingUserPassword() {
-        return existingUserPassword;
+    public String getExistingUserPassword() {
+        char[] pw = existingUserPassword.getPassword();
+        String pwText = new String(pw);
+        
+        return pwText;
     }
 
-    public JTextField getExistingUserUsername() {
-        return existingUserUsername;
+    public String getExistingUserUsername() {
+        return existingUserUsername.getText();
     }
 
-    public JTextField getNewUserFullName() {
-        return newUserFullName;
+    public String getNewUserFullName() {
+        return newUserFullName.getText();
     }
 
-    public JPasswordField getNewUserPassword() {
-        return newUserPassword;
+    public String getNewUserPassword() {
+        char[] pw = newUserPassword.getPassword();
+        String pwText = new String(pw);
+        
+        return pwText;
     }
 
-    public JTextField getNewUserUsername() {
-        return newUserUsername;
+    public String getNewUserUsername() {
+        return newUserUsername.getText();
     }
 
     public void resetExistingUserPassword() {
@@ -153,7 +159,6 @@ public class LoginPanel extends javax.swing.JPanel {
         });
 
         existingUserPassword.setColumns(8);
-        existingUserPassword.setText("jPasswordField1");
         existingUserPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 existingUserPasswordFocusGained(evt);
@@ -166,7 +171,6 @@ public class LoginPanel extends javax.swing.JPanel {
         });
 
         newUserPassword.setColumns(8);
-        newUserPassword.setText("jPasswordField2");
         newUserPassword.setToolTipText("Enter Password");
         newUserPassword.setActionCommand("<Not Set>");
         newUserPassword.addFocusListener(new java.awt.event.FocusAdapter() {

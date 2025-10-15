@@ -19,7 +19,7 @@ public class ResponsibleConsumptionApp {
     public static void main(String[] args) {
         //initialize main window
         UserInterfaceController window = new UserInterfaceController();
-        window.show();
+        window.showWindow();
     }
 
 }
