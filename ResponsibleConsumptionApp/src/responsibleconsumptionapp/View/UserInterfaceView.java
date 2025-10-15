@@ -21,6 +21,7 @@ public class UserInterfaceView extends JFrame{
     //private JLabel navbar_login_label;
     private JLabel navbar_menu2_label;
     private JLabel navbar_menu3_label;
+    private JLabel navbar_menu4_label;
     private JPanel cards;
     private CardLayout layout;
     
@@ -38,29 +39,30 @@ public class UserInterfaceView extends JFrame{
     
     public void generateNavbar(){
         //create default navbar - Lorenzo
-        navbar_panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        navbar_panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         navbar_panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); //adds padding within panel
         //add(navbar_panel, BorderLayout.NORTH);
         navbar_panel.setBackground(Color.GRAY);
         
         navbar_UserPortal_label = new JLabel("User Portal");
         //navbar_login_label = new JLabel("Login");
-        navbar_menu2_label = new JLabel("Menu2");
-        navbar_menu3_label = new JLabel("Menu3");
+        navbar_menu2_label = new JLabel("Chemical Waste");
+        navbar_menu3_label = new JLabel("Tourism & Travel");
+        navbar_menu4_label = new JLabel("Sustainable Consumption");
         
         //iterate through all navbar labels and set common attributes - Lorenzo
-        JLabel[] labels = new JLabel[]{navbar_UserPortal_label, /*navbar_login_label,*/ navbar_menu2_label, navbar_menu3_label};
+        JLabel[] labels = new JLabel[]{navbar_UserPortal_label, /*navbar_login_label,*/ navbar_menu2_label, navbar_menu3_label, navbar_menu4_label};
 
         for (int i = 0; i < labels.length; i++) {
             JLabel label = labels[i];
             label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             label.setForeground(Color.BLUE);
-            label.setFont(new Font("Sans-serif", Font.BOLD, 24));
+            label.setFont(new Font("Sans-serif", Font.BOLD, 23));
             navbar_panel.add(label);
 
             //place arrows between each label 
             if (i < labels.length - 1) {
-                JLabel arrow = new JLabel(" > ");
+                JLabel arrow = new JLabel(" | ");
                 arrow.setFont(new Font("Sans-serif", Font.PLAIN, 20));
                 arrow.setForeground(Color.WHITE);
                 navbar_panel.add(arrow);
@@ -74,13 +76,16 @@ public class UserInterfaceView extends JFrame{
         //method saves unique panels to cards and enables mouse click events for user interaction on navbar labels - Lorenzo
         //JPanel home = new JPanel();
         //home.add(new JLabel("Welcome to the Home Page"));
-        JPanel menu2 = new JPanel();
-        menu2.add(new JLabel("Welcome to the Menu 2 Page"));
-        JPanel menu3 = new JPanel();
-        menu3.add(new JLabel("Welcome to the Menu 3 Page"));
+        JPanel chemWaste = new JPanel();
+        chemWaste.add(new JLabel("Panel for Chemical Waste"));
+        JPanel tourism = new JPanel();
+        tourism.add(new JLabel("Panel for Tourism"));
+        JPanel susCon = new JPanel();
+        susCon.add(new JLabel("Panel for Sustainable Consumption"));
         //cards.add(home, "Home");
-        cards.add(menu2, "menu2");
-        cards.add(menu3, "menu3");
+        cards.add(chemWaste, "chemWaste");
+        cards.add(tourism, "tourism");
+        cards.add(susCon,"susCon");
         
         //adds event listener for mouse click on navbar to change main window panel 
         
@@ -98,13 +103,19 @@ public class UserInterfaceView extends JFrame{
         
         navbar_menu2_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "menu2");
+                layout.show(cards, "chemWaste");
             }
         });
         
         navbar_menu3_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "menu3");
+                layout.show(cards, "tourism");
+            }
+        });
+        
+        navbar_menu4_label.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                layout.show(cards,"susCon");
             }
         });
         

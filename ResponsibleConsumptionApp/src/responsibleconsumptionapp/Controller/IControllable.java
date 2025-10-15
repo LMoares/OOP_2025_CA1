@@ -13,5 +13,6 @@ package responsibleconsumptionapp.Controller;
 
 //Required for JPanels that require UserInterfaceController to detect and react to user interaction on JPanel
 public interface IControllable {
+    //panels that implement this interface will require a UserInterfaceController variable to store UICListener reference. eg: private UserInterfaceController UICListener;
     void setPanelListener(UserInterfaceController UICListener);
 }

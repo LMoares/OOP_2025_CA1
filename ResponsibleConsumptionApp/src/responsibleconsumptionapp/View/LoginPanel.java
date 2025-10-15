@@ -14,25 +14,28 @@ import java.awt.event.MouseEvent;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
-public class LoginPanel extends javax.swing.JPanel implements IControllable{
+public class LoginPanel extends javax.swing.JPanel implements IControllable {
 
     /**
      * Creates new form TestPanel
      */
     private UserInterfaceController UICListener;
-    
-    
 
     public LoginPanel() {
         initComponents();
-        
+
         //built in mouse listener from MouseAdapter library. Triggers if user clicks registration button
         registerButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 //Ensures UICListener has been correctly referenced
                 if (UICListener != null) {
-                    UICListener.onRegisterButtonClicked(evt);
+                    UICListener.onRegisterButtonClicked(getNewUserUsername(), getNewUserFullName(), getNewUserPassword());
+                    
+                    //resets input fields to default
+                    resetNewUserUsername();
+                    resetNewUserPassword();
+                    resetNewUserFullName();
                 }
             }
         });
@@ -42,12 +45,14 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
             public void mouseClicked(MouseEvent evt) {
                 //Ensures UICListener has been correctly referenced
                 if (UICListener != null) {
-                    UICListener.onLoginButtonClicked(evt);
+                    UICListener.onLoginButtonClicked(getExistingUserUsername(), getExistingUserPassword());
+                    resetExistingUserUsername();
+                    resetExistingUserPassword();
                 }
             }
         });
     }
-    
+
     //required for userinterfacecontroller to react to events on Login Panel
     //subscriber is ui controller - awaiting event to run code
     @Override
@@ -58,7 +63,7 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
     public String getExistingUserPassword() {
         char[] pw = existingUserPassword.getPassword();
         String pwText = new String(pw);
-        
+
         return pwText;
     }
 
@@ -73,7 +78,7 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
     public String getNewUserPassword() {
         char[] pw = newUserPassword.getPassword();
         String pwText = new String(pw);
-        
+
         return pwText;
     }
 
@@ -101,8 +106,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
         this.newUserUsername.setText("");
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,11 +164,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
         });
 
         existingUserPassword.setColumns(8);
-        existingUserPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                existingUserPasswordFocusGained(evt);
-            }
-        });
         existingUserPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 existingUserPasswordActionPerformed(evt);
@@ -175,11 +173,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
         newUserPassword.setColumns(8);
         newUserPassword.setToolTipText("Enter Password");
         newUserPassword.setActionCommand("<Not Set>");
-        newUserPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                newUserPasswordFocusGained(evt);
-            }
-        });
         newUserPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newUserPasswordActionPerformed(evt);
@@ -333,14 +326,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable{
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
 
     }//GEN-LAST:event_loginButtonMouseClicked
-
-    private void newUserPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newUserPasswordFocusGained
-        newUserPassword.setText("");
-    }//GEN-LAST:event_newUserPasswordFocusGained
-
-    private void existingUserPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_existingUserPasswordFocusGained
-        existingUserPassword.setText("");
-    }//GEN-LAST:event_existingUserPasswordFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

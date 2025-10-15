@@ -4,19 +4,22 @@
  */
 package responsibleconsumptionapp.View;
 
+import responsibleconsumptionapp.Controller.IControllable;
+import responsibleconsumptionapp.Controller.UserInterfaceController;
 import responsibleconsumptionapp.Model.User;
 
 /**
  *
  * @author moare
  */
-public class UserPortal extends javax.swing.JPanel {
+public class UserPortal extends javax.swing.JPanel implements IControllable{
 
     /**
      * Creates new form UserPortal
      */
-    
+    UserInterfaceController UICListener;
     User user;
+    
     public UserPortal() {
         initComponents();
     }
@@ -27,6 +30,10 @@ public class UserPortal extends javax.swing.JPanel {
     
     public void setFullName() {
         jLabel2.setText(user.getName());
+    }
+    
+    public void setPanelListener(UserInterfaceController UICListener) {
+        this.UICListener = UICListener;
     }
 
     /**
