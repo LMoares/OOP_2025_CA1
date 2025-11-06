@@ -76,14 +76,14 @@ public class UserInterfaceView extends JFrame{
         //method saves unique panels to cards and enables mouse click events for user interaction on navbar labels - Lorenzo
         //JPanel home = new JPanel();
         //home.add(new JLabel("Welcome to the Home Page"));
-        JPanel chemWaste = new JPanel();
-        chemWaste.add(new JLabel("Panel for Chemical Waste"));
+        //JPanel chemWaste = new JPanel();
+        //chemWaste.add(new JLabel("Panel for Chemical Waste"));
         JPanel tourism = new JPanel();
         tourism.add(new JLabel("Panel for Tourism"));
         JPanel susCon = new JPanel();
         susCon.add(new JLabel("Panel for Sustainable Consumption"));
         //cards.add(home, "Home");
-        cards.add(chemWaste, "chemWaste");
+        //cards.add(chemWaste, "ChemWaste");
         cards.add(tourism, "tourism");
         cards.add(susCon,"susCon");
         
@@ -103,7 +103,7 @@ public class UserInterfaceView extends JFrame{
         
         navbar_menu2_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "chemWaste");
+                layout.show(cards, "ChemWaste");
             }
         });
         

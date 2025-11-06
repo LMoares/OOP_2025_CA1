@@ -4,10 +4,10 @@
  */
 package responsibleconsumptionapp.Controller;
 
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
+import responsibleconsumptionapp.Jean_Package.ChemicalWasteGUI;
 import responsibleconsumptionapp.View.*;
 import responsibleconsumptionapp.Lorenzo_Package.*;
 import responsibleconsumptionapp.Model.User;
@@ -24,6 +24,7 @@ public class UserInterfaceController {
     private User user;
     private Map<String, IControllable> panels = new HashMap<>(){{
        put("Login", new LoginPanel());
+       put("ChemWaste", new ChemicalWasteGUI());
        put("UserPortal", new UserPortal());
     }};
 
