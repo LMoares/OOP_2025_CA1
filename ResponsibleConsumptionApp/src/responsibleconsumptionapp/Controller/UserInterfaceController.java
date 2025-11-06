@@ -25,6 +25,7 @@ public class UserInterfaceController {
     private Map<String, IControllable> panels = new HashMap<>(){{
        put("Login", new LoginPanel());
        put("UserPortal", new UserPortal());
+       put("SusCon", new SusConPanel());
     }};
 
     public UserInterfaceController() {
@@ -47,8 +48,6 @@ public class UserInterfaceController {
     }
 
     public void initializePanels() {
-        SustConPanel sustCon_panel = new SustConPanel();
-        ui.initializeCards(sustCon_panel, "menu2");
 
         //iterate through panel dictionary to set panelListener and intialize panels in card layout
         for (Map.Entry<String, IControllable> card : panels.entrySet()) {
@@ -61,39 +60,37 @@ public class UserInterfaceController {
             ui.initializeCards(panelfix, key);
         }
     }
-
+    
+    public void changePanel(String panel) {
+        ui.showCard(panel);
+    }
+    
+    public void removeNavbar() {
+        ui.removeNavbar();
+    }
+    
     public void onRegisterButtonClicked(String username, String fullname, String password) {
         //this method runs once login panel detects user interaction with register button
         /*String username = login_panel.getNewUserUsername();
         String fullname = login_panel.getNewUserFullName();
-
         String password = login_panel.getNewUserPassword();*/
-
-        if (!password.equals("")) {
+        
+        //ensures password is not empty and is not a series of whitespaces
+        if (password != null && !password.trim().isEmpty()) {
             System.out.println("Registering New User:");
-            System.out.println("username: " + username);
-            System.out.println("password: " + password);
-            System.out.println("fullname: " + fullname);
 
             LoginService newUserLogin = new LoginService();
-            newUserLogin.registerNewUser(
-                    fullname,
-                    username,
-                    password
-            );
+            newUserLogin.registerNewUser(fullname,username,password);
             
             user = newUserLogin.getUser();
             
             //cast UserPortal object from IControllable reference back to UserPortal for method calls
             UserPortal up = (UserPortal) panels.get("UserPortal");
             up.setUser(user);
-            up.setFullName();
             
             //on successful login, panel changes to home panel, navbar made visible
             ui.displayNavbar();
             ui.showCard("UserPortal");
-            //repaints userinterface view to display new panels
-            repaint();
         } else {
             System.out.println("Registration requires password");
         }
@@ -101,8 +98,8 @@ public class UserInterfaceController {
 
     public void onLoginButtonClicked(String username, String password) {
         //this method runs once login panel detects user interaction with login button
-
-        if (!password.equals("")) {
+        //ensures password is not empty and is not a series of whitespaces
+        if (password != null && !password.trim().isEmpty()) {
             System.out.println("Login Existing User:");
             System.out.println("username: " + username);
             System.out.println("password: " + password);

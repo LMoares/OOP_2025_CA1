@@ -57,7 +57,7 @@ public class UserInterfaceView extends JFrame{
             JLabel label = labels[i];
             label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             label.setForeground(Color.BLUE);
-            label.setFont(new Font("Sans-serif", Font.BOLD, 23));
+            label.setFont(new Font("Sans-serif", Font.BOLD, 20));
             navbar_panel.add(label);
 
             //place arrows between each label 
@@ -80,12 +80,12 @@ public class UserInterfaceView extends JFrame{
         chemWaste.add(new JLabel("Panel for Chemical Waste"));
         JPanel tourism = new JPanel();
         tourism.add(new JLabel("Panel for Tourism"));
-        JPanel susCon = new JPanel();
-        susCon.add(new JLabel("Panel for Sustainable Consumption"));
+        //JPanel susCon = new JPanel();
+        //susCon.add(new JLabel("Panel for Sustainable Consumption"));
         //cards.add(home, "Home");
         cards.add(chemWaste, "chemWaste");
         cards.add(tourism, "tourism");
-        cards.add(susCon,"susCon");
+        //cards.add(susCon,"susCon");
         
         //adds event listener for mouse click on navbar to change main window panel 
         
@@ -115,7 +115,7 @@ public class UserInterfaceView extends JFrame{
         
         navbar_menu4_label.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards,"susCon");
+                layout.show(cards,"SusCon");
             }
         });
         
@@ -128,6 +128,10 @@ public class UserInterfaceView extends JFrame{
     
     public void displayNavbar() {
         add(navbar_panel, BorderLayout.NORTH);
+    }
+    
+    public void removeNavbar() {
+        remove(navbar_panel);
     }
     
     public void showCard(String cardTitle) {
