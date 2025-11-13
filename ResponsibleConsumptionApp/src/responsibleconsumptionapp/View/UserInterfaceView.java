@@ -7,6 +7,7 @@ package responsibleconsumptionapp.View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import responsibleconsumptionapp.Controller.UserInterfaceController;
 
 /*
  * Classname UserInterfaceView.java
@@ -24,9 +25,11 @@ public class UserInterfaceView extends JFrame{
     private JLabel navbar_menu4_label;
     private JPanel cards;
     private CardLayout layout;
+    private UserInterfaceController UIC;
     
-    public UserInterfaceView() {
+    public UserInterfaceView(UserInterfaceController UIC) {
         super("Responsible Consumption");
+        this.UIC = UIC;
         //set default window restrictions - Lorenzo
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900,600); //width,height pixels
@@ -35,6 +38,7 @@ public class UserInterfaceView extends JFrame{
         
         cards = new JPanel(new CardLayout());
         layout = (CardLayout)(cards.getLayout());
+        
     }
     
     public void generateNavbar(){
@@ -91,7 +95,7 @@ public class UserInterfaceView extends JFrame{
         
         navbar_UserPortal_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "UserPortal");
+                UIC.changePanel("UserPortal");
             }
         });
         
@@ -103,19 +107,19 @@ public class UserInterfaceView extends JFrame{
         
         navbar_menu2_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "chemWaste");
+                UIC.changePanel("chemWaste");
             }
         });
         
         navbar_menu3_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "tourism");
+                UIC.changePanel("tourism");
             }
         });
         
         navbar_menu4_label.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards,"SusCon");
+                UIC.changePanel("SusCon");
             }
         });
         
@@ -134,7 +138,7 @@ public class UserInterfaceView extends JFrame{
         remove(navbar_panel);
     }
     
-    public void showCard(String cardTitle) {
+    public void showPanel(String cardTitle) {
         layout.show(cards, cardTitle);
     }
 }

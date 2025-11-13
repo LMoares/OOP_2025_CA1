@@ -17,12 +17,30 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
      * Creates new form SusConPanel
      */
     private UserInterfaceController UICListener;
+    private SusConFileReader scfr;
+    
     public SusConPanel() {
         initComponents();
-        
-        hotspot1.addMouseListener(new MouseAdapter(){
+        scfr = new SusConFileReader();
+        infoTA.setEditable(false); //prevents user from editing text field - can still be editing with code
+        SolarPanelHS.addMouseListener(new MouseAdapter(){
+            @Override
             public void mouseClicked(MouseEvent e) {
-                infoTA.setText("Solar Panel Clicked");
+                infoTA.setText(scfr.getSusConSP());
+            }
+        });
+        
+        CompostHS.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                infoTA.setText(scfr.getSusConCT());
+            }
+        });
+        
+        RecycleHS.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                infoTA.setText(scfr.getSusConRB());
             }
         });
     }
@@ -32,6 +50,9 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         this.UICListener = UICListener;
     }
     
+    public void resetText(){
+        infoTA.setText(scfr.getSusConIntro());
+    }
     
 
     /**
@@ -43,7 +64,9 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        hotspot1 = new javax.swing.JLabel();
+        SolarPanelHS = new javax.swing.JLabel();
+        RecycleHS = new javax.swing.JLabel();
+        CompostHS = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         infoTA = new javax.swing.JTextArea();
@@ -51,34 +74,51 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
 
         setLayout(null);
 
-        hotspot1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        hotspot1.setForeground(new java.awt.Color(204, 204, 255));
-        hotspot1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/responsibleconsumptionapp/Resources/Lorenzo_Resource/Images/SolarPanel.png"))); // NOI18N
-        add(hotspot1);
-        hotspot1.setBounds(120, 70, 80, 70);
+        SolarPanelHS.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        SolarPanelHS.setForeground(new java.awt.Color(204, 204, 255));
+        add(SolarPanelHS);
+        SolarPanelHS.setBounds(70, 200, 170, 50);
+        add(RecycleHS);
+        RecycleHS.setBounds(290, 310, 60, 60);
+        add(CompostHS);
+        CompostHS.setBounds(390, 260, 70, 100);
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/responsibleconsumptionapp/Resources/Lorenzo_Resource/Images/SusCon.png"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/responsibleconsumptionapp/Resources/Lorenzo_Resource/Images/SusCon - Copy.png"))); // NOI18N
         add(background);
-        background.setBounds(10, 10, 600, 390);
+        background.setBounds(10, 10, 490, 390);
 
         infoTA.setColumns(15);
         infoTA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         infoTA.setRows(5);
+        infoTA.setText("          - - Welcome to Sustainable Consumption - -\n\nHere you can learn about the benefits of maintaining an\nEco-Friendly household and the benefits of adding \nreusable energy solutions to your home.\n\nClick on any Eco-Friendly item to learn about how each \none can benefit your home and lower your households \noverall carbon footprint score.\n\nClick Questionaire to proceed to a short quiz relating to\nthe information provided here.");
+        infoTA.setToolTipText("");
         jScrollPane1.setViewportView(infoTA);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(620, 10, 200, 390);
+        jScrollPane1.setBounds(510, 10, 370, 390);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("Questionaire");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1);
-        jButton1.setBounds(330, 420, 180, 40);
+        jButton1.setBounds(340, 420, 180, 40);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        UICListener.changePanel("SusConQuestionaire");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CompostHS;
+    private javax.swing.JLabel RecycleHS;
+    private javax.swing.JLabel SolarPanelHS;
     private javax.swing.JLabel background;
-    private javax.swing.JLabel hotspot1;
     private javax.swing.JTextArea infoTA;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;

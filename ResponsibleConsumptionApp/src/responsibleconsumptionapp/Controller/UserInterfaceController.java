@@ -4,7 +4,6 @@
  */
 package responsibleconsumptionapp.Controller;
 
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
@@ -26,16 +25,17 @@ public class UserInterfaceController {
        put("Login", new LoginPanel());
        put("UserPortal", new UserPortal());
        put("SusCon", new SusConPanel());
+       put("SusConQuestionaire", new SusConQuestionaire());
     }};
 
     public UserInterfaceController() {
-        ui = new UserInterfaceView();
+        ui = new UserInterfaceView(this);
 
         initializePanels();
         ui.generateNavbar();
         ui.generateCards();
         //initial ui view panel
-        ui.showCard("Login");
+        ui.showPanel("Login");
     }
 
     public void showWindow() {
@@ -62,7 +62,13 @@ public class UserInterfaceController {
     }
     
     public void changePanel(String panel) {
-        ui.showCard(panel);
+        //ensures SusCon panel data is reset when user navigates to panel
+        if(panel.equals("SusCon")) {
+            //create reference to suscon panel - runs reset method on activation
+            SusConPanel suscon = (SusConPanel)panels.get("SusCon");
+            suscon.resetText();
+        }
+        ui.showPanel(panel);
     }
     
     public void removeNavbar() {
@@ -90,7 +96,7 @@ public class UserInterfaceController {
             
             //on successful login, panel changes to home panel, navbar made visible
             ui.displayNavbar();
-            ui.showCard("UserPortal");
+            changePanel("UserPortal");
         } else {
             System.out.println("Registration requires password");
         }
@@ -101,14 +107,10 @@ public class UserInterfaceController {
         //ensures password is not empty and is not a series of whitespaces
         if (password != null && !password.trim().isEmpty()) {
             System.out.println("Login Existing User:");
-            System.out.println("username: " + username);
-            System.out.println("password: " + password);
             
             //on successful login, panel changes to home panel, navbar made visible 
             ui.displayNavbar();
-            ui.showCard("UserPortal");
-            repaint();
-            
+            changePanel("UserPortal");
         } else {
             System.out.println("Login requires password");
         }
