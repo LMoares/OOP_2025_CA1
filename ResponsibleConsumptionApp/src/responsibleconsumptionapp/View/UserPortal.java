@@ -26,10 +26,8 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
     
     public void setUser(User user){
         this.user = user;
-    }
-    
-    public void setFullName() {
-        jLabel2.setText(user.getName());
+        userFnLBL.setText(user.getName());
+        userCfLBL.setText(user.getCf_score()+"");
     }
     
     public void setPanelListener(UserInterfaceController UICListener) {
@@ -45,18 +43,36 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel8 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        titleLBL = new javax.swing.JLabel();
+        userFnHeaderLBL = new javax.swing.JLabel();
+        userFnLBL = new javax.swing.JLabel();
+        userCfHeaderLBL = new javax.swing.JLabel();
+        userCfLBL = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel8.setText("Responsible Consumption");
+        titleLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        titleLBL.setText("Responsible Consumption");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Welcome");
+        userFnHeaderLBL.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        userFnHeaderLBL.setText("Welcome");
 
-        jLabel2.setLabelFor(jLabel2);
-        jLabel2.setText("FULLNAME");
+        userFnLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userFnLBL.setLabelFor(userFnLBL);
+        userFnLBL.setText("FULLNAME");
+
+        userCfHeaderLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userCfHeaderLBL.setText("Carbon Footprint Score: ");
+
+        userCfLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userCfLBL.setText("total");
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,29 +82,51 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel8))
+                        .addComponent(userFnHeaderLBL)
+                        .addGap(18, 18, 18)
+                        .addComponent(userFnLBL))
+                    .addComponent(titleLBL)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(userCfHeaderLBL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(userCfLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel8)
-                .addGap(27, 27, 27)
+                .addComponent(titleLBL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(272, Short.MAX_VALUE))
+                    .addComponent(userFnHeaderLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userFnLBL))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userCfHeaderLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userCfLBL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(UICListener != null) {
+            UICListener.removeNavbar();
+            UICListener.changePanel("Login");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel titleLBL;
+    private javax.swing.JLabel userCfHeaderLBL;
+    private javax.swing.JLabel userCfLBL;
+    private javax.swing.JLabel userFnHeaderLBL;
+    private javax.swing.JLabel userFnLBL;
     // End of variables declaration//GEN-END:variables
 }

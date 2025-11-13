@@ -7,6 +7,7 @@ package responsibleconsumptionapp.View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import responsibleconsumptionapp.Controller.UserInterfaceController;
 
 /*
  * Classname UserInterfaceView.java
@@ -24,9 +25,11 @@ public class UserInterfaceView extends JFrame{
     private JLabel navbar_menu4_label;
     private JPanel cards;
     private CardLayout layout;
+    private UserInterfaceController UIC;
     
-    public UserInterfaceView() {
+    public UserInterfaceView(UserInterfaceController UIC) {
         super("Responsible Consumption");
+        this.UIC = UIC;
         //set default window restrictions - Lorenzo
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900,600); //width,height pixels
@@ -35,6 +38,7 @@ public class UserInterfaceView extends JFrame{
         
         cards = new JPanel(new CardLayout());
         layout = (CardLayout)(cards.getLayout());
+        
     }
     
     public void generateNavbar(){
@@ -57,7 +61,7 @@ public class UserInterfaceView extends JFrame{
             JLabel label = labels[i];
             label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             label.setForeground(Color.BLUE);
-            label.setFont(new Font("Sans-serif", Font.BOLD, 23));
+            label.setFont(new Font("Sans-serif", Font.BOLD, 20));
             navbar_panel.add(label);
 
             //place arrows between each label 
@@ -80,18 +84,18 @@ public class UserInterfaceView extends JFrame{
         chemWaste.add(new JLabel("Panel for Chemical Waste"));
         JPanel tourism = new JPanel();
         tourism.add(new JLabel("Panel for Tourism"));
-        JPanel susCon = new JPanel();
-        susCon.add(new JLabel("Panel for Sustainable Consumption"));
+        //JPanel susCon = new JPanel();
+        //susCon.add(new JLabel("Panel for Sustainable Consumption"));
         //cards.add(home, "Home");
         cards.add(chemWaste, "chemWaste");
         cards.add(tourism, "tourism");
-        cards.add(susCon,"susCon");
+        //cards.add(susCon,"susCon");
         
         //adds event listener for mouse click on navbar to change main window panel 
         
         navbar_UserPortal_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "UserPortal");
+                UIC.changePanel("UserPortal");
             }
         });
         
@@ -103,19 +107,19 @@ public class UserInterfaceView extends JFrame{
         
         navbar_menu2_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "chemWaste");
+                UIC.changePanel("chemWaste");
             }
         });
         
         navbar_menu3_label.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards, "tourism");
+                UIC.changePanel("tourism");
             }
         });
         
         navbar_menu4_label.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                layout.show(cards,"susCon");
+                UIC.changePanel("SusCon");
             }
         });
         
@@ -130,7 +134,11 @@ public class UserInterfaceView extends JFrame{
         add(navbar_panel, BorderLayout.NORTH);
     }
     
-    public void showCard(String cardTitle) {
+    public void removeNavbar() {
+        remove(navbar_panel);
+    }
+    
+    public void showPanel(String cardTitle) {
         layout.show(cards, cardTitle);
     }
 }
