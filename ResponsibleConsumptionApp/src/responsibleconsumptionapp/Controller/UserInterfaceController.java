@@ -25,7 +25,7 @@ public class UserInterfaceController {
        put("Login", new LoginPanel());
        put("UserPortal", new UserPortal());
        put("SusCon", new SusConPanel());
-       put("SusConQuestionaire", new SusConQuestionaire());
+       put("SusConQuestionaire", new SusConQuestionnaire());
     }};
 
     public UserInterfaceController() {

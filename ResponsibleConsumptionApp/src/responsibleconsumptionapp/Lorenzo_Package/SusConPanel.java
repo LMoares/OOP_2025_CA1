@@ -70,7 +70,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         background = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         infoTA = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        questionnaireBTN = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -87,31 +87,32 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         add(background);
         background.setBounds(10, 10, 490, 390);
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         infoTA.setColumns(15);
         infoTA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         infoTA.setRows(5);
-        infoTA.setText("          - - Welcome to Sustainable Consumption - -\n\nHere you can learn about the benefits of maintaining an\nEco-Friendly household and the benefits of adding \nreusable energy solutions to your home.\n\nClick on any Eco-Friendly item to learn about how each \none can benefit your home and lower your households \noverall carbon footprint score.\n\nClick Questionaire to proceed to a short quiz relating to\nthe information provided here.");
         infoTA.setToolTipText("");
         jScrollPane1.setViewportView(infoTA);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(510, 10, 370, 390);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setText("Questionaire");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        questionnaireBTN.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        questionnaireBTN.setText("Questionnaire");
+        questionnaireBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                questionnaireBTNActionPerformed(evt);
             }
         });
-        add(jButton1);
-        jButton1.setBounds(340, 420, 180, 40);
+        add(questionnaireBTN);
+        questionnaireBTN.setBounds(340, 420, 240, 40);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void questionnaireBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionnaireBTNActionPerformed
         // TODO add your handling code here:
         UICListener.changePanel("SusConQuestionaire");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_questionnaireBTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -120,7 +121,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
     private javax.swing.JLabel SolarPanelHS;
     private javax.swing.JLabel background;
     private javax.swing.JTextArea infoTA;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton questionnaireBTN;
     // End of variables declaration//GEN-END:variables
 }

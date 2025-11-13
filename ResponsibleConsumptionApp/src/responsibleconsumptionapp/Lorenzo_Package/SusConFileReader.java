@@ -16,36 +16,40 @@ import java.io.IOException;
  * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConFileReader {
-    private String SusConData;
     private String SusConIntro = new String();
     private String SusConSP = new String();
     private String SusConRB = new String();
     private String SusConCT = new String();
     
     public SusConFileReader() {
+        StringBuilder sb = new StringBuilder();
+        String SusConData;
+        //Sustainable Consumption Default Text Area Data
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConIntro.txt"))){
             SusConData = new String(); //reset SusConData
             SusConData = br.readLine();
             while(SusConData != null) {
-                SusConIntro = SusConIntro +"\n"+ SusConData;
+                sb.append(SusConData+"\n");
                 SusConData = br.readLine();
             }
-            
+            SusConIntro = sb.toString();
         }catch(FileNotFoundException e){
             System.out.println("File not found");
         }catch(IOException e) {
             System.out.println("Error reading file: "+e.getMessage());
         }
         
+        
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConSP.txt"))){
             
+            sb = new StringBuilder();
             SusConData = new String(); //reset SusConData
             SusConData = br.readLine();
             while(SusConData != null) {
-                SusConSP = SusConSP +"\n"+ SusConData;
+                sb.append(SusConData+"\n");
                 SusConData = br.readLine();
             }
-            
+            SusConSP = sb.toString();
         }catch(FileNotFoundException e){
             System.out.println("File not found");
         }catch(IOException e) {
@@ -54,13 +58,14 @@ public class SusConFileReader {
         
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConRB.txt"))){
             
+            sb = new StringBuilder();
             SusConData = new String(); //reset SusConData
             SusConData = br.readLine();
             while(SusConData != null) {
-                SusConRB = SusConRB +"\n"+ SusConData;
+                sb.append(SusConData+"\n");
                 SusConData = br.readLine();
             }
-            
+            SusConRB = sb.toString();
         }catch(FileNotFoundException e){
             System.out.println("File not found");
         }catch(IOException e) {
@@ -69,13 +74,14 @@ public class SusConFileReader {
         
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConCT.txt"))){
             
+            sb = new StringBuilder();
             SusConData = new String(); //reset SusConData
             SusConData = br.readLine();
             while(SusConData != null) {
-                SusConCT = SusConCT +"\n"+ SusConData;
+                sb.append(SusConData+"\n");
                 SusConData = br.readLine();
             }
-            
+            SusConCT = sb.toString();
         }catch(FileNotFoundException e){
             System.out.println("File not found");
         }catch(IOException e) {
