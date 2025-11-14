@@ -35,6 +35,7 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        travelOptionsBG = new javax.swing.ButtonGroup();
         panelLBL = new javax.swing.JLabel();
         headerLBL = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -43,6 +44,11 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
         jCheckBox4 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
         submitBTN = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        bicycleRB = new javax.swing.JRadioButton();
+        publicTransRB = new javax.swing.JRadioButton();
+        personalVehicleRB = new javax.swing.JRadioButton();
+        jCheckBox6 = new javax.swing.JCheckBox();
 
         panelLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         panelLBL.setText("New User Registration");
@@ -68,48 +74,96 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Modes of Travel / Commute");
+
+        travelOptionsBG.add(bicycleRB);
+        bicycleRB.setText("Bicycle / Walking");
+
+        travelOptionsBG.add(publicTransRB);
+        publicTransRB.setText("Public Transportation / Car-pool");
+
+        travelOptionsBG.add(personalVehicleRB);
+        personalVehicleRB.setText("Personal Vehicle");
+        personalVehicleRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personalVehicleRBActionPerformed(evt);
+            }
+        });
+
+        jCheckBox6.setText("jCheckBox6");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox1)
-                    .addComponent(headerLBL)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bicycleRB)
+                        .addGap(33, 33, 33)
+                        .addComponent(publicTransRB)
+                        .addGap(39, 39, 39)
+                        .addComponent(personalVehicleRB)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelLBL)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox3)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(233, 233, 233)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox4)
+                            .addComponent(jCheckBox5)
+                            .addComponent(jCheckBox6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(headerLBL, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(panelLBL)
-                .addGap(23, 23, 23)
+                .addGap(41, 41, 41)
                 .addComponent(headerLBL)
-                .addGap(30, 30, 30)
-                .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox4))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox5))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox3)
+                    .addComponent(jCheckBox6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bicycleRB)
+                    .addComponent(personalVehicleRB)
+                    .addComponent(publicTransRB))
+                .addGap(18, 18, 18)
                 .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,15 +172,25 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
         UICListener.registrationComplete(100);
     }//GEN-LAST:event_submitBTNActionPerformed
 
+    private void personalVehicleRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalVehicleRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personalVehicleRBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bicycleRB;
     private javax.swing.JLabel headerLBL;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel panelLBL;
+    private javax.swing.JRadioButton personalVehicleRB;
+    private javax.swing.JRadioButton publicTransRB;
     private javax.swing.JButton submitBTN;
+    private javax.swing.ButtonGroup travelOptionsBG;
     // End of variables declaration//GEN-END:variables
 }
