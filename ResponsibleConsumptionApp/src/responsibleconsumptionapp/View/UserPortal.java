@@ -22,6 +22,7 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
     
     public UserPortal() {
         initComponents();
+        userTA.setEditable(false);
     }
     
     public void setUser(User user){
@@ -30,6 +31,7 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userCfLBL.setText(user.getCf_score()+"");
     }
     
+    @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
     }
@@ -49,22 +51,24 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userCfHeaderLBL = new javax.swing.JLabel();
         userCfLBL = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        userTA = new javax.swing.JTextArea();
 
         titleLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         titleLBL.setText("Responsible Consumption");
 
-        userFnHeaderLBL.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        userFnHeaderLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userFnHeaderLBL.setText("Welcome");
 
-        userFnLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userFnLBL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userFnLBL.setLabelFor(userFnLBL);
         userFnLBL.setText("FULLNAME");
 
-        userCfHeaderLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userCfHeaderLBL.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         userCfHeaderLBL.setText("Carbon Footprint Score: ");
 
-        userCfLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        userCfLBL.setText("total");
+        userCfLBL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userCfLBL.setText("0");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Logout");
@@ -74,24 +78,37 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
             }
         });
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        userTA.setColumns(20);
+        userTA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userTA.setRows(5);
+        userTA.setText("\t              --- Responsible Consumption ---\n           Welcome to the Responsible Consumption prototype application.\n\nThis application is based off of the 12th United Nations goals for sustainable\nconsumption - Resonsible Consumption.\n\nUse the navbar to navigate between the 3 sections of this application.\nClick Chemical Waste to ...\nClick Tourism & Travel to ...\nClick Sustainable Consumption to learn about eco-friendly energy solutions.");
+        jScrollPane1.setViewportView(userTA);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(userFnHeaderLBL)
-                        .addGap(18, 18, 18)
-                        .addComponent(userFnLBL))
-                    .addComponent(titleLBL)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(userCfHeaderLBL)
+                        .addComponent(userFnHeaderLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(userCfLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addComponent(userFnLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(userCfHeaderLBL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userCfLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(titleLBL)))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,14 +118,16 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userFnHeaderLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userFnLBL))
-                .addGap(18, 18, 18)
+                    .addComponent(userFnLBL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userCfHeaderLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userCfLBL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(103, 103, 103))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,10 +142,12 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel titleLBL;
     private javax.swing.JLabel userCfHeaderLBL;
     private javax.swing.JLabel userCfLBL;
     private javax.swing.JLabel userFnHeaderLBL;
     private javax.swing.JLabel userFnLBL;
+    private javax.swing.JTextArea userTA;
     // End of variables declaration//GEN-END:variables
 }

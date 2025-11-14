@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package responsibleconsumptionapp.Lorenzo_Package;
 
 import java.io.BufferedReader;
@@ -16,70 +15,61 @@ import java.io.IOException;
  * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConFileReader {
-    private String SusConData;
+
     private String SusConIntro = new String();
     private String SusConSP = new String();
     private String SusConRB = new String();
     private String SusConCT = new String();
-    
+    private String testing = new String();
+
     public SusConFileReader() {
-        try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConIntro.txt"))){
-            SusConData = new String(); //reset SusConData
-            SusConData = br.readLine();
-            while(SusConData != null) {
-                SusConIntro = SusConIntro +"\n"+ SusConData;
-                SusConData = br.readLine();
+        //Sustainable Consumption Default Text Area Data
+        setTextData();
+    }
+
+    private void setTextData() {
+        try (BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConData.txt"))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            while (!line.equals("end_of_intro")) {
+                sb.append(line + "\n");
+                line = br.readLine();
             }
-            
-        }catch(FileNotFoundException e){
-            System.out.println("File not found");
-        }catch(IOException e) {
-            System.out.println("Error reading file: "+e.getMessage());
-        }
-        
-        try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConSP.txt"))){
-            
-            SusConData = new String(); //reset SusConData
-            SusConData = br.readLine();
-            while(SusConData != null) {
-                SusConSP = SusConSP +"\n"+ SusConData;
-                SusConData = br.readLine();
+            //set intro string to sb value
+            SusConIntro = sb.toString();
+            //reset reader and stringbuilder object
+            line = br.readLine();
+            sb = new StringBuilder();
+
+            while (!line.equals("end_of_sp")) {
+                sb.append(line + "\n");
+                line = br.readLine();
             }
-            
-        }catch(FileNotFoundException e){
-            System.out.println("File not found");
-        }catch(IOException e) {
-            System.out.println("Error reading file: "+e.getMessage());
-        }
-        
-        try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConRB.txt"))){
-            
-            SusConData = new String(); //reset SusConData
-            SusConData = br.readLine();
-            while(SusConData != null) {
-                SusConRB = SusConRB +"\n"+ SusConData;
-                SusConData = br.readLine();
+            SusConSP = sb.toString();
+            //reset reader and stringbuilder object
+            line = br.readLine();
+            sb = new StringBuilder();
+
+            while (!line.equals("end_of_rb")) {
+                sb.append(line + "\n");
+                line = br.readLine();
             }
-            
-        }catch(FileNotFoundException e){
-            System.out.println("File not found");
-        }catch(IOException e) {
-            System.out.println("Error reading file: "+e.getMessage());
-        }
-        
-        try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Lorenzo_Package/SusConCT.txt"))){
-            
-            SusConData = new String(); //reset SusConData
-            SusConData = br.readLine();
-            while(SusConData != null) {
-                SusConCT = SusConCT +"\n"+ SusConData;
-                SusConData = br.readLine();
+            SusConRB = sb.toString();
+            //reset reader and stringbuilder object
+            line = br.readLine();
+            sb = new StringBuilder();
+
+            //last file segment
+            while (line != null) {
+                sb.append(line + "\n");
+                line = br.readLine();
             }
-            
-        }catch(FileNotFoundException e){
+            SusConCT = sb.toString();
+
+        } catch (FileNotFoundException e) {
             System.out.println("File not found");
-        }catch(IOException e) {
-            System.out.println("Error reading file: "+e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
         }
     }
 
@@ -94,8 +84,8 @@ public class SusConFileReader {
     public String getSusConCT() {
         return SusConCT;
     }
-    
-    public String getSusConIntro(){
+
+    public String getSusConIntro() {
         return SusConIntro;
     }
 }
