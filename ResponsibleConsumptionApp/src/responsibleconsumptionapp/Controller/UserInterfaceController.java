@@ -21,12 +21,15 @@ public class UserInterfaceController {
 
     private UserInterfaceView ui;
     private User user;
-    private Map<String, IControllable> panels = new HashMap<>(){{
-       put("Login", new LoginPanel());
-       put("UserPortal", new UserPortal());
-       put("SusCon", new SusConPanel());
-       put("SusConQuestionaire", new SusConQuestionnaire());
-    }};
+    private Map<String, IControllable> panels = new HashMap<>() {
+        {
+            put("Login", new LoginPanel());
+            put("UserPortal", new UserPortal());
+            put("SusCon", new SusConPanel());
+            put("SusConQuestionaire", new SusConQuestionnaire());
+            put("NewUserRegistration", new NewUserRegistration());
+        }
+    };
 
     public UserInterfaceController() {
         ui = new UserInterfaceView(this);
@@ -53,50 +56,55 @@ public class UserInterfaceController {
         for (Map.Entry<String, IControllable> card : panels.entrySet()) {
             String key = card.getKey();
             IControllable panel = card.getValue();
-            
+
             panel.setPanelListener(this);
             //Cast panel from IControllable to JPanel for card initialization
             JPanel panelfix = (JPanel) panel;
             ui.initializeCards(panelfix, key);
         }
     }
-    
+
     public void changePanel(String panel) {
         //ensures SusCon panel data is reset when user navigates to panel
-        if(panel.equals("SusCon")) {
+        if (panel.equals("SusCon")) {
             //create reference to suscon panel - runs reset method on activation
-            SusConPanel suscon = (SusConPanel)panels.get("SusCon");
+            SusConPanel suscon = (SusConPanel) panels.get("SusCon");
             suscon.resetText();
         }
         ui.showPanel(panel);
     }
-    
+
     public void removeNavbar() {
         ui.removeNavbar();
     }
-    
+
+    public void registrationComplete(int carbonFootprintScore) {
+        user.setCf_score(carbonFootprintScore);
+        //cast UserPortal object from IControllable reference back to UserPortal for method calls
+        UserPortal up = (UserPortal) panels.get("UserPortal");
+        up.setUser(user);
+
+        //on successful login, panel changes to home panel, navbar made visible
+        ui.displayNavbar();
+        changePanel("UserPortal");
+    }
+
     public void onRegisterButtonClicked(String username, String fullname, String password) {
         //this method runs once login panel detects user interaction with register button
         /*String username = login_panel.getNewUserUsername();
         String fullname = login_panel.getNewUserFullName();
         String password = login_panel.getNewUserPassword();*/
-        
+
         //ensures password is not empty and is not a series of whitespaces
         if (password != null && !password.trim().isEmpty()) {
             System.out.println("Registering New User:");
 
             LoginService newUserLogin = new LoginService();
-            newUserLogin.registerNewUser(fullname,username,password);
-            
+            newUserLogin.registerNewUser(fullname, username, password);
+
             user = newUserLogin.getUser();
-            
-            //cast UserPortal object from IControllable reference back to UserPortal for method calls
-            UserPortal up = (UserPortal) panels.get("UserPortal");
-            up.setUser(user);
-            
             //on successful login, panel changes to home panel, navbar made visible
-            ui.displayNavbar();
-            changePanel("UserPortal");
+            changePanel("NewUserRegistration");
         } else {
             System.out.println("Registration requires password");
         }
@@ -107,7 +115,7 @@ public class UserInterfaceController {
         //ensures password is not empty and is not a series of whitespaces
         if (password != null && !password.trim().isEmpty()) {
             System.out.println("Login Existing User:");
-            
+
             //on successful login, panel changes to home panel, navbar made visible 
             ui.displayNavbar();
             changePanel("UserPortal");
