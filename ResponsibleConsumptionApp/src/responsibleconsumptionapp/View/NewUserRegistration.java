@@ -38,33 +38,44 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
         travelOptionsBG = new javax.swing.ButtonGroup();
         panelLBL = new javax.swing.JLabel();
         headerLBL = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        redMeatCB = new javax.swing.JCheckBox();
+        plantMealCB = new javax.swing.JCheckBox();
+        renewableCB = new javax.swing.JCheckBox();
+        compostCB = new javax.swing.JCheckBox();
+        airTravelCB = new javax.swing.JCheckBox();
         submitBTN = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bicycleRB = new javax.swing.JRadioButton();
         publicTransRB = new javax.swing.JRadioButton();
         personalVehicleRB = new javax.swing.JRadioButton();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        gasOilCoalCB = new javax.swing.JCheckBox();
+        jSeparator1 = new javax.swing.JSeparator();
 
         panelLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         panelLBL.setText("New User Registration");
 
-        headerLBL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        headerLBL.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         headerLBL.setText("Check any of the following boxes to calculate your individual Carbon Footprint Score");
 
-        jCheckBox1.setText("jCheckBox1");
+        redMeatCB.setText("Regularly Consume Red Meat");
 
-        jCheckBox2.setText("jCheckBox2");
+        plantMealCB.setText("Regularly Consume Plant-based Meals");
 
-        jCheckBox3.setText("jCheckBox3");
+        renewableCB.setText("Home Utilizes Renewable Energy Solutions");
 
-        jCheckBox4.setText("jCheckBox4");
+        compostCB.setText("Regularly Compost Organic Waste");
+        compostCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compostCBActionPerformed(evt);
+            }
+        });
 
-        jCheckBox5.setText("jCheckBox5");
+        airTravelCB.setText("Frequently Use Air Travel");
+        airTravelCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                airTravelCBActionPerformed(evt);
+            }
+        });
 
         submitBTN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         submitBTN.setText("Submit");
@@ -91,70 +102,70 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
             }
         });
 
-        jCheckBox6.setText("jCheckBox6");
+        gasOilCoalCB.setText("Home Utilizes Natural Gas, Oil, and/or Coal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bicycleRB)
-                        .addGap(33, 33, 33)
-                        .addComponent(publicTransRB)
-                        .addGap(39, 39, 39)
-                        .addComponent(personalVehicleRB)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelLBL)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(205, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(233, 233, 233)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(headerLBL, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(104, Short.MAX_VALUE))
+                            .addComponent(plantMealCB)
+                            .addComponent(renewableCB)
+                            .addComponent(redMeatCB))
+                        .addGap(161, 161, 161)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(compostCB)
+                            .addComponent(gasOilCoalCB)
+                            .addComponent(airTravelCB)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(186, 186, 186)
+                                .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bicycleRB)
+                                .addGap(33, 33, 33)
+                                .addComponent(publicTransRB)
+                                .addGap(39, 39, 39)
+                                .addComponent(personalVehicleRB))))
+                    .addComponent(headerLBL)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(panelLBL)))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(panelLBL)
-                .addGap(41, 41, 41)
+                .addGap(37, 37, 37)
                 .addComponent(headerLBL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(redMeatCB)
+                    .addComponent(compostCB))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox4))
+                    .addComponent(plantMealCB)
+                    .addComponent(airTravelCB))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                    .addComponent(renewableCB)
+                    .addComponent(gasOilCoalCB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,7 +174,7 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
                     .addComponent(publicTransRB))
                 .addGap(18, 18, 18)
                 .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,20 +187,29 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
         // TODO add your handling code here:
     }//GEN-LAST:event_personalVehicleRBActionPerformed
 
+    private void compostCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compostCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compostCBActionPerformed
+
+    private void airTravelCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airTravelCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_airTravelCBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox airTravelCB;
     private javax.swing.JRadioButton bicycleRB;
+    private javax.swing.JCheckBox compostCB;
+    private javax.swing.JCheckBox gasOilCoalCB;
     private javax.swing.JLabel headerLBL;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel panelLBL;
     private javax.swing.JRadioButton personalVehicleRB;
+    private javax.swing.JCheckBox plantMealCB;
     private javax.swing.JRadioButton publicTransRB;
+    private javax.swing.JCheckBox redMeatCB;
+    private javax.swing.JCheckBox renewableCB;
     private javax.swing.JButton submitBTN;
     private javax.swing.ButtonGroup travelOptionsBG;
     // End of variables declaration//GEN-END:variables

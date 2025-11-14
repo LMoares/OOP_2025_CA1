@@ -20,79 +20,79 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
-                      <Component id="submitBTN" min="-2" pref="106" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="bicycleRB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="publicTransRB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="personalVehicleRB" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="panelLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="109" max="32767" attributes="0"/>
+              <EmptySpace pref="205" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jSeparator1" min="-2" pref="856" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="plantMealCB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="renewableCB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="redMeatCB" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="compostCB" min="-2" max="-2" attributes="0"/>
+                          <Component id="gasOilCoalCB" min="-2" max="-2" attributes="0"/>
+                          <Component id="airTravelCB" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="155" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="headerLBL" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="submitBTN" min="-2" pref="106" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="bicycleRB" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="publicTransRB" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="personalVehicleRB" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="headerLBL" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="panelLBL" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="104" max="32767" attributes="0"/>
+              <EmptySpace pref="154" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="panelLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="headerLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="redMeatCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="compostCB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="plantMealCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="airTravelCB" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="renewableCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gasOilCoalCB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="160" max="32767" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -102,7 +102,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="submitBTN" min="-2" pref="51" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,35 +119,41 @@
     <Component class="javax.swing.JLabel" name="headerLBL">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
+          <Font name="Segoe UI" size="20" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Check any of the following boxes to calculate your individual Carbon Footprint Score"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="redMeatCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
+        <Property name="text" type="java.lang.String" value="Regularly Consume Red Meat"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+    <Component class="javax.swing.JCheckBox" name="plantMealCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox2"/>
+        <Property name="text" type="java.lang.String" value="Regularly Consume Plant-based Meals"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+    <Component class="javax.swing.JCheckBox" name="renewableCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox3"/>
+        <Property name="text" type="java.lang.String" value="Home Utilizes Renewable Energy Solutions"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+    <Component class="javax.swing.JCheckBox" name="compostCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox4"/>
+        <Property name="text" type="java.lang.String" value="Regularly Compost Organic Waste"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compostCBActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+    <Component class="javax.swing.JCheckBox" name="airTravelCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox5"/>
+        <Property name="text" type="java.lang.String" value="Frequently Use Air Travel"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="airTravelCBActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="submitBTN">
       <Properties>
@@ -195,10 +201,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="personalVehicleRBActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+    <Component class="javax.swing.JCheckBox" name="gasOilCoalCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox6"/>
+        <Property name="text" type="java.lang.String" value="Home Utilizes Natural Gas, Oil, and/or Coal"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
   </SubComponents>
 </Form>

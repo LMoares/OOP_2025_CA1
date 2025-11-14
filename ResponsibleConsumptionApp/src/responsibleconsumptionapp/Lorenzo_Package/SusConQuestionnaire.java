@@ -214,6 +214,7 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
         // TODO add your handling code here:
+        UICListener.changePanel("SusCon");
     }//GEN-LAST:event_submitBTNActionPerformed
 
 
