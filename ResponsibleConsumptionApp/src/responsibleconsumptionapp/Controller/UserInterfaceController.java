@@ -7,6 +7,10 @@ package responsibleconsumptionapp.Controller;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
+import responsibleconsumptionapp.Aaron_Package.bikeBookingGUI;
+import responsibleconsumptionapp.Aaron_Package.custFeedbackGUI;
+import responsibleconsumptionapp.Aaron_Package.tourismHomePanel;
+import responsibleconsumptionapp.Aaron_Package.tourismRouteGUI;
 import responsibleconsumptionapp.Jean_Package.ChemicalWasteGUI;
 import responsibleconsumptionapp.Jean_Package.NonRecyclableWasteGUI;
 import responsibleconsumptionapp.Jean_Package.RecyclableWasteGUI;
@@ -35,6 +39,10 @@ public class UserInterfaceController {
             put("SusConQuestionaire", new SusConQuestionnaire());
             put("NewUserRegistration", new NewUserRegistration());
             put("SusConConsultation", new SusConConsultation());
+            put("tourism", new tourismHomePanel());
+            put("bikeBooking", new bikeBookingGUI());
+            put("tourismRoute", new tourismRouteGUI());
+            put("customerFeedback", new custFeedbackGUI());
         }
     };
 

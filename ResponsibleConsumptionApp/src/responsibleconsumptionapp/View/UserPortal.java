@@ -85,7 +85,7 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userTA.setColumns(20);
         userTA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userTA.setRows(5);
-        userTA.setText("\t              --- Responsible Consumption ---\n           Welcome to the Responsible Consumption prototype application.\n\nThis application is based off of the 12th United Nations goals for sustainable\nconsumption - Resonsible Consumption.\n\nUse the navbar to navigate between the 3 sections of this application.\n - Click Chemical Waste to learn about recycling methods, safety, and log recycling.\n - Click Tourism & Travel to ...\n - Click Sustainable Consumption to learn about eco-friendly energy solutions.");
+        userTA.setText("\t              --- Responsible Consumption ---\n           Welcome to the Responsible Consumption prototype application.\n\nThis application is based off of the 12th United Nations goals for sustainable\nconsumption - Resonsible Consumption.\n\nUse the navbar to navigate between the 3 sections of this application.\n - Click Chemical Waste to learn about recycling methods, safety, and log recycling.\n - Click Tourism & Travel to learn about responsible tourism\n - Click Sustainable Consumption to learn about eco-friendly energy solutions.");
         jScrollPane1.setViewportView(userTA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
