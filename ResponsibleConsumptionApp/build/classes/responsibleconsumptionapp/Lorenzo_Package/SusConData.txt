@@ -8,52 +8,79 @@ Click on any Eco-Friendly item to learn about how each
 one can benefit your home and lower your household's 
 overall carbon footprint score.
 
-Click Questionnaire to proceed to a short quiz relating to
-the information provided here.
-
 The available Eco-Friendly items are:
    -Solar Panels
    -Recycle Bins
    -Compost Garden
+
+Click Questionnaire to proceed to a short quiz relating to
+the information provided here.
 end_of_intro
-                    - - Sustainable Consumption - -
+                  - - Sustainable Consumption - -
 
-Solar Panel Information . . .
-...
-...
-...
+Solar Panels allow households to contribute to lowering
+their overall Carbon Footprint Score by generating 
+renewable electricity. 
 
-...
-...
-...
-
-...
-...
+Households that utilize Solar Panels are able to not 
+only passively generate energy for their own purposes.
+But also have the added benefit of supplying excess
+surplus power back to the grid. This surplus energy 
+affords these households with the benefit of selling
+electricity back to the grid; lowering their Carbon 
+Footprint Score and making positive contributions 
+to the energy conservation of their wider communities.
 end_of_sp
-                    - - Sustainable Consumption - -
+                  - - Sustainable Consumption - -
 
-Recycling Bins Information . . .
-...
-...
-...
+Recycling Bins allow households to contribute to 
+lowering their overall Carbon Footprint by preventing
+excess refuse from entering landfills and allow for 
+recycled refuse to be reused for the creation of new
+products.
 
-...
-...
-...
+Proper recycling prevents refuse from being placed in
+large landfills. These recyclable items further add to
+the immense size that landfills take up and take
+decades to naturally degrade. Furthermore, these items
+contain chemicals that are harmful to the environment
+and leach these chemicals into the ground slowly over
+the years.
 
-...
-...
+Recyclable products that are properly disposed of,
+provide a myriad of benefits to sustainable
+consumption.
+
+The energy required to recycle these items into new
+products if far less than the energy needed to create
+these products from scratch. In addition, since these
+items are being reused, they can continue to recycled
+time and time again, with much less impact on the
+environment.
 end_of_rb
-                    - - Sustainable Consumption - -
+                  - - Sustainable Consumption - -
 
-Compost Garden Information . . .
-...
-...
-...
+A Compost Garden allow households to contribute to 
+lowering their overall Carbon Footprint by utilizing
+organic waste for the benefit of the household. 
 
-...
-...
-...
+This organic waste can be used as a cost effective
+fertilizer for a wide variety of gardens. This waste
+can range from meal scraps, organic cooking waste
+such as egg shells, and even used pieces of kitchen
+rolls.
 
-...
-...
+These Compost Gardens can be used to grow a wide
+variety of produce for the household, offsetting
+the overall cost of grocery shopping during spring,
+summer, and fall seasons. Composting regularly adds
+much required fuel for beneficial micro bacteria
+that break the organic waste down into vital
+and healthy nutrients that plants require to grow.
+
+Composting in this way reduces the need for buying
+alternative fertilizers such as those that use animal
+refuse for plant nutrients. Thus reducing the demand
+for such items and greatly reducing the overall
+Carbon Footprint Score of each household that 
+participates in composting.

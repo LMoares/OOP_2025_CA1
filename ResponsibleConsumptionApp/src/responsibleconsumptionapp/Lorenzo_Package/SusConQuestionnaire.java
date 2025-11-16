@@ -4,6 +4,7 @@
  */
 package responsibleconsumptionapp.Lorenzo_Package;
 
+import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
@@ -40,6 +41,7 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         q1BG = new javax.swing.ButtonGroup();
         q2BG = new javax.swing.ButtonGroup();
         q3BG = new javax.swing.ButtonGroup();
+        q4BG = new javax.swing.ButtonGroup();
         q1LBL = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         q1TA = new javax.swing.JTextArea();
@@ -59,6 +61,12 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         q3RadioA = new javax.swing.JRadioButton();
         q3RadioB = new javax.swing.JRadioButton();
         submitBTN = new javax.swing.JButton();
+        q4LBL = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        q4TA = new javax.swing.JTextArea();
+        q4RadioC = new javax.swing.JRadioButton();
+        q4RadioA = new javax.swing.JRadioButton();
+        q4RadioB = new javax.swing.JRadioButton();
 
         q1LBL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         q1LBL.setText("Question 1 - ");
@@ -69,7 +77,7 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
 
         q1TA.setColumns(20);
         q1TA.setRows(2);
-        q1TA.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+        q1TA.setText("Solar Panel Question");
         jScrollPane1.setViewportView(q1TA);
 
         q1BG.add(q1RadioA);
@@ -90,7 +98,7 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
 
         q2TA.setColumns(20);
         q2TA.setRows(2);
-        q2TA.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+        q2TA.setText("Recycling Question");
         jScrollPane2.setViewportView(q2TA);
 
         q2BG.add(q2RadioC);
@@ -111,7 +119,7 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
 
         q3TA.setColumns(20);
         q3TA.setRows(2);
-        q3TA.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+        q3TA.setText("Composting Question");
         jScrollPane3.setViewportView(q3TA);
 
         q3BG.add(q3RadioC);
@@ -130,50 +138,84 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
             }
         });
 
+        q4LBL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        q4LBL.setText("Question 4 -");
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane4.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        q4TA.setColumns(20);
+        q4TA.setRows(2);
+        q4TA.setText("General Question");
+        jScrollPane4.setViewportView(q4TA);
+
+        q4BG.add(q4RadioC);
+        q4RadioC.setText("Answer C");
+
+        q4BG.add(q4RadioA);
+        q4RadioA.setText("Answer A");
+
+        q4BG.add(q4RadioB);
+        q4RadioB.setText("Answer B");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(359, Short.MAX_VALUE)
-                .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(360, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(q3LBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(q3RadioA)
-                                .addGap(18, 18, 18)
-                                .addComponent(q3RadioB)
-                                .addGap(18, 18, 18)
-                                .addComponent(q3RadioC))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(q2LBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(q3LBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(q3RadioA)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q3RadioB)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q3RadioC))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(q4RadioA)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q4RadioB)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q4RadioC))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(q2RadioA)
-                                .addGap(18, 18, 18)
-                                .addComponent(q2RadioB)
-                                .addGap(18, 18, 18)
-                                .addComponent(q2RadioC))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(q2LBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(q2RadioA)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q2RadioB)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q2RadioC))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(q1LBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(q1RadioA)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q1RadioB)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(q1RadioC))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(q1LBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(q1RadioA)
-                                .addGap(18, 18, 18)
-                                .addComponent(q1RadioB)
-                                .addGap(18, 18, 18)
-                                .addComponent(q1RadioC))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(q4LBL, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(692, 692, 692)))
+                .addContainerGap(7, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -206,14 +248,24 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
                     .addComponent(q3RadioA)
                     .addComponent(q3RadioB)
                     .addComponent(q3RadioC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(q4LBL)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q4RadioA)
+                    .addComponent(q4RadioB)
+                    .addComponent(q4RadioC))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"Carbon Footprint Score has been lowered by 5 for each correct answer!");
         UICListener.changePanel("SusCon");
     }//GEN-LAST:event_submitBTNActionPerformed
 
@@ -222,6 +274,7 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.ButtonGroup q1BG;
     private javax.swing.JLabel q1LBL;
     private javax.swing.JRadioButton q1RadioA;
@@ -240,6 +293,12 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
     private javax.swing.JRadioButton q3RadioB;
     private javax.swing.JRadioButton q3RadioC;
     private javax.swing.JTextArea q3TA;
+    private javax.swing.ButtonGroup q4BG;
+    private javax.swing.JLabel q4LBL;
+    private javax.swing.JRadioButton q4RadioA;
+    private javax.swing.JRadioButton q4RadioB;
+    private javax.swing.JRadioButton q4RadioC;
+    private javax.swing.JTextArea q4TA;
     private javax.swing.JButton submitBTN;
     // End of variables declaration//GEN-END:variables
 }
