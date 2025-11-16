@@ -7,6 +7,9 @@ package responsibleconsumptionapp.Controller;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
+import responsibleconsumptionapp.Jean_Package.ChemicalWasteGUI;
+import responsibleconsumptionapp.Jean_Package.NonRecyclableWasteGUI;
+import responsibleconsumptionapp.Jean_Package.RecyclableWasteGUI;
 import responsibleconsumptionapp.View.*;
 import responsibleconsumptionapp.Lorenzo_Package.*;
 import responsibleconsumptionapp.Model.User;
@@ -24,6 +27,9 @@ public class UserInterfaceController {
     private Map<String, IControllable> panels = new HashMap<>() {
         {
             put("Login", new LoginPanel());
+            put("ChemWaste", new ChemicalWasteGUI());
+            put("Recyclable", new RecyclableWasteGUI());
+            put("NonRecyclable", new NonRecyclableWasteGUI());
             put("UserPortal", new UserPortal());
             put("SusCon", new SusConPanel());
             put("SusConQuestionaire", new SusConQuestionnaire());
