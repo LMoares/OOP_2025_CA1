@@ -55,6 +55,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
     
     public void resetText(){
         infoTA.setText(scfr.getSusConIntro());
+        infoTA.setCaretPosition(0); //set text area scroll bar to top
     }
     
 
@@ -74,6 +75,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         jScrollPane1 = new javax.swing.JScrollPane();
         infoTA = new javax.swing.JTextArea();
         questionnaireBTN = new javax.swing.JButton();
+        consultationBTN = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -109,7 +111,17 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
             }
         });
         add(questionnaireBTN);
-        questionnaireBTN.setBounds(340, 420, 240, 40);
+        questionnaireBTN.setBounds(120, 420, 240, 40);
+
+        consultationBTN.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        consultationBTN.setText("Consultation");
+        consultationBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultationBTNActionPerformed(evt);
+            }
+        });
+        add(consultationBTN);
+        consultationBTN.setBounds(530, 420, 240, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void questionnaireBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionnaireBTNActionPerformed
@@ -117,12 +129,18 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         UICListener.changePanel("SusConQuestionaire");
     }//GEN-LAST:event_questionnaireBTNActionPerformed
 
+    private void consultationBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationBTNActionPerformed
+        // TODO add your handling code here:
+        UICListener.changePanel("SusConConsultation");
+    }//GEN-LAST:event_consultationBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CompostHS;
     private javax.swing.JLabel RecycleHS;
     private javax.swing.JLabel SolarPanelHS;
     private javax.swing.JLabel background;
+    private javax.swing.JButton consultationBTN;
     private javax.swing.JTextArea infoTA;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton questionnaireBTN;

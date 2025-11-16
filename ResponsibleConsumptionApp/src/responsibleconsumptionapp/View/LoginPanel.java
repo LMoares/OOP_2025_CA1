@@ -23,35 +23,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
 
     public LoginPanel() {
         initComponents();
-
-        //built in mouse listener from MouseAdapter library. Triggers if user clicks registration button
-        /*
-        registerButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                //Ensures UICListener has been correctly referenced
-                if (UICListener != null) {
-                    UICListener.onRegisterButtonClicked(getNewUserUsername(), getNewUserFullName(), getNewUserPassword());
-
-                    //resets input fields to default
-                    resetNewUserUsername();
-                    resetNewUserPassword();
-                    resetNewUserFullName();
-                }
-            }
-        });
-        //built in mouse listener from MouseAdapter library. Triggers if user clicks login button
-        loginButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                //Ensures UICListener has been correctly referenced
-                if (UICListener != null) {
-                    UICListener.onLoginButtonClicked(getExistingUserUsername(), getExistingUserPassword());
-                    resetExistingUserUsername();
-                    resetExistingUserPassword();
-                }
-            }
-        });*/
     }
 
     //required for userinterfacecontroller to react to events on Login Panel

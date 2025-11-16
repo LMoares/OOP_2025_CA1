@@ -25,8 +25,8 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userTA.setEditable(false);
     }
     
-    public void setUser(User user){
-        this.user = user;
+    public void setUser(){
+        this.user = UICListener.getUser();
         userFnLBL.setText(user.getName());
         userCfLBL.setText(user.getCf_score()+"");
     }
