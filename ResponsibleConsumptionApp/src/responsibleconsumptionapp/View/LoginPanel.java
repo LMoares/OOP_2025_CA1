@@ -25,13 +25,14 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         initComponents();
 
         //built in mouse listener from MouseAdapter library. Triggers if user clicks registration button
+        /*
         registerButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 //Ensures UICListener has been correctly referenced
                 if (UICListener != null) {
                     UICListener.onRegisterButtonClicked(getNewUserUsername(), getNewUserFullName(), getNewUserPassword());
-                    
+
                     //resets input fields to default
                     resetNewUserUsername();
                     resetNewUserPassword();
@@ -50,7 +51,7 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
                     resetExistingUserPassword();
                 }
             }
-        });
+        });*/
     }
 
     //required for userinterfacecontroller to react to events on Login Panel
@@ -115,29 +116,29 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        loginLBL = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        newUserLBL = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         existingUserPassword = new javax.swing.JPasswordField();
         newUserPassword = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        newUserPwLBL = new javax.swing.JLabel();
+        loginUnLBL = new javax.swing.JLabel();
         existingUserUsername = new javax.swing.JTextField();
         newUserUsername = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        loginPwLBL = new javax.swing.JLabel();
+        newUserUnLBL = new javax.swing.JLabel();
         newUserFullName = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        newUserFnLBL = new javax.swing.JLabel();
+        titleLBL = new javax.swing.JLabel();
+        groupLBL = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Login Existing User");
+        loginLBL.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        loginLBL.setText("Login Existing User");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Register New User");
+        newUserLBL.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        newUserLBL.setText("Register New User");
 
         loginButton.setText("Login");
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,9 +180,9 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
             }
         });
 
-        jLabel3.setText("Password");
+        newUserPwLBL.setText("Password");
 
-        jLabel4.setText("Username");
+        loginUnLBL.setText("Username");
 
         existingUserUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,17 +196,17 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
             }
         });
 
-        jLabel5.setText("Password");
+        loginPwLBL.setText("Password");
 
-        jLabel6.setText("Username");
+        newUserUnLBL.setText("Username");
 
-        jLabel7.setText("Full Name");
+        newUserFnLBL.setText("Full Name");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel8.setText("Responsible Consumption");
+        titleLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        titleLBL.setText("Responsible Consumption");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Group H - Lorenzo Moares Nunez, Jean Walton, Aaron Byrne");
+        groupLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        groupLBL.setText("Group H - Lorenzo Moares Nunez, Jean Walton, Aaron Byrne");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -220,23 +221,23 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel2)
+                            .addComponent(newUserFnLBL)
+                            .addComponent(newUserUnLBL)
+                            .addComponent(newUserLBL)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(newUserUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(newUserPwLBL)
                                     .addComponent(newUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(registerButton)
                             .addComponent(newUserFullName))
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
+                            .addComponent(loginLBL)
+                            .addComponent(loginUnLBL)
                             .addComponent(loginButton)
-                            .addComponent(jLabel5)
+                            .addComponent(loginPwLBL)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(existingUserUsername, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(existingUserPassword, javax.swing.GroupLayout.Alignment.LEADING)))
@@ -244,48 +245,48 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
+                    .addComponent(titleLBL)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel9)))
+                        .addComponent(groupLBL)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
+                .addComponent(titleLBL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
+                .addComponent(groupLBL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(loginLBL)
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel4)
+                        .addComponent(loginUnLBL)
                         .addGap(5, 5, 5)
                         .addComponent(existingUserUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(loginPwLBL)
                         .addGap(5, 5, 5)
                         .addComponent(existingUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
                         .addComponent(loginButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(newUserLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3))
+                            .addComponent(newUserUnLBL)
+                            .addComponent(newUserPwLBL))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(newUserUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(newUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
+                            .addComponent(newUserFnLBL)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(newUserFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -297,10 +298,24 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
+        if (UICListener != null) {
+            UICListener.onRegisterButtonClicked(getNewUserUsername(), getNewUserFullName(), getNewUserPassword());
+
+            //resets input fields to default
+            resetNewUserUsername();
+            resetNewUserPassword();
+            resetNewUserFullName();
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        //Ensures UICListener has been correctly referenced
+        if (UICListener != null) {
+            UICListener.onLoginButtonClicked(getExistingUserUsername(), getExistingUserPassword());
+            resetExistingUserUsername();
+            resetExistingUserPassword();
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void existingUserUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingUserUsernameActionPerformed
@@ -331,20 +346,20 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField existingUserPassword;
     private javax.swing.JTextField existingUserUsername;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel groupLBL;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel loginLBL;
+    private javax.swing.JLabel loginPwLBL;
+    private javax.swing.JLabel loginUnLBL;
+    private javax.swing.JLabel newUserFnLBL;
     private javax.swing.JTextField newUserFullName;
+    private javax.swing.JLabel newUserLBL;
     private javax.swing.JPasswordField newUserPassword;
+    private javax.swing.JLabel newUserPwLBL;
+    private javax.swing.JLabel newUserUnLBL;
     private javax.swing.JTextField newUserUsername;
     private javax.swing.JButton registerButton;
+    private javax.swing.JLabel titleLBL;
     // End of variables declaration//GEN-END:variables
 }
