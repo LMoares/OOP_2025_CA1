@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
 import responsibleconsumptionapp.Jean_Package.ChemicalWasteGUI;
+import responsibleconsumptionapp.Jean_Package.NonRecyclableWasteGUI;
+import responsibleconsumptionapp.Jean_Package.RecyclableWasteGUI;
 import responsibleconsumptionapp.View.*;
 import responsibleconsumptionapp.Lorenzo_Package.*;
 import responsibleconsumptionapp.Model.User;
@@ -22,11 +24,15 @@ public class UserInterfaceController {
 
     private UserInterfaceView ui;
     private User user;
-    private Map<String, IControllable> panels = new HashMap<>(){{
-       put("Login", new LoginPanel());
-       put("ChemWaste", new ChemicalWasteGUI());
-       put("UserPortal", new UserPortal());
-    }};
+    private Map<String, IControllable> panels = new HashMap<>() {
+        {
+            put("Login", new LoginPanel());
+            put("ChemWaste", new ChemicalWasteGUI());
+            put("Recyclable", new RecyclableWasteGUI());
+            put("NonRecyclable", new NonRecyclableWasteGUI());
+            put("UserPortal", new UserPortal());
+        }
+    };
 
     public UserInterfaceController() {
         ui = new UserInterfaceView();
@@ -55,12 +61,16 @@ public class UserInterfaceController {
         for (Map.Entry<String, IControllable> card : panels.entrySet()) {
             String key = card.getKey();
             IControllable panel = card.getValue();
-            
+
             panel.setPanelListener(this);
             //Cast panel from IControllable to JPanel for card initialization
             JPanel panelfix = (JPanel) panel;
             ui.initializeCards(panelfix, key);
         }
+    }
+    /*added at home 13/11/2025 Lorenzo guided*/
+    public void changePanel(String panel){
+        ui.showCard(panel);
     }
 
     public void onRegisterButtonClicked(String username, String fullname, String password) {
@@ -82,14 +92,14 @@ public class UserInterfaceController {
                     username,
                     password
             );
-            
+
             user = newUserLogin.getUser();
-            
+
             //cast UserPortal object from IControllable reference back to UserPortal for method calls
             UserPortal up = (UserPortal) panels.get("UserPortal");
             up.setUser(user);
             up.setFullName();
-            
+
             //on successful login, panel changes to home panel, navbar made visible
             ui.displayNavbar();
             ui.showCard("UserPortal");
@@ -107,12 +117,12 @@ public class UserInterfaceController {
             System.out.println("Login Existing User:");
             System.out.println("username: " + username);
             System.out.println("password: " + password);
-            
+
             //on successful login, panel changes to home panel, navbar made visible 
             ui.displayNavbar();
             ui.showCard("UserPortal");
             repaint();
-            
+
         } else {
             System.out.println("Login requires password");
         }

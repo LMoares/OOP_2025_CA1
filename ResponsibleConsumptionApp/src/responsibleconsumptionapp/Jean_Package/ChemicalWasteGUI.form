@@ -36,15 +36,15 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="recyclable_waste_R_btn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="return_button" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="non_recyclable_R_btn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="proceed" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Component id="goods_recycling_image" min="-2" pref="500" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +60,7 @@
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="non_recyclable_R_btn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="return_button" min="-2" max="-2" attributes="0"/>
+                      <Component id="proceed" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <Component id="goods_recycling_image" pref="375" max="32767" attributes="0"/>
               </Group>
@@ -94,6 +94,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Recyclable Waste"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recyclable_waste_R_btnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="non_recyclable_R_btn">
       <Properties>
@@ -108,20 +111,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="NON-Recyclable Waste"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="return_button">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="0" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="18" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Return"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="non_recyclable_R_btnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="goods_recycling_image">
       <Properties>
@@ -135,6 +127,28 @@
           </Border>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="proceed">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="0" red="cc" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Trebuchet MS" size="14" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PROCEED"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="proceedActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
