@@ -51,9 +51,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <EmptySpace pref="47" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="recyclable_waste_R_btn" min="-2" max="-2" attributes="0"/>
@@ -62,9 +62,9 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="proceed" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="goods_recycling_image" pref="375" max="32767" attributes="0"/>
+                  <Component id="goods_recycling_image" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,7 +118,7 @@
     <Component class="javax.swing.JLabel" name="goods_recycling_image">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\walco\Downloads\goods_recycling.png"/>
+          <Image iconType="3" name="/responsibleconsumptionapp/Resources/Jean_Resource/goods_recycling.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel2"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

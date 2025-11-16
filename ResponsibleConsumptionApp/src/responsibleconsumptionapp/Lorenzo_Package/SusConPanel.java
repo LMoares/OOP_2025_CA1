@@ -27,6 +27,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
             @Override
             public void mouseClicked(MouseEvent e) {
                 infoTA.setText(scfr.getSusConSP());
+                infoTA.setCaretPosition(0); //set text area scroll bar to top
             }
         });
         
@@ -34,6 +35,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
             @Override
             public void mouseClicked(MouseEvent e) {
                 infoTA.setText(scfr.getSusConCT());
+                infoTA.setCaretPosition(0); //set text area scroll bar to top
             }
         });
         
@@ -41,6 +43,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
             @Override
             public void mouseClicked(MouseEvent e) {
                 infoTA.setText(scfr.getSusConRB());
+                infoTA.setCaretPosition(0); //set text area scroll bar to top
             }
         });
     }

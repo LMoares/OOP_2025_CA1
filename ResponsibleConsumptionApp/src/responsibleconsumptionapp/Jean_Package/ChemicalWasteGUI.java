@@ -77,7 +77,7 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
             }
         });
 
-        goods_recycling_image.setIcon(new javax.swing.ImageIcon("C:\\Users\\walco\\Downloads\\goods_recycling.png")); // NOI18N
+        goods_recycling_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/responsibleconsumptionapp/Resources/Jean_Resource/goods_recycling.png"))); // NOI18N
         goods_recycling_image.setText("jLabel2");
         goods_recycling_image.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
@@ -113,9 +113,9 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(recyclable_waste_R_btn)
@@ -123,8 +123,8 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
                         .addComponent(non_recyclable_R_btn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(proceed, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(goods_recycling_image, javax.swing.GroupLayout.PREFERRED_SIZE, 375, Short.MAX_VALUE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(goods_recycling_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
