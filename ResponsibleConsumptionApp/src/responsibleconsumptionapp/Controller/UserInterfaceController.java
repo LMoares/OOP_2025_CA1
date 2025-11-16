@@ -34,12 +34,13 @@ public class UserInterfaceController {
             put("SusCon", new SusConPanel());
             put("SusConQuestionaire", new SusConQuestionnaire());
             put("NewUserRegistration", new NewUserRegistration());
+            put("SusConConsultation", new SusConConsultation());
         }
     };
 
     public UserInterfaceController() {
         ui = new UserInterfaceView(this);
-
+        
         initializePanels();
         ui.generateNavbar();
         ui.generateCards();
@@ -71,11 +72,15 @@ public class UserInterfaceController {
     }
 
     public void changePanel(String panel) {
+        //TODO abstract following code to work for all panels
         //ensures SusCon panel data is reset when user navigates to panel
         if (panel.equals("SusCon")) {
             //create reference to suscon panel - runs reset method on activation
             SusConPanel suscon = (SusConPanel) panels.get("SusCon");
             suscon.resetText();
+        }else if (panel.equals("SusConConsultation")) {
+            SusConConsultation susconCon = (SusConConsultation) panels.get("SusConConsultation");
+            susconCon.setUser();
         }
         ui.showPanel(panel);
     }
@@ -83,12 +88,13 @@ public class UserInterfaceController {
     public void removeNavbar() {
         ui.removeNavbar();
     }
+    
+    public User getUser() {
+        return user;
+    }
 
     public void registrationComplete(int carbonFootprintScore) {
         user.setCf_score(carbonFootprintScore);
-        //cast UserPortal object from IControllable reference back to UserPortal for method calls
-        UserPortal up = (UserPortal) panels.get("UserPortal");
-        up.setUser(user);
 
         //on successful login, panel changes to home panel, navbar made visible
         ui.displayNavbar();
@@ -97,12 +103,10 @@ public class UserInterfaceController {
 
     public void onRegisterButtonClicked(String username, String fullname, String password) {
         //this method runs once login panel detects user interaction with register button
-        /*String username = login_panel.getNewUserUsername();
-        String fullname = login_panel.getNewUserFullName();
-        String password = login_panel.getNewUserPassword();*/
 
         //ensures password is not empty and is not a series of whitespaces
-        if (password != null && !password.trim().isEmpty()) {
+        //if (password != null && !password.trim().isEmpty()) {
+        if(true) { //placeholder for login logic
             System.out.println("Registering New User:");
 
             LoginService newUserLogin = new LoginService();
@@ -119,11 +123,17 @@ public class UserInterfaceController {
     public void onLoginButtonClicked(String username, String password) {
         //this method runs once login panel detects user interaction with login button
         //ensures password is not empty and is not a series of whitespaces
-        if (password != null && !password.trim().isEmpty()) {
+        //if (password != null && !password.trim().isEmpty()) {
+        
+        if(true) { //placeholder for login logic
             System.out.println("Login Existing User:");
-
+            LoginService userLogin = new LoginService();
+            userLogin.loginExistingUser(username, password);
+            user = userLogin.getUser();
             //on successful login, panel changes to home panel, navbar made visible 
             ui.displayNavbar();
+            UserPortal up = (UserPortal)panels.get("UserPortal");
+            up.setUser();
             changePanel("UserPortal");
         } else {
             System.out.println("Login requires password");

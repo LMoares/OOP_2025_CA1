@@ -25,6 +25,10 @@ public class LoginService {
         userService.registerNewUser(name, username, password);
     }
     
+    public void loginExistingUser(String username, String password) {
+        userService.loginExistingUser("John Smith",username,password);
+    }
+    
     public User getUser() {
         return userService.getUser();
     }
