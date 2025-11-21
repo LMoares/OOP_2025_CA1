@@ -65,6 +65,14 @@ public class User implements Serializable{
     public void setCf_score(int cf_score) {
         this.cf_score = cf_score;
     }
+
+    public int getEf_score() {
+        return ef_score;
+    }
+
+    public void setEf_score(int ef_score) {
+        this.ef_score += ef_score;
+    }
     
     
 }

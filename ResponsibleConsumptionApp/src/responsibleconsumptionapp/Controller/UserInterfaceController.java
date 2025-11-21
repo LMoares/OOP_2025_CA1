@@ -5,6 +5,7 @@
 package responsibleconsumptionapp.Controller;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,7 +19,6 @@ import responsibleconsumptionapp.Jean_Package.RecyclableWasteGUI;
 import responsibleconsumptionapp.View.*;
 import responsibleconsumptionapp.Lorenzo_Package.*;
 import responsibleconsumptionapp.Model.User;
-import responsibleconsumptionapp.Service.LoginService;
 import responsibleconsumptionapp.Service.UserService;
 
 /*
@@ -92,6 +92,9 @@ public class UserInterfaceController {
         } else if (panel.equals("SusConConsultation")) {
             SusConConsultation susconCon = (SusConConsultation) panels.get("SusConConsultation");
             susconCon.setUser();
+        }else if (panel.equals("Login")) {
+            //user has been logged out
+            userHandler.setUser(null);
         }
         ui.showPanel(panel);
     }
@@ -105,7 +108,7 @@ public class UserInterfaceController {
     }
 
     public void saveUserChanges() {
-        userHandler.saveChanges();
+        userHandler.saveChanges();        
     }
 
     public void registrationComplete(int cfscore) {
@@ -124,10 +127,8 @@ public class UserInterfaceController {
         //ensures password is not empty and is not a series of whitespaces
         //if (password != null && !password.trim().isEmpty()) {
         if (true) { //placeholder for login logic
-            System.out.println("Registering New User:");
 
             //TODO create logic to ensure that new user information does not conflict with other users
-            //LoginService newUserLogin = new LoginService();
             //creates reference in user service to current user
             userHandler.registerNewUser(name, username, password);
 
@@ -144,9 +145,7 @@ public class UserInterfaceController {
         //if (password != null && !password.trim().isEmpty()) {
 
         if (true) { //placeholder for login logic
-            System.out.println("Login Existing User:");
-            LoginService userLogin = new LoginService();
-            userHandler.setUser(userLogin.loginExistingUser(username, password));
+            userHandler.loginExistingUser(username, password);
 
             if (userHandler.getUser() == null) {
                 JOptionPane.showMessageDialog(null, "Username and/or password does not match any existing users. Please try again or Register.");

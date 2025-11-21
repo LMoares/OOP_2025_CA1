@@ -12,6 +12,8 @@ import responsibleconsumptionapp.Model.User;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+//DEPRECATED
+@Deprecated
 public class LoginService {
     private UserService userService;
     
