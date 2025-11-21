@@ -156,9 +156,9 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
                     .addComponent(redMeatCB)
                     .addComponent(compostCB))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(plantMealCB)
-                    .addComponent(airTravelCB))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(airTravelCB, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(plantMealCB))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(renewableCB)
@@ -180,7 +180,29 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
         // TODO add your handling code here:
-        UICListener.registrationComplete(100);
+        //base cfscore
+        int cfscore = 100;
+        //checkboxs
+        if(airTravelCB.isSelected())
+            cfscore += 25;
+        if(compostCB.isSelected())
+            cfscore -= 15;
+        if(gasOilCoalCB.isSelected())
+            cfscore += 15;
+        if(renewableCB.isSelected())
+            cfscore -= 15;
+        if(plantMealCB.isSelected())
+            cfscore -= 10;
+        if(redMeatCB.isSelected())
+            cfscore += 10;
+        //radio buttons
+        if(bicycleRB.isSelected())
+            cfscore -= 5;
+        if(personalVehicleRB.isSelected())
+            cfscore += 20;
+        if(publicTransRB.isSelected())
+            cfscore += 10;
+        UICListener.registrationComplete(cfscore);
     }//GEN-LAST:event_submitBTNActionPerformed
 
     private void personalVehicleRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalVehicleRBActionPerformed

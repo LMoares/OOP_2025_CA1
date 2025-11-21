@@ -74,14 +74,6 @@ public class UserInterfaceView extends JFrame {
     }
 
     public void generateCards() {
-        //method saves unique panels to cards and enables mouse click events for user interaction on navbar labels - Lorenzo
-        //JPanel chemWaste = new JPanel();
-        //chemWaste.add(new JLabel("Panel for Chemical Waste"));
-        //JPanel tourism = new JPanel();
-        //tourism.add(new JLabel("Panel for Tourism"));
-        //cards.add(chemWaste, "chemWaste");
-        //cards.add(tourism, "tourism");
-
         //adds event listener for mouse click on navbar to change main window panel 
         navbar_UserPortal_label.addMouseListener(new MouseAdapter() {
             @Override

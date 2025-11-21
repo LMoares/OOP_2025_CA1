@@ -6,6 +6,7 @@ package responsibleconsumptionapp.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import responsibleconsumptionapp.Aaron_Package.bikeBookingGUI;
 import responsibleconsumptionapp.Aaron_Package.custFeedbackGUI;
@@ -18,6 +19,7 @@ import responsibleconsumptionapp.View.*;
 import responsibleconsumptionapp.Lorenzo_Package.*;
 import responsibleconsumptionapp.Model.User;
 import responsibleconsumptionapp.Service.LoginService;
+import responsibleconsumptionapp.Service.UserService;
 
 /*
  * Classname UserInterfaceController.java
@@ -27,7 +29,7 @@ import responsibleconsumptionapp.Service.LoginService;
 public class UserInterfaceController {
 
     private UserInterfaceView ui;
-    private User user;
+    private UserService userHandler;
     private Map<String, IControllable> panels = new HashMap<>() {
         {
             put("Login", new LoginPanel());
@@ -48,12 +50,13 @@ public class UserInterfaceController {
 
     public UserInterfaceController() {
         ui = new UserInterfaceView(this);
-        
+
         initializePanels();
         ui.generateNavbar();
         ui.generateCards();
         //initial ui view panel
         ui.showPanel("Login");
+        userHandler = new UserService();
     }
 
     public void showWindow() {
@@ -86,7 +89,7 @@ public class UserInterfaceController {
             //create reference to suscon panel - runs reset method on activation
             SusConPanel suscon = (SusConPanel) panels.get("SusCon");
             suscon.resetText();
-        }else if (panel.equals("SusConConsultation")) {
+        } else if (panel.equals("SusConConsultation")) {
             SusConConsultation susconCon = (SusConConsultation) panels.get("SusConConsultation");
             susconCon.setUser();
         }
@@ -96,31 +99,38 @@ public class UserInterfaceController {
     public void removeNavbar() {
         ui.removeNavbar();
     }
-    
+
     public User getUser() {
-        return user;
+        return userHandler.getUser();
     }
 
-    public void registrationComplete(int carbonFootprintScore) {
-        user.setCf_score(carbonFootprintScore);
+    public void saveUserChanges() {
+        userHandler.saveChanges();
+    }
 
-        //on successful login, panel changes to home panel, navbar made visible
+    public void registrationComplete(int cfscore) {
+        userHandler.setCFScore(cfscore);
+        //create userportal reference to userportal panel and set user before panel change
+        UserPortal userportal = (UserPortal) panels.get("UserPortal");
+        userportal.setUser();
+        //on successful login, panel changes to userportal panel, navbar made visible
         ui.displayNavbar();
         changePanel("UserPortal");
     }
 
-    public void onRegisterButtonClicked(String username, String fullname, String password) {
+    public void onRegisterButtonClicked(String username, String name, String password) {
         //this method runs once login panel detects user interaction with register button
 
         //ensures password is not empty and is not a series of whitespaces
         //if (password != null && !password.trim().isEmpty()) {
-        if(true) { //placeholder for login logic
+        if (true) { //placeholder for login logic
             System.out.println("Registering New User:");
 
-            LoginService newUserLogin = new LoginService();
-            newUserLogin.registerNewUser(fullname, username, password);
+            //TODO create logic to ensure that new user information does not conflict with other users
+            //LoginService newUserLogin = new LoginService();
+            //creates reference in user service to current user
+            userHandler.registerNewUser(name, username, password);
 
-            user = newUserLogin.getUser();
             //on successful login, panel changes to home panel, navbar made visible
             changePanel("NewUserRegistration");
         } else {
@@ -132,17 +142,22 @@ public class UserInterfaceController {
         //this method runs once login panel detects user interaction with login button
         //ensures password is not empty and is not a series of whitespaces
         //if (password != null && !password.trim().isEmpty()) {
-        
-        if(true) { //placeholder for login logic
+
+        if (true) { //placeholder for login logic
             System.out.println("Login Existing User:");
             LoginService userLogin = new LoginService();
-            userLogin.loginExistingUser(username, password);
-            user = userLogin.getUser();
-            //on successful login, panel changes to home panel, navbar made visible 
-            ui.displayNavbar();
-            UserPortal up = (UserPortal)panels.get("UserPortal");
-            up.setUser();
-            changePanel("UserPortal");
+            userHandler.setUser(userLogin.loginExistingUser(username, password));
+
+            if (userHandler.getUser() == null) {
+                JOptionPane.showMessageDialog(null, "Username and/or password does not match any existing users. Please try again or Register.");
+            } else {
+                //on successful login, panel changes to home panel, navbar made visible 
+                ui.displayNavbar();
+                UserPortal up = (UserPortal) panels.get("UserPortal");
+                up.setUser();
+                changePanel("UserPortal");
+            }
+
         } else {
             System.out.println("Login requires password");
         }
