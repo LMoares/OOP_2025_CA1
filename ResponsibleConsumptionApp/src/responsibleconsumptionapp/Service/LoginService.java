@@ -12,6 +12,8 @@ import responsibleconsumptionapp.Model.User;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+//DEPRECATED
+@Deprecated
 public class LoginService {
     private UserService userService;
     
@@ -20,13 +22,16 @@ public class LoginService {
         userService = new UserService();
     }
     
-    public void registerNewUser(String name, String username, String password) {
+    public User registerNewUser(String name, String username, String password) {
         System.out.println("Login passing user data to user service");
         userService.registerNewUser(name, username, password);
+        
+        return userService.getUser();
     }
     
-    public void loginExistingUser(String username, String password) {
-        userService.loginExistingUser("John Smith",username,password);
+    public User loginExistingUser(String username, String password) {
+        userService.loginExistingUser(username,password);
+        return userService.getUser();
     }
     
     public User getUser() {

@@ -9,8 +9,7 @@ package responsibleconsumptionapp.View;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
@@ -39,14 +38,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         return pwText;
     }
 
-    public String getExistingUserUsername() {
-        return existingUserUsername.getText();
-    }
-
-    public String getNewUserFullName() {
-        return newUserFullName.getText();
-    }
-
     public String getNewUserPassword() {
         char[] pw = newUserPassword.getPassword();
         String pwText = new String(pw);
@@ -54,28 +45,12 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         return pwText;
     }
 
-    public String getNewUserUsername() {
-        return newUserUsername.getText();
-    }
-
-    public void resetExistingUserPassword() {
-        this.existingUserPassword.setText("");
-    }
-
-    public void resetExistingUserUsername() {
-        this.existingUserUsername.setText("");
-    }
-
-    public void resetNewUserFullName() {
-        this.newUserFullName.setText("");
-    }
-
-    public void resetNewUserPassword() {
-        this.newUserPassword.setText("");
-    }
-
-    public void resetNewUserUsername() {
+    public void resetAllFields() {
         this.newUserUsername.setText("");
+        this.newUserPassword.setText("");
+        this.newUserFullName.setText("");
+        this.existingUserUsername.setText("");
+        this.existingUserPassword.setText("");
     }
 
     /**
@@ -269,23 +244,25 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        if (UICListener != null) {
-            UICListener.onRegisterButtonClicked(getNewUserUsername(), getNewUserFullName(), getNewUserPassword());
-
+        if(newUserUsername.getText().isEmpty() || newUserFullName.getText().isEmpty() || getNewUserPassword().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Please fill in all fields to register new user");
+        }else if (UICListener != null) {
+            //call UI Controller to send user data for account creation
+            UICListener.onRegisterButtonClicked(newUserUsername.getText(), newUserFullName.getText(), getNewUserPassword());
             //resets input fields to default
-            resetNewUserUsername();
-            resetNewUserPassword();
-            resetNewUserFullName();
+            resetAllFields();
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         //Ensures UICListener has been correctly referenced
-        if (UICListener != null) {
-            UICListener.onLoginButtonClicked(getExistingUserUsername(), getExistingUserPassword());
-            resetExistingUserUsername();
-            resetExistingUserPassword();
+        if(existingUserUsername.getText().isEmpty() || getExistingUserPassword().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Please fill in all fields to login existing user");
+        }else if (UICListener != null) {
+            //call UI Controller to send user data for account verification
+            UICListener.onLoginButtonClicked(existingUserUsername.getText(), getExistingUserPassword());
+            resetAllFields();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 

@@ -5,14 +5,16 @@
 
 package responsibleconsumptionapp.Model;
 
+import java.io.Serializable;
+
 /*
  * Classname User.java
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-public class User {
+public class User implements Serializable{
     private String name, username, password;
-    private int cf_score;
+    private int cf_score, ef_score;
     
     //constructor for registering new users that requires their cfscore to be set after registry - Lorenzo
     public User(String name, String username, String password){
@@ -21,6 +23,8 @@ public class User {
         this.username = username;
         this.password = password;
         this.cf_score = 0;
+        this.ef_score = 0;
+        
     }
     //constructor for existing users whose information will be provided by leaderboard data - Lorenzo
     public User(String name, String username, String password, int cf_score) {
@@ -60,6 +64,14 @@ public class User {
 
     public void setCf_score(int cf_score) {
         this.cf_score = cf_score;
+    }
+
+    public int getEf_score() {
+        return ef_score;
+    }
+
+    public void setEf_score(int ef_score) {
+        this.ef_score += ef_score;
     }
     
     
