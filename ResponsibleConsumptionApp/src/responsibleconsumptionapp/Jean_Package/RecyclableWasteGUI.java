@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JRadioButton;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
+import responsibleconsumptionapp.Model.Focus;
 
 
 /**
@@ -47,6 +48,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     
     
     private int points = 0;
+    
+    private Focus focus;
     /**
      * Creates new form RecyclableWasteGUI
      */
@@ -61,6 +64,10 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
+    }
+    
+    public void setUserDetails(){
+        focus = new Focus(UICListener.getUserService(), UICListener.getUser());
     }
     
     
