@@ -33,6 +33,11 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userEfLBL.setText(user.getEf_score()+"");
     }
     
+    public void updateEFScore() {
+        userEfLBL.setText(user.getEf_score()+"");
+    }
+    
+    
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;

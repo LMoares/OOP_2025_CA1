@@ -82,11 +82,14 @@ public class UserInterfaceController {
     public void changePanel(String panel) {
         //TODO abstract following code to work for all panels
         //ensures SusCon panel data is reset when user navigates to panel
-        if (panel.equals("SusCon")) {
+        if(panel.equals("UserPortal")) {
+            UserPortal up = (UserPortal) panels.get("UserPortal");
+            up.updateEFScore();
+        }else if (panel.equals("SusCon")) {
             //create reference to suscon panel - runs reset method on activation
             SusConPanel suscon = (SusConPanel) panels.get("SusCon");
             suscon.resetText();
-        } else if (panel.equals("SusConConsultation")) {
+        }else if (panel.equals("SusConConsultation")) {
             SusConConsultation susconCon = (SusConConsultation) panels.get("SusConConsultation");
             susconCon.setUser();
         }else if (panel.equals("Login")) {
