@@ -95,6 +95,10 @@ public class UserInterfaceController {
         }else if (panel.equals("Login")) {
             //user has been logged out
             userHandler.setUser(null);
+        }else if(panel.equals("NonRecyclable")){
+            //call get user information(method)
+            NonRecyclableWasteGUI NRW = (NonRecyclableWasteGUI) panels.get("NonRecyclable");
+            NRW.setUserDetails();
         }
         ui.showPanel(panel);
     }
@@ -105,6 +109,10 @@ public class UserInterfaceController {
 
     public User getUser() {
         return userHandler.getUser();
+    }
+    
+    public UserService getUserService(){
+        return userHandler;
     }
 
     public void saveUserChanges() {

@@ -12,6 +12,6 @@ import responsibleconsumptionapp.Model.IRedeemable;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-public class SustainableConsumption extends Focus implements IRedeemable{
-
+public class SustainableConsumption {
+    
 }

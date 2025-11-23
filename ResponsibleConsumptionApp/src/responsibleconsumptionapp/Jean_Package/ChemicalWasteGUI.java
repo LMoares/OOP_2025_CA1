@@ -18,6 +18,7 @@ import responsibleconsumptionapp.Controller.UserInterfaceController;
 public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllable{
     private UserInterfaceController UICListener;
     private String wasteType = "";
+    
     /**
      * Creates new form ChemicalWasteGUI
      */
@@ -33,7 +34,7 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
         this.UICListener = UICListener;
     }
     
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,6 +134,7 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
         
         if(wasteType != ""){
             UICListener.changePanel(wasteType);
+            System.out.println(this.UICListener.getUser());
         }else{
            JOptionPane.showMessageDialog(this, "Must select Recyclable or Non-Recyclable");
         }
