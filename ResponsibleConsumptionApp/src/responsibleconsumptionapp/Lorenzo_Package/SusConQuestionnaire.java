@@ -12,26 +12,33 @@ import responsibleconsumptionapp.Controller.UserInterfaceController;
  *
  * @author moare
  */
-public class SusConQuestionnaire extends javax.swing.JPanel implements IControllable{
+public class SusConQuestionnaire extends javax.swing.JPanel implements IControllable {
 
     /**
      * Creates new form SusConQuestionnaire
      */
     private UserInterfaceController UICListener;
-    
+    private SustainableConsumption sc;
+    private boolean questionnaireComplete;
+
     public SusConQuestionnaire() {
         initComponents();
         q1TA.setEditable(false);
         q2TA.setEditable(false);
         q3TA.setEditable(false);
         q4TA.setEditable(false);
+        questionnaireComplete = false;
     }
-    
+
+    public void setUserDetails() {
+        sc = new SustainableConsumption(UICListener.getUserService(), UICListener.getUser());
+    }
+
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -289,20 +296,29 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         // TODO add your handling code here:
         //following used to calculate correct answers and final score
         int score = 0;
-        if(q1RadioC.isSelected()) {
+        if (q1RadioC.isSelected()) {
             score += 5;
         }
-        if(q2RadioB.isSelected()) {
+        if (q2RadioB.isSelected()) {
             score += 5;
         }
-        if(q3RadioA.isSelected()) {
+        if (q3RadioA.isSelected()) {
             score += 5;
         }
-        if(q4RadioD.isSelected()) {
+        if (q4RadioD.isSelected()) {
             score += 5;
         }
-        int correctAnswers = score/5;
-        JOptionPane.showMessageDialog(this,correctAnswers+" Answers Correct. "+score+" Eco-Friendly Points have been added to your account.");
+        int correctAnswers = score / 5;
+
+        //checks if user has completed the questionnaire during the same session
+        if (!questionnaireComplete) {
+            questionnaireComplete = true;
+            JOptionPane.showMessageDialog(this, correctAnswers + " Answers Correct. " + score + " Eco-Friendly Points have been added to your account.");
+            sc.addCurrentPoints(score);
+        } else {
+            JOptionPane.showMessageDialog(this, "You have too recently completed this Questionaire. Please try again later.");
+        }
+
         UICListener.changePanel("SusCon");
     }//GEN-LAST:event_submitBTNActionPerformed
 

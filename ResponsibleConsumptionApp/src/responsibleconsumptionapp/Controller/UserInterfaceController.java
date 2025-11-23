@@ -36,7 +36,7 @@ public class UserInterfaceController {
             put("NonRecyclable", new NonRecyclableWasteGUI());
             put("UserPortal", new UserPortal());
             put("SusCon", new SusConPanel());
-            put("SusConQuestionaire", new SusConQuestionnaire());
+            put("SusConQuestionnaire", new SusConQuestionnaire());
             put("NewUserRegistration", new NewUserRegistration());
             put("SusConConsultation", new SusConConsultation());
             put("tourism", new tourismHomePanel());
@@ -99,6 +99,9 @@ public class UserInterfaceController {
         }else if(panel.equals("bikeBooking")){
             bikeBookingGUI bikeBookGUI = (bikeBookingGUI) panels.get("bikeBooking");
             bikeBookGUI.setUserDetails();
+        }else if(panel.equals("SusConQuestionnaire")) {
+            SusConQuestionnaire scq = (SusConQuestionnaire) panels.get("SusConQuestionnaire");
+            scq.setUserDetails();
         }
         ui.showPanel(panel);
     }

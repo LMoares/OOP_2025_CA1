@@ -127,7 +127,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
 
     private void questionnaireBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionnaireBTNActionPerformed
         // TODO add your handling code here:
-        UICListener.changePanel("SusConQuestionaire");
+        UICListener.changePanel("SusConQuestionnaire");
     }//GEN-LAST:event_questionnaireBTNActionPerformed
 
     private void consultationBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationBTNActionPerformed

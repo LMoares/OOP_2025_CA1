@@ -22,6 +22,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private UserInterfaceController UICListener;
     private EnergyConsultation ec;
     private User user;
+    private ConsultationFileWriter fw;
 
     /**
      * Creates new form SusConConsultation
@@ -59,6 +60,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     public void setUser() {
         user = this.UICListener.getUser();
         fullnameTF.setText(user.getName());
+        fw = new ConsultationFileWriter(user.getUsername());
     }
 
     @Override
@@ -453,14 +455,16 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                 } else {
                     ec = new SolarPanelConsultation(Integer.parseInt(spQuantityTF.getText()), spTypeList.getSelectedValue(), fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
-                    System.out.println(choice);
-                    //TODO use choice variable to determine if information should be saved to file
+                    if (choice == 0) {
+                        //user has approved form
+                        fw.writeFile(ec.toString());
+                    }
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Please enter a decimal number as quantity for Solar Panels.");
             }
 
-        }else if (recycleRB.isSelected()) {
+        } else if (recycleRB.isSelected()) {
             int green = 0;
             int brown = 0;
             int weight = 0;
@@ -479,19 +483,21 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     //int weight, int greenBinQuantity, int brownBinQuantity, String interval
                     ec = new RecyclingConsultation(weight, green, brown, recycTypeList.getSelectedValue(), fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
-                    System.out.println(choice);
-                    //TODO use choice variable to determine if information should be saved to file
+                    if (choice == 0) {
+                        //user has approved form
+                        fw.writeFile(ec.toString());
+                    }
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Please enter whole numbers for Weight and Green/Brown Bin Quantity");
             }
-        }else if (compostRB.isSelected()) {
+        } else if (compostRB.isSelected()) {
             int length = 0;
             int width = 0;
             try {
                 length = Integer.parseInt(compostLengthTF.getText());
                 width = Integer.parseInt(compostWidthTF.getText());
-                
+
                 if (length <= 0 || width <= 0) {
                     JOptionPane.showMessageDialog(this, "Please enter a positive number for length and width.");
                 } else if (compostFrameList.getSelectedValue() == null) {
@@ -502,11 +508,13 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     //int weight, int greenBinQuantity, int brownBinQuantity, String interval
                     ec = new CompostingConsultation(length, width, compostFrameList.getSelectedValue(), fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
-                    System.out.println(choice);
-                    //TODO use choice variable to determine if information should be saved to file
+                    if (choice == 0) {
+                        //user has approved form
+                        fw.writeFile(ec.toString());
+                    }
                 }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(this,"Please enter whole numbers for Length and Width.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Please enter whole numbers for Length and Width.");
             }
         }
 
