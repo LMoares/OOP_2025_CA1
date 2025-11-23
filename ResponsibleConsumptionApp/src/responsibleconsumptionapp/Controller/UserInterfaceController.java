@@ -5,7 +5,6 @@
 package responsibleconsumptionapp.Controller;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

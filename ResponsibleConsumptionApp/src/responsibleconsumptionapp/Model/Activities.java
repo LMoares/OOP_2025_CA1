@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * Date 22/12/2025
  * @Jeán Walton, 23405040
  */
+@Deprecated
 public class Activities {
     
     private Map<String, Integer> userPoints = new HashMap<>();

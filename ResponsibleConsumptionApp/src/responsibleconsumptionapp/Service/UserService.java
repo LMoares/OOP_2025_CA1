@@ -5,7 +5,6 @@
 package responsibleconsumptionapp.Service;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -30,7 +29,7 @@ public class UserService {
 
     public void registerNewUser(String name, String username, String password) {
         //placeholder user for checking registration status
-        User tempUser = searchUsers(username);
+        User tempUser = users.get(searchUsers(username));
         if (tempUser == null) {
             //user does not exist -- create new user
             System.out.println("User service passing user data to user for creation");
@@ -45,7 +44,7 @@ public class UserService {
 
     public boolean loginExistingUser(String username, String password) {
         //placeholder user for checking login status
-        User tempUser = searchUsers(username);
+        User tempUser = users.get(searchUsers(username));
         if (tempUser == null) {
             //user does not exist
             return false;
@@ -59,13 +58,13 @@ public class UserService {
         }
     }
 
-    public User searchUsers(String username) {
+    public int searchUsers(String username) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername().equals(username)) {
-                return users.get(i);
+                return i;
             }
         }
-        return null;
+        return 0;
     }
 
     public User getUser() {
@@ -94,6 +93,7 @@ public class UserService {
 
     public void saveChanges() {
         //overwrite's previous user data stored in users.dat to new user data
+        users.set(searchUsers(user.getUsername()), user);
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./src/responsibleconsumptionapp/Data/users.dat"))) {
             oos.writeObject(users);
         } catch (IOException e) {
