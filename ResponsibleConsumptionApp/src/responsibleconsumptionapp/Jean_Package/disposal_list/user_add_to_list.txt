@@ -1,5 +1,11 @@
 #####NOT ON LIST: ADDED BY USER#####
-
-
-Rubber & Plastic:
-add this
+admin added Type: Flammable:
+Discription: lighter fluid
+admin added Type: Flammable:
+Discription: hello
+admin added Type: Toxic:
+Discription: kjklj
+admin added Type: Cosmetic:
+Discription: dfdf
+admin added Type: Flammable:
+Discription: dfdfdf

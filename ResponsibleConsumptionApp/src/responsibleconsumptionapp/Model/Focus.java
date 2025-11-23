@@ -9,8 +9,8 @@ import responsibleconsumptionapp.Service.UserService;
 
 /*
  * Classname Focus.java
- * Date 11/10/2025
- * @author Lorenzo Moares Nunez, 23378441
+ * Date 23/11/2025
+ * @author Jeán Walton, 23405040
  */
 public class Focus {
     private UserService userService;

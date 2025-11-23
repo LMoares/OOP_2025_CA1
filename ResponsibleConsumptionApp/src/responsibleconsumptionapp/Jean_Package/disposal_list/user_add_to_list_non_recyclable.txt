@@ -1,1 +1,8 @@
--------------------------write to file---------------------------------------
+#####NOT ON LIST: ADDED BY USER#####
+
+admin added Type: Biohazard:
+Discription: chocolate
+admin added Type: Asbestos & Sludge:
+Discription: dfsgd
+admin added Type: Biohazard:
+Discription: dfdf

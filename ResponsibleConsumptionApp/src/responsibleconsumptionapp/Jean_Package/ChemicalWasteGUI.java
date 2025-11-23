@@ -51,13 +51,14 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
         goods_recycling_image = new javax.swing.JLabel();
         proceed = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 204));
         jLabel1.setText("Chemical Waste");
 
+        recyclable_waste_R_btn.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup.add(recyclable_waste_R_btn);
         recyclable_waste_R_btn.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         recyclable_waste_R_btn.setForeground(new java.awt.Color(0, 153, 0));
@@ -68,6 +69,7 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
             }
         });
 
+        non_recyclable_R_btn.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup.add(non_recyclable_R_btn);
         non_recyclable_R_btn.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         non_recyclable_R_btn.setForeground(new java.awt.Color(204, 0, 51));

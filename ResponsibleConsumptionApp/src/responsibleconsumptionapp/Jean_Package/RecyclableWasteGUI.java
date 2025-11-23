@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
@@ -44,7 +45,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private String metals_recyc_txt = "recyclableFiles/metals_recyc.txt";
     private String plastic_rubber_recyc_txt = "recyclableFiles/plastic_rubber_recyc.txt";
     private String toxic_recyc_txt = "recyclableFiles/toxic_recyc.txt";
-    private String user_add_to_list_txt = "recyclableFiles/user_add_to_list.txt";
+    private String user_add_to_list_txt = "user_add_to_list.txt";
     
     
     private int points = 0;
@@ -87,8 +88,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         show_user_added.setText(disposalFileReader(fileName));
     }
     
-    //choosen radio button before entry 
-    private String choicBtn(){
+    //choosen radio button before entry & points associated
+    private String choiceBtn(){
         String button = "";
         if(flammable.isSelected()){
             button = "Flammable:";
@@ -117,11 +118,12 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         //input to write to file from user
         //String textAreaInput = text_area.getText();
         String textAreaInput = getTextAreaValue();//text box below radio buttons
-        System.out.println(getTextAreaValue());
+        //System.out.println(getTextAreaValue());
         try(BufferedWriter wr = new BufferedWriter(new FileWriter("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list.txt", true))){
             //this adds the radio button value on top 
-            wr.write("\n" + choicBtn()  + "\n");
-            wr.write(textAreaInput); 
+            wr.write(focus.getUserName() + " added Type: " + choiceBtn() + "\nDiscription: " + textAreaInput + "\n");
+            
+         
         }
         catch(IOException e){
             System.out.println("Error writing to file: " + e.getMessage());
@@ -153,7 +155,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         String method = "";
         try (BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/" + fileName))){
             String item = br.readLine();
-            System.out.println("testing ABC: " + item);
+            //System.out.println("testing ABC: " + item);
             while(item != null){
                 method += item + "\n";
                 item = br.readLine();
@@ -187,7 +189,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     
     //show ui point accumulated
     private void showPoints(){
-        points_display.setText("Total points: " + points);
+        points_display.setText("Name: " + focus.getUserName() + "\nCurrent points: " + focus.getCurrentPoints() +  "\nTotal points to be added: " + points);
     }
     
     /**
@@ -221,6 +223,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         jScrollPane3 = new javax.swing.JScrollPane();
         points_display = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 0));
@@ -296,32 +300,47 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
             }
         });
 
+        flammable.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup_type.add(flammable);
         flammable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        flammable.setForeground(new java.awt.Color(0, 0, 0));
         flammable.setText("Flammable");
 
+        toxic.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup_type.add(toxic);
         toxic.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        toxic.setForeground(new java.awt.Color(0, 0, 0));
         toxic.setText("Toxic");
 
+        electronic_waste.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup_type.add(electronic_waste);
         electronic_waste.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        electronic_waste.setForeground(new java.awt.Color(0, 0, 0));
         electronic_waste.setText("Electronic Waste");
 
+        cosmetic.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup_type.add(cosmetic);
         cosmetic.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cosmetic.setForeground(new java.awt.Color(0, 0, 0));
         cosmetic.setText("Cosmetic");
 
+        heavy_metals.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup_type.add(heavy_metals);
         heavy_metals.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        heavy_metals.setForeground(new java.awt.Color(0, 0, 0));
         heavy_metals.setText("Heavy Metals");
 
+        rubber_plastics.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup_type.add(rubber_plastics);
         rubber_plastics.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rubber_plastics.setForeground(new java.awt.Color(0, 0, 0));
         rubber_plastics.setText("Rubber & Plastics");
 
+        points_display.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(points_display);
 
+        jLabel3.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Not In Drop Down List: add below ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -356,8 +375,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(233, 233, 233)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(224, 224, 224)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -369,14 +388,17 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(recyc_drop_down, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recyc_drop_down, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(image_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -395,14 +417,11 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(text_area_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -445,9 +464,10 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     //return button back to Chemical Waste panel
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         // TODO add your handling code here:
-        resetPanel();
         UICListener.changePanel("ChemWaste");
-       
+        focus.addCurrentPoints(points);
+        JOptionPane.showMessageDialog(this, "Name: " + focus.getUserName()  +  "\nTotal points to be added: " + points + "\nOverall points: " + focus.getCurrentPoints());
+        resetPanel();
     }//GEN-LAST:event_returnBtnActionPerformed
      //if getTextAreaValue != null  (onclick of add) call write recycleValues , 
     // call setTextAreaValue(disposabile file reader(user_add_to_list_txt));
@@ -465,7 +485,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
            text_area.setText(""); 
         }else{
             //selected radio btn choice
-            choicBtn();
+            choiceBtn();
             //update and show points
             showPoints();
         }
