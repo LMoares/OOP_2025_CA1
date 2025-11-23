@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 import responsibleconsumptionapp.Model.Focus;
@@ -143,7 +144,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         }
     }
     
-    
+    //choice of type of waste (radio buttons) & points associated 
     private String choiceBtn(){
         String button = "";
         if(toxic_contaminated_btn.isSelected()){
@@ -199,7 +200,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     
     //show ui point accumulated
     private void showPoints(){
-        points_display_ui.setText("Name: " + focus.getUserName() + "\nCurrent points: " + focus.getCurrentPoints() +  "\nTotal points: " + points);
+        points_display_ui.setText("Name: " + focus.getUserName() + "\nCurrent points: " + focus.getCurrentPoints() +  "\nTotal points to be added: " + points);
     }
     
 
@@ -226,7 +227,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         text_area_input = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        addBTN = new javax.swing.JButton();
         returnBtn = new javax.swing.JButton();
         toxic_contaminated_btn = new javax.swing.JRadioButton();
         corrosive_btn = new javax.swing.JRadioButton();
@@ -244,6 +245,8 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Non - Recyclable Waste");
@@ -256,6 +259,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
 
         display_Dmenu_text.setBackground(new java.awt.Color(204, 204, 204));
@@ -295,7 +299,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -305,13 +309,13 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         text_area_input.setRows(5);
         jScrollPane1.setViewportView(text_area_input);
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 204));
-        jButton1.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("ADD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addBTN.setBackground(new java.awt.Color(204, 0, 204));
+        addBTN.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        addBTN.setForeground(new java.awt.Color(0, 0, 0));
+        addBTN.setText("ADD");
+        addBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addBTNActionPerformed(evt);
             }
         });
 
@@ -325,40 +329,58 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
             }
         });
 
+        toxic_contaminated_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(toxic_contaminated_btn);
         toxic_contaminated_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        toxic_contaminated_btn.setForeground(new java.awt.Color(0, 0, 0));
         toxic_contaminated_btn.setText("Toxic / Contaminated");
 
+        corrosive_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(corrosive_btn);
         corrosive_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        corrosive_btn.setForeground(new java.awt.Color(0, 0, 0));
         corrosive_btn.setText("Corrosive");
 
+        flammable_volatile_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(flammable_volatile_btn);
         flammable_volatile_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        flammable_volatile_btn.setForeground(new java.awt.Color(0, 0, 0));
         flammable_volatile_btn.setText("Flammable & Volatile");
 
+        biohazard_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(biohazard_btn);
         biohazard_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        biohazard_btn.setForeground(new java.awt.Color(0, 0, 0));
         biohazard_btn.setText("Biohazard / Pharmaceutical");
 
+        reactive_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(reactive_btn);
         reactive_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        reactive_btn.setForeground(new java.awt.Color(0, 0, 0));
         reactive_btn.setText("Reactive");
 
+        pesticides_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(pesticides_btn);
+        pesticides_btn.setForeground(new java.awt.Color(0, 0, 0));
         pesticides_btn.setText("Pesticides & Poisons");
 
+        radioactive_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(radioactive_btn);
         radioactive_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radioactive_btn.setForeground(new java.awt.Color(0, 0, 0));
         radioactive_btn.setText("Radioactive");
 
+        asbestos_sludge_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(asbestos_sludge_btn);
         asbestos_sludge_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        asbestos_sludge_btn.setForeground(new java.awt.Color(0, 0, 0));
         asbestos_sludge_btn.setText("Asbestos & Sludge");
 
+        jLabel3.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Not In Drop Down List: add below");
 
-        points_display_ui.setBackground(new java.awt.Color(204, 204, 204));
+        points_display_ui.setBackground(new java.awt.Color(255, 255, 255));
         points_display_ui.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane5.setViewportView(points_display_ui);
 
@@ -372,10 +394,10 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(249, 249, 249)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(236, 236, 236)
+                        .addComponent(addBTN))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
@@ -410,12 +432,12 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(drop_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(toxic_contaminated_btn)
@@ -434,25 +456,32 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
                             .addComponent(asbestos_sludge_btn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
-                        .addGap(5, 5, 5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                            .addComponent(addBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         // TODO add your handling code here:
         UICListener.changePanel("ChemWaste");
-        //reset panel
+        focus.addCurrentPoints(points);
+        JOptionPane.showMessageDialog(this, "Name: " + focus.getUserName()  +  "\nTotal points to be added: " + points + "\nOverall points: " + focus.getCurrentPoints());
         resetPanel();
     }//GEN-LAST:event_returnBtnActionPerformed
     
+    //drop down menu and when a item is selected from the list a radio button(choicBTN) associated is automatically selected.
     private void drop_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drop_menuActionPerformed
         // TODO add your handling code here:
         String selected = (String)drop_menu.getSelectedItem();
@@ -516,7 +545,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         
     }//GEN-LAST:event_drop_menuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         // TODO add your handling code here:
         //displays what was just written in bottom left window IF....
         if(!getTextAreaValue().equals("")){//input text area is empty
@@ -539,10 +568,11 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
            showPoints();
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addBTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBTN;
     private javax.swing.JRadioButton asbestos_sludge_btn;
     private javax.swing.JRadioButton biohazard_btn;
     private javax.swing.JRadioButton corrosive_btn;
@@ -551,7 +581,6 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     private javax.swing.JComboBox<String> drop_menu;
     private javax.swing.JRadioButton flammable_volatile_btn;
     private javax.swing.ButtonGroup hazardButtonGroup;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

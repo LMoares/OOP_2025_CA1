@@ -99,6 +99,9 @@ public class UserInterfaceController {
             //call get user information(method)
             NonRecyclableWasteGUI NRW = (NonRecyclableWasteGUI) panels.get("NonRecyclable");
             NRW.setUserDetails();
+        }else if(panel.equals("Recyclable")){
+            RecyclableWasteGUI RW = (RecyclableWasteGUI) panels.get("Recyclable");
+            RW.setUserDetails(); 
         }
         ui.showPanel(panel);
     }

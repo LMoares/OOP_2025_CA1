@@ -71,7 +71,7 @@ public class User implements Serializable{
     }
 
     public void setEf_score(int ef_score) {
-        this.ef_score += ef_score;
+        this.ef_score = ef_score;
     }
     
     

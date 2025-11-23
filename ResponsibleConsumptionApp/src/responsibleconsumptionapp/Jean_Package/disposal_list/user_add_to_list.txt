@@ -1,5 +1,3 @@
 #####NOT ON LIST: ADDED BY USER#####
-
-
-Rubber & Plastic:
-add this
+admin added Type: Flammable:
+Discription: lighter fluid
