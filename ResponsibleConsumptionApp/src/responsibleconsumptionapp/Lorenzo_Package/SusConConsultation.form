@@ -5,6 +5,11 @@
     <Component class="javax.swing.ButtonGroup" name="typeBG">
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="cc" green="cc" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -23,24 +28,32 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="typeLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                      <Component id="detailsLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="195" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="typeLBL" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="recycleRB" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="recycleGBQLBL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="recycleGBQTF" min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="compostRB" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="solarRB" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="recycleBBQLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycleGBQLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycleIntervalLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycleWeightLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="recycleWeightTF" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="recycleGBQTF" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="recycleBBQTF" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="recycTypePane" min="-2" pref="107" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="spQuantityLBL" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="spTypeLBL" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -48,19 +61,14 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="spTypePane" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Component id="spQuantityTF" min="-2" max="-2" attributes="0"/>
+                                  <Component id="spQuantityTF" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="compostFrameLBL" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="compostFramePane" min="-2" pref="97" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="recycleBBQLBL" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="recycleBBQTF" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -68,80 +76,68 @@
                                           <Component id="compostLengthLBL" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="compostWidthLBL" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="compostWidthTF" min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Component id="compostLengthTF" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="compostLengthTF" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="compostWidthTF" min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="recycleIntervalLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="recycleWeightLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="recycleWeightTF" min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="recycleIntervalTF" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="138" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="fullnameLBL" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fullnameTF" min="-2" pref="191" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="submitBTN" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="AddressLBL" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="add1LBL" min="-2" max="-2" attributes="0"/>
-                                          <Component id="add2LBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="cityLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="countyLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="eircodeLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="eircodeTF" max="32767" attributes="0"/>
-                                                      <Component id="countyTF" max="32767" attributes="0"/>
-                                                      <Component id="cityTF" min="-2" pref="255" max="-2" attributes="0"/>
+                              <Component id="AddressLBL" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="add1LBL" min="-2" max="-2" attributes="0"/>
+                                      <Component id="add2LBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="cityLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="countyLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eircodeLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="returnBTN" min="-2" pref="112" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="submitBTN" min="-2" pref="112" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="eircodeTF" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="countyTF" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cityTF" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="add1TF" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
-                                                  <Component id="add2TF" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
-                                              </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="add1TF" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
+                                              <Component id="add2TF" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="detailsLBL" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="fullnameLBL" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="fullnameTF" min="-2" pref="191" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,94 +151,100 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="fullnameLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="fullnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="fullnameLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fullnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="AddressLBL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="add1LBL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="add1TF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="add2LBL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="add2TF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cityLBL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cityTF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="countyLBL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="countyTF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="eircodeLBL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="eircodeTF" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="spQuantityLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="spQuantityTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="spTypePane" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="spTypeLBL" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="recycleGBQLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycleGBQTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="recycleBBQLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycleBBQTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="recycleWeightLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycleWeightTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="recycleIntervalLBL" min="-2" max="-2" attributes="0"/>
+                                  <Component id="recycTypePane" min="-2" pref="46" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="compostLengthLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="compostLengthTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="compostWidthLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="compostWidthTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="compostFrameLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                      <Component id="compostFramePane" min="-2" pref="61" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="AddressLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="add1LBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="add1TF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="add2LBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="add2TF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cityLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cityTF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="countyLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="countyTF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="eircodeLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="eircodeTF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="submitBTN" max="32767" attributes="0"/>
+                      <EmptySpace pref="56" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="submitBTN" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="returnBTN" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="solarRB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="recycleRB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="compostRB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="spQuantityLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spQuantityTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="spTypePane" min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="spTypeLBL" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="recycleGBQLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="recycleGBQTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="recycleBBQLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="recycleBBQTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="recycleWeightLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="recycleWeightTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="recycleIntervalLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="recycleIntervalTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="compostLengthLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="compostLengthTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="compostWidthLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="compostWidthTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="compostFrameLBL" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="compostFramePane" min="-2" pref="61" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -374,9 +376,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spQuantityTFActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="spQuantityLBL">
       <Properties>
@@ -449,7 +448,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Weight:"/>
+        <Property name="text" type="java.lang.String" value="Weight (kg):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="recycleIntervalLBL">
@@ -464,9 +463,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recycleGBQTFActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="recycleBBQTF">
       <Properties>
@@ -474,14 +470,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="recycleWeightTF">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recycleWeightTFActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="recycleIntervalTF">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
@@ -514,9 +502,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compostLengthTFActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="compostWidthTF">
       <Properties>
@@ -537,6 +522,39 @@
                 <StringItem index="0" value="Wood"/>
                 <StringItem index="1" value="Concrete"/>
                 <StringItem index="2" value="Plastic"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="returnBTN">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Return"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnBTNActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="recycTypePane">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="recycTypeList">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Once Per Month"/>
+                <StringItem index="1" value="Twice Per Month"/>
               </StringArray>
             </Property>
           </Properties>

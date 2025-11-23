@@ -5,13 +5,18 @@
 
 package responsibleconsumptionapp.Lorenzo_Package;
 import responsibleconsumptionapp.Model.Focus;
-import responsibleconsumptionapp.Model.IRedeemable;
+import responsibleconsumptionapp.Model.User;
+import responsibleconsumptionapp.Service.UserService;
 
 /*
  * Classname SustainableConsumption.java
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-public class SustainableConsumption {
+public class SustainableConsumption extends Focus {
     
+    
+    public SustainableConsumption(UserService userService, User user) {
+        super(userService, user);
+    }
 }

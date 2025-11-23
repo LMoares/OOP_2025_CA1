@@ -4,9 +4,13 @@
  */
 package responsibleconsumptionapp.Lorenzo_Package;
 
+import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
+import responsibleconsumptionapp.Lorenzo_Package.Model.CompostingConsultation;
 import responsibleconsumptionapp.Lorenzo_Package.Model.EnergyConsultation;
+import responsibleconsumptionapp.Lorenzo_Package.Model.RecyclingConsultation;
+import responsibleconsumptionapp.Lorenzo_Package.Model.SolarPanelConsultation;
 import responsibleconsumptionapp.Model.User;
 
 /**
@@ -14,21 +18,26 @@ import responsibleconsumptionapp.Model.User;
  * @author moare
  */
 public class SusConConsultation extends javax.swing.JPanel implements IControllable {
+
     private UserInterfaceController UICListener;
     private EnergyConsultation ec;
     private User user;
+    private ConsultationFileWriter fw;
+
     /**
      * Creates new form SusConConsultation
      */
     public SusConConsultation() {
         initComponents();
+        //set default radio button
+        solarRB.setSelected(true);
+        spQuantityLBL.setVisible(true);
+        spQuantityTF.setVisible(true);
+        spTypeLBL.setVisible(true);
+        spTypeList.setVisible(true);
+        spTypePane.setVisible(true);
+
         //hide radio button associate labels and text fields
-        spQuantityLBL.setVisible(false);
-        spQuantityTF.setVisible(false);
-        spTypeLBL.setVisible(false);
-        spTypeList.setVisible(false);
-        spTypePane.setVisible(false);
-        
         recycleGBQLBL.setVisible(false);
         recycleGBQTF.setVisible(false);
         recycleBBQLBL.setVisible(false);
@@ -36,8 +45,9 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         recycleWeightLBL.setVisible(false);
         recycleWeightTF.setVisible(false);
         recycleIntervalLBL.setVisible(false);
-        recycleIntervalTF.setVisible(false);
-        
+        recycTypePane.setVisible(false);
+        recycTypeList.setVisible(false);
+
         compostLengthLBL.setVisible(false);
         compostLengthTF.setVisible(false);
         compostWidthLBL.setVisible(false);
@@ -46,16 +56,25 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostFrameList.setVisible(false);
         compostFramePane.setVisible(false);
     }
-    
-    public void setUser(){
+
+    public void setUser() {
         user = this.UICListener.getUser();
         fullnameTF.setText(user.getName());
+        fw = new ConsultationFileWriter(user.getUsername());
     }
-    
+
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
-        
+
+    }
+
+    public boolean checkAddressFields() {
+        boolean valid = false;
+        if (!(fullnameTF.getText().isBlank() || add1TF.getText().isBlank() || cityTF.getText().isBlank() || countyTF.getText().isBlank() || eircodeTF.getText().isBlank())) {
+            valid = true;
+        }
+        return valid;
     }
 
     /**
@@ -99,7 +118,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         recycleGBQTF = new javax.swing.JTextField();
         recycleBBQTF = new javax.swing.JTextField();
         recycleWeightTF = new javax.swing.JTextField();
-        recycleIntervalTF = new javax.swing.JTextField();
         compostFrameLBL = new javax.swing.JLabel();
         compostLengthLBL = new javax.swing.JLabel();
         compostWidthLBL = new javax.swing.JLabel();
@@ -107,6 +125,11 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostWidthTF = new javax.swing.JTextField();
         compostFramePane = new javax.swing.JScrollPane();
         compostFrameList = new javax.swing.JList<>();
+        returnBTN = new javax.swing.JButton();
+        recycTypePane = new javax.swing.JScrollPane();
+        recycTypeList = new javax.swing.JList<>();
+
+        setBackground(new java.awt.Color(255, 204, 204));
 
         typeLBL.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         typeLBL.setText("Type of Renewable Energy Solution");
@@ -162,11 +185,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         eircodeLBL.setText("Eircode:");
 
         spQuantityTF.setText("0");
-        spQuantityTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spQuantityTFActionPerformed(evt);
-            }
-        });
 
         spQuantityLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         spQuantityLBL.setText("Quantity: ");
@@ -196,28 +214,16 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         recycleBBQLBL.setText("Brown Bin Quantity:");
 
         recycleWeightLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        recycleWeightLBL.setText("Weight:");
+        recycleWeightLBL.setText("Weight (kg):");
 
         recycleIntervalLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         recycleIntervalLBL.setText("Interval:");
 
         recycleGBQTF.setText("0");
-        recycleGBQTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recycleGBQTFActionPerformed(evt);
-            }
-        });
 
         recycleBBQTF.setText("0");
 
         recycleWeightTF.setText("0");
-        recycleWeightTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recycleWeightTFActionPerformed(evt);
-            }
-        });
-
-        recycleIntervalTF.setText("0");
 
         compostFrameLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         compostFrameLBL.setText("Frame Type:");
@@ -229,11 +235,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostWidthLBL.setText("Width:");
 
         compostLengthTF.setText("0");
-        compostLengthTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compostLengthTFActionPerformed(evt);
-            }
-        });
 
         compostWidthTF.setText("0");
 
@@ -244,6 +245,21 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         });
         compostFramePane.setViewportView(compostFrameList);
 
+        returnBTN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        returnBTN.setText("Return");
+        returnBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnBTNActionPerformed(evt);
+            }
+        });
+
+        recycTypeList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Once Per Month", "Twice Per Month" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        recycTypePane.setViewportView(recycTypeList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,21 +267,27 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(typeLBL)
-                        .addGap(157, 157, 157)
-                        .addComponent(detailsLBL)
-                        .addContainerGap(195, Short.MAX_VALUE))
+                    .addComponent(typeLBL)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(recycleRB)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(recycleGBQLBL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(recycleGBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(compostRB)
-                            .addComponent(solarRB)
+                            .addComponent(solarRB))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(recycleBBQLBL)
+                                    .addComponent(recycleGBQLBL)
+                                    .addComponent(recycleIntervalLBL)
+                                    .addComponent(recycleWeightLBL))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(recycleWeightTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recycleGBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recycleBBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recycTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(spQuantityLBL)
@@ -273,71 +295,59 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(spTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(spQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(compostFrameLBL)
                                     .addGap(18, 18, 18)
                                     .addComponent(compostFramePane, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(recycleBBQLBL)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(recycleBBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(compostLengthLBL)
                                             .addGap(47, 47, 47))
-                                        .addGroup(layout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(compostWidthLBL)
                                             .addGap(51, 51, 51)))
                                     .addGap(2, 2, 2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(compostWidthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(compostLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(recycleIntervalLBL)
-                                    .addComponent(recycleWeightLBL))
-                                .addGap(87, 87, 87)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(recycleWeightTF, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(recycleIntervalTF, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(compostLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(compostWidthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(fullnameLBL)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fullnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(75, 75, 75))
+                                .addComponent(AddressLBL)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(162, 162, 162)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(AddressLBL)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(add1LBL)
-                                            .addComponent(add2LBL)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cityLBL)
-                                                .addComponent(countyLBL)
-                                                .addComponent(eircodeLBL)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(6, 6, 6)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(eircodeTF)
-                                                        .addComponent(countyTF)
-                                                        .addComponent(cityTF, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(6, 6, 6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(add1LBL)
+                                        .addComponent(add2LBL)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cityLBL)
+                                            .addComponent(countyLBL)
+                                            .addComponent(eircodeLBL)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(add1TF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(add2TF, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(75, 75, 75))))))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(returnBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(eircodeTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(countyTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cityTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(add1TF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(add2TF, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(detailsLBL)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(fullnameLBL)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(fullnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,33 +359,75 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(fullnameLBL)
+                                    .addComponent(fullnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(AddressLBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(add1LBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(add1TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(add2LBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(add2TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cityLBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(countyLBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(countyTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eircodeLBL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eircodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(spQuantityLBL)
+                                    .addComponent(spQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spTypeLBL))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(recycleGBQLBL)
+                                    .addComponent(recycleGBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(recycleBBQLBL)
+                                    .addComponent(recycleBBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(recycleWeightLBL)
+                                    .addComponent(recycleWeightTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(recycleIntervalLBL)
+                                    .addComponent(recycTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(compostLengthLBL)
+                                    .addComponent(compostLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(compostWidthLBL)
+                                    .addComponent(compostWidthTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(compostFrameLBL)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(compostFramePane, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fullnameLBL)
-                            .addComponent(fullnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(AddressLBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add1LBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add1TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add2LBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add2TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cityLBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(countyLBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(countyTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eircodeLBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eircodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(submitBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(returnBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(solarRB)
@@ -383,53 +435,89 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                         .addComponent(recycleRB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(compostRB)
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spQuantityLBL)
-                            .addComponent(spQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spTypeLBL))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(recycleGBQLBL)
-                            .addComponent(recycleGBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(recycleBBQLBL)
-                            .addComponent(recycleBBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(recycleWeightLBL)
-                            .addComponent(recycleWeightTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(recycleIntervalLBL)
-                            .addComponent(recycleIntervalTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(compostLengthLBL)
-                            .addComponent(compostLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(compostWidthLBL)
-                            .addComponent(compostWidthTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(compostFrameLBL))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(compostFramePane, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(36, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
         // TODO add your handling code here:
-        ec = new EnergyConsultation(fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
-        System.out.println(ec);
+        if (solarRB.isSelected()) {
+            int quantity = 0;
+
+            try {
+                quantity = Integer.parseInt(spQuantityTF.getText());
+                if (quantity <= 0) {
+                    JOptionPane.showMessageDialog(this, "Please enter a positive decimal number greater than zero as quantity for Solar Panels.");
+                } else if (spTypeList.getSelectedValue() == null) {
+                    JOptionPane.showMessageDialog(this, "Please select a type of Solar Panel");
+                } else if (!checkAddressFields()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all Address form fields");
+                } else {
+                    ec = new SolarPanelConsultation(Integer.parseInt(spQuantityTF.getText()), spTypeList.getSelectedValue(), fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
+                    int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
+                    if (choice == 0) {
+                        //user has approved form
+                        fw.writeFile(ec.toString());
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Please enter a decimal number as quantity for Solar Panels.");
+            }
+
+        } else if (recycleRB.isSelected()) {
+            int green = 0;
+            int brown = 0;
+            int weight = 0;
+            try {
+                green = Integer.parseInt(recycleGBQTF.getText());
+                brown = Integer.parseInt(recycleBBQTF.getText());
+                weight = Integer.parseInt(recycleWeightTF.getText());
+
+                if (green <= 0 || brown <= 0 || weight <= 0) {
+                    JOptionPane.showMessageDialog(this, "Please enter a positive number for Weight and Green/Brown Bin Quantity");
+                } else if (recycTypeList.getSelectedValue() == null) {
+                    JOptionPane.showMessageDialog(this, "Please select an interval for Recycling");
+                } else if (!checkAddressFields()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all Address form fields");
+                } else {
+                    //int weight, int greenBinQuantity, int brownBinQuantity, String interval
+                    ec = new RecyclingConsultation(weight, green, brown, recycTypeList.getSelectedValue(), fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
+                    int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
+                    if (choice == 0) {
+                        //user has approved form
+                        fw.writeFile(ec.toString());
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Please enter whole numbers for Weight and Green/Brown Bin Quantity");
+            }
+        } else if (compostRB.isSelected()) {
+            int length = 0;
+            int width = 0;
+            try {
+                length = Integer.parseInt(compostLengthTF.getText());
+                width = Integer.parseInt(compostWidthTF.getText());
+
+                if (length <= 0 || width <= 0) {
+                    JOptionPane.showMessageDialog(this, "Please enter a positive number for length and width.");
+                } else if (compostFrameList.getSelectedValue() == null) {
+                    JOptionPane.showMessageDialog(this, "Please select an frame type for compost garden");
+                } else if (!checkAddressFields()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all Address form fields");
+                } else {
+                    //int weight, int greenBinQuantity, int brownBinQuantity, String interval
+                    ec = new CompostingConsultation(length, width, compostFrameList.getSelectedValue(), fullnameTF.getText(), add1TF.getText(), add2TF.getText(), cityTF.getText(), countyTF.getText(), eircodeTF.getText());
+                    int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
+                    if (choice == 0) {
+                        //user has approved form
+                        fw.writeFile(ec.toString());
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Please enter whole numbers for Length and Width.");
+            }
+        }
+
     }//GEN-LAST:event_submitBTNActionPerformed
 
     private void solarRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solarRBActionPerformed
@@ -439,7 +527,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         spTypeLBL.setVisible(true);
         spTypeList.setVisible(true);
         spTypePane.setVisible(true);
-        
+
         recycleGBQLBL.setVisible(false);
         recycleGBQTF.setVisible(false);
         recycleBBQLBL.setVisible(false);
@@ -447,8 +535,9 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         recycleWeightLBL.setVisible(false);
         recycleWeightTF.setVisible(false);
         recycleIntervalLBL.setVisible(false);
-        recycleIntervalTF.setVisible(false);
-        
+        recycTypePane.setVisible(false);
+        recycTypeList.setVisible(false);
+
         compostLengthLBL.setVisible(false);
         compostLengthTF.setVisible(false);
         compostWidthLBL.setVisible(false);
@@ -457,18 +546,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostFrameList.setVisible(false);
         compostFramePane.setVisible(false);
     }//GEN-LAST:event_solarRBActionPerformed
-
-    private void spQuantityTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spQuantityTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spQuantityTFActionPerformed
-
-    private void recycleGBQTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recycleGBQTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recycleGBQTFActionPerformed
-
-    private void recycleWeightTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recycleWeightTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recycleWeightTFActionPerformed
 
     private void recycleRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recycleRBActionPerformed
         // TODO add your handling code here:
@@ -479,14 +556,15 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         recycleWeightLBL.setVisible(true);
         recycleWeightTF.setVisible(true);
         recycleIntervalLBL.setVisible(true);
-        recycleIntervalTF.setVisible(true);
-        
+        recycTypePane.setVisible(true);
+        recycTypeList.setVisible(true);
+
         spQuantityLBL.setVisible(false);
         spQuantityTF.setVisible(false);
         spTypeLBL.setVisible(false);
         spTypeList.setVisible(false);
         spTypePane.setVisible(false);
-        
+
         compostLengthLBL.setVisible(false);
         compostLengthTF.setVisible(false);
         compostWidthLBL.setVisible(false);
@@ -495,10 +573,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostFrameList.setVisible(false);
         compostFramePane.setVisible(false);
     }//GEN-LAST:event_recycleRBActionPerformed
-
-    private void compostLengthTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compostLengthTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_compostLengthTFActionPerformed
 
     private void compostRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compostRBActionPerformed
         // TODO add your handling code here:
@@ -509,13 +583,13 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostFrameLBL.setVisible(true);
         compostFrameList.setVisible(true);
         compostFramePane.setVisible(true);
-        
+
         spQuantityLBL.setVisible(false);
         spQuantityTF.setVisible(false);
         spTypeLBL.setVisible(false);
         spTypeList.setVisible(false);
         spTypePane.setVisible(false);
-        
+
         recycleGBQLBL.setVisible(false);
         recycleGBQTF.setVisible(false);
         recycleBBQLBL.setVisible(false);
@@ -523,8 +597,14 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         recycleWeightLBL.setVisible(false);
         recycleWeightTF.setVisible(false);
         recycleIntervalLBL.setVisible(false);
-        recycleIntervalTF.setVisible(false);
+        recycTypePane.setVisible(false);
+        recycTypeList.setVisible(false);
     }//GEN-LAST:event_compostRBActionPerformed
+
+    private void returnBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBTNActionPerformed
+        // TODO add your handling code here:
+        UICListener.changePanel("SusCon");
+    }//GEN-LAST:event_returnBTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -550,15 +630,17 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private javax.swing.JTextField eircodeTF;
     private javax.swing.JLabel fullnameLBL;
     private javax.swing.JTextField fullnameTF;
+    private javax.swing.JList<String> recycTypeList;
+    private javax.swing.JScrollPane recycTypePane;
     private javax.swing.JLabel recycleBBQLBL;
     private javax.swing.JTextField recycleBBQTF;
     private javax.swing.JLabel recycleGBQLBL;
     private javax.swing.JTextField recycleGBQTF;
     private javax.swing.JLabel recycleIntervalLBL;
-    private javax.swing.JTextField recycleIntervalTF;
     private javax.swing.JRadioButton recycleRB;
     private javax.swing.JLabel recycleWeightLBL;
     private javax.swing.JTextField recycleWeightTF;
+    private javax.swing.JButton returnBTN;
     private javax.swing.JRadioButton solarRB;
     private javax.swing.JLabel spQuantityLBL;
     private javax.swing.JTextField spQuantityTF;

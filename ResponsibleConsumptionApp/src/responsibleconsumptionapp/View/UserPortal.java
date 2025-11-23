@@ -33,6 +33,11 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userEfLBL.setText(user.getEf_score()+"");
     }
     
+    public void updateEFScore() {
+        userEfLBL.setText(user.getEf_score()+"");
+    }
+    
+    
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
@@ -114,7 +119,6 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(118, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLBL)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(userFnHeaderLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,13 +139,17 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
                             .addComponent(leaderboardBTN))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleLBL)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLBL)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userFnHeaderLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userFnLBL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
