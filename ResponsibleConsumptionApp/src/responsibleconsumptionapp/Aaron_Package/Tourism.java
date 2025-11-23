@@ -12,6 +12,6 @@ import responsibleconsumptionapp.Model.IRedeemable;
  * Date 11/10/2025
  * @author 
  */
-public class Tourism extends Focus implements IRedeemable{
+public class Tourism {
 
 }

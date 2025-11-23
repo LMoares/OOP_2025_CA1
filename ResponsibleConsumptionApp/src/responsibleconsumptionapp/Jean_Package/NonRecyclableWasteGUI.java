@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
+import responsibleconsumptionapp.Model.Focus;
 
 public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IControllable {
     private UserInterfaceController UICListener;
@@ -51,6 +52,10 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     
     //keep score
     private int points = 0;
+    
+    //instatiate a focus object to keep track of the user details and score
+    Focus focus;
+    
     /**
      * Creates new form NonRecyclableWasteGUI
      */
@@ -62,6 +67,11 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
      @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
+       
+    }
+    
+    public void setUserDetails(){
+        focus = new Focus(UICListener.getUserService(), UICListener.getUser());
     }
     
     //text input from user
@@ -189,7 +199,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     
     //show ui point accumulated
     private void showPoints(){
-        points_display_ui.setText("Total points: " + points);
+        points_display_ui.setText("Name: " + focus.getUserName() + "\nCurrent points: " + focus.getCurrentPoints() +  "\nTotal points: " + points);
     }
     
 
