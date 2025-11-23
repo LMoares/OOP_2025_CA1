@@ -4,28 +4,36 @@
  */
 package responsibleconsumptionapp.Aaron_Package;
 
+import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
+import responsibleconsumptionapp.Model.Focus;
 
 /**
  *
  * @author gamer
  */
-public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
+public class bikeBookingGUI extends javax.swing.JPanel implements IControllable {
 
     /**
      * Creates new form bikeBookingGUI
      */
     private UserInterfaceController UICListener;
+    private Focus focus;
 
     public bikeBookingGUI() {
         initComponents();
     }
-    
+
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
     }
+
+    public void setUserDetails() {
+        focus = new Focus(UICListener.getUserService(), UICListener.getUser());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +43,8 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        startButtonGroup = new javax.swing.ButtonGroup();
+        endButtonGroup = new javax.swing.ButtonGroup();
         welcomeBikeLb = new javax.swing.JLabel();
         startLocLbl = new javax.swing.JLabel();
         endLocLbl = new javax.swing.JLabel();
@@ -49,29 +58,47 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
         nciEndBtn = new javax.swing.JRadioButton();
         jervisEndBtn = new javax.swing.JRadioButton();
         stephenEndBtn = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        bikeTxtOutput = new javax.swing.JTextArea();
+        confirmSelectBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 54, 99));
+
+        welcomeBikeLb.setBackground(new java.awt.Color(255, 255, 255));
         welcomeBikeLb.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        welcomeBikeLb.setForeground(new java.awt.Color(240, 248, 255));
         welcomeBikeLb.setText("Welcome to the Bike Booking App");
         welcomeBikeLb.setAlignmentX(0.5F);
 
+        startLocLbl.setBackground(new java.awt.Color(255, 255, 255));
         startLocLbl.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        startLocLbl.setForeground(new java.awt.Color(240, 248, 255));
         startLocLbl.setText("Please select your starting location");
 
         endLocLbl.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        endLocLbl.setForeground(new java.awt.Color(240, 248, 255));
         endLocLbl.setText("Please select your ending location");
 
+        heustonStartBtn.setBackground(new java.awt.Color(0, 54, 99));
+        startButtonGroup.add(heustonStartBtn);
         heustonStartBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        heustonStartBtn.setForeground(new java.awt.Color(240, 248, 255));
         heustonStartBtn.setText("Heuston Station");
 
+        connollyStartBtn.setBackground(new java.awt.Color(0, 54, 99));
+        startButtonGroup.add(connollyStartBtn);
         connollyStartBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        connollyStartBtn.setForeground(new java.awt.Color(240, 248, 255));
         connollyStartBtn.setText("Connolly Station");
 
+        nciStartBtn.setBackground(new java.awt.Color(0, 54, 99));
+        startButtonGroup.add(nciStartBtn);
         nciStartBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        nciStartBtn.setForeground(new java.awt.Color(240, 248, 255));
         nciStartBtn.setText("NCI");
 
+        jervisStartBtn.setBackground(new java.awt.Color(0, 54, 99));
+        startButtonGroup.add(jervisStartBtn);
         jervisStartBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jervisStartBtn.setForeground(new java.awt.Color(240, 248, 255));
         jervisStartBtn.setText("Jervis");
         jervisStartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,19 +106,44 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
             }
         });
 
+        stephenStartBtn.setBackground(new java.awt.Color(0, 54, 99));
+        startButtonGroup.add(stephenStartBtn);
         stephenStartBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        stephenStartBtn.setForeground(new java.awt.Color(240, 248, 255));
         stephenStartBtn.setText("Stephen's Green");
 
+        heustonEndBtn.setBackground(new java.awt.Color(0, 54, 99));
+        endButtonGroup.add(heustonEndBtn);
         heustonEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        heustonEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         heustonEndBtn.setText("Heuston Station");
+        heustonEndBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heustonEndBtnActionPerformed(evt);
+            }
+        });
 
+        connollyEndBtn.setBackground(new java.awt.Color(0, 54, 99));
+        endButtonGroup.add(connollyEndBtn);
         connollyEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        connollyEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         connollyEndBtn.setText("Connolly Station");
 
+        nciEndBtn.setBackground(new java.awt.Color(0, 54, 99));
+        endButtonGroup.add(nciEndBtn);
         nciEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        nciEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         nciEndBtn.setText("NCI");
+        nciEndBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nciEndBtnActionPerformed(evt);
+            }
+        });
 
+        jervisEndBtn.setBackground(new java.awt.Color(0, 54, 99));
+        endButtonGroup.add(jervisEndBtn);
         jervisEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jervisEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         jervisEndBtn.setText("Jervis");
         jervisEndBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,12 +151,19 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
             }
         });
 
+        stephenEndBtn.setBackground(new java.awt.Color(0, 54, 99));
+        endButtonGroup.add(stephenEndBtn);
         stephenEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        stephenEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         stephenEndBtn.setText("Stephen's Green");
 
-        bikeTxtOutput.setColumns(20);
-        bikeTxtOutput.setRows(5);
-        jScrollPane1.setViewportView(bikeTxtOutput);
+        confirmSelectBtn.setBackground(new java.awt.Color(108, 192, 112));
+        confirmSelectBtn.setText("Confirm");
+        confirmSelectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmSelectBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,7 +178,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
                     .addComponent(jervisStartBtn)
                     .addComponent(nciStartBtn)
                     .addComponent(connollyStartBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(endLocLbl)
                     .addComponent(heustonEndBtn)
@@ -131,12 +190,12 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(welcomeBikeLb))
+                        .addGap(336, 336, 336)
+                        .addComponent(confirmSelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(209, Short.MAX_VALUE))
+                        .addGap(179, 179, 179)
+                        .addComponent(welcomeBikeLb)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,34 +229,136 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable{
                         .addComponent(jervisEndBtn)
                         .addGap(18, 18, 18)
                         .addComponent(stephenEndBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(confirmSelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jervisStartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jervisStartBtnActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jervisStartBtnActionPerformed
 
     private void jervisEndBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jervisEndBtnActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jervisEndBtnActionPerformed
+
+    private void heustonEndBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heustonEndBtnActionPerformed
+    }//GEN-LAST:event_heustonEndBtnActionPerformed
+
+    private void nciEndBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nciEndBtnActionPerformed
+    }//GEN-LAST:event_nciEndBtnActionPerformed
+
+    private void confirmSelectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmSelectBtnActionPerformed
+        // TODO add your handling code here:
+        if (heustonStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (heustonStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to Connolly is a 15 minute journey. 15 points will be added");
+            focus.addCurrentPoints(15);
+        } else if (heustonStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to NCI is a 18 minute journey. 18 points will be added");
+            focus.addCurrentPoints(18);
+
+        } else if (heustonStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to Jervis is a 10 minute journey. 10 points will be added");
+            focus.addCurrentPoints(10);
+
+        } else if (heustonStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to Stephen's Green is a 15 minute journey. 15 points will be added");
+            focus.addCurrentPoints(15);
+
+        } else if (connollyStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (connollyStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to Heuston is a 15 minute journey. 15 points will be added");
+            focus.addCurrentPoints(15);
+
+        } else if (connollyStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to NCI is a 3 minute journey. 3 points will be added");
+            focus.addCurrentPoints(3);
+
+        } else if (connollyStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to Jervis is a 7 minute journey. 7 points will be added");
+            focus.addCurrentPoints(7);
+
+        } else if (connollyStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to Stephen's Green is a 7 minute journey. 7 points will be added");
+            focus.addCurrentPoints(7);
+
+        } else if (nciStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (nciStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Heuston is a 18 minute journey. 18 points will be added");
+            focus.addCurrentPoints(18);
+
+        } else if (nciStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Connolly is a 3 minute journey. 3 points will be added");
+            focus.addCurrentPoints(3);
+
+        } else if (nciStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Jervis is a 13 minute journey. 13 points will be added");
+            focus.addCurrentPoints(13);
+
+        } else if (nciStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Stephen's Green is a 10 minute journey. 10 points will be added");
+            focus.addCurrentPoints(10);
+
+        } else if (jervisStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (jervisStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to Heuston is a 10 minute journey. 10 points will be added");
+            focus.addCurrentPoints(10);
+
+        } else if (jervisStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to Connolly is a 7 minute journey. 7 points will be added");
+            focus.addCurrentPoints(7);
+
+        } else if (jervisStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to NCI is a 13 minute journey. 13 points will be added");
+            focus.addCurrentPoints(13);
+
+        } else if (jervisStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to Stephen's Green is a 6 minute journey. 6 points will be added");
+            focus.addCurrentPoints(6);
+
+        } else if (stephenStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (stephenStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to Heuston is a 15 minute journey. 15 points will be added");
+            focus.addCurrentPoints(15);
+
+        } else if (stephenStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to Connolly is a 7 minute journey. 7 points will be added");
+            focus.addCurrentPoints(7);
+
+        } else if (stephenStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to NCI is a 10 minute journey. 10 points will be added");
+            focus.addCurrentPoints(10);
+
+        } else if (stephenStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to Jervis is a 6 minute journey. 6 points will be added");
+            focus.addCurrentPoints(6);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Error, please make two valid selections");
+
+        }
+
+    }//GEN-LAST:event_confirmSelectBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea bikeTxtOutput;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton confirmSelectBtn;
     private javax.swing.JRadioButton connollyEndBtn;
     private javax.swing.JRadioButton connollyStartBtn;
+    private javax.swing.ButtonGroup endButtonGroup;
     private javax.swing.JLabel endLocLbl;
     private javax.swing.JRadioButton heustonEndBtn;
     private javax.swing.JRadioButton heustonStartBtn;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton jervisEndBtn;
     private javax.swing.JRadioButton jervisStartBtn;
     private javax.swing.JRadioButton nciEndBtn;
     private javax.swing.JRadioButton nciStartBtn;
+    private javax.swing.ButtonGroup startButtonGroup;
     private javax.swing.JLabel startLocLbl;
     private javax.swing.JRadioButton stephenEndBtn;
     private javax.swing.JRadioButton stephenStartBtn;

@@ -94,6 +94,11 @@ public class UserService {
 
     public void saveChanges() {
         //overwrite's previous user data stored in users.dat to new user data
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(user.getUsername())) {
+                users.set(i,user);
+            }
+        }
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./src/responsibleconsumptionapp/Data/users.dat"))) {
             oos.writeObject(users);
         } catch (IOException e) {
