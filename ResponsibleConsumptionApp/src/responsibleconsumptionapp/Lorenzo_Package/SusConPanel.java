@@ -77,6 +77,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         questionnaireBTN = new javax.swing.JButton();
         consultationBTN = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 204));
         setLayout(null);
 
         SolarPanelHS.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -126,7 +127,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
 
     private void questionnaireBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionnaireBTNActionPerformed
         // TODO add your handling code here:
-        UICListener.changePanel("SusConQuestionaire");
+        UICListener.changePanel("SusConQuestionnaire");
     }//GEN-LAST:event_questionnaireBTNActionPerformed
 
     private void consultationBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationBTNActionPerformed

@@ -10,7 +10,7 @@ package responsibleconsumptionapp.Lorenzo_Package.Model;
  * Date 16/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-public class EnergyConsultation {
+public abstract class EnergyConsultation {
     private String fullname,add1,add2,city,county,eircode;
     
     public EnergyConsultation(String fullname, String add1, String add2, String city, String county, String eircode) {
@@ -48,7 +48,7 @@ public class EnergyConsultation {
     
     @Override
     public String toString() {
-        return "Fullname - :"+fullname+"\nAddress 1 - "+add1+"\nAddress 2 - "+add2+"\nCity - "+city+"\nCounty - "+county+"\nEircode - "+eircode;
+        return "Fullname - "+fullname+"\nAddress 1 - "+add1+"\nAddress 2 - "+add2+"\nCity - "+city+"\nCounty - "+county+"\nEircode - "+eircode;
     }
     
 }

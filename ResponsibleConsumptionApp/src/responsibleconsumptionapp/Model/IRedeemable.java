@@ -10,6 +10,7 @@ package responsibleconsumptionapp.Model;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+@Deprecated
 public interface IRedeemable {
 
 }

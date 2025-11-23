@@ -5,7 +5,6 @@
 package responsibleconsumptionapp.Controller;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -37,7 +36,7 @@ public class UserInterfaceController {
             put("NonRecyclable", new NonRecyclableWasteGUI());
             put("UserPortal", new UserPortal());
             put("SusCon", new SusConPanel());
-            put("SusConQuestionaire", new SusConQuestionnaire());
+            put("SusConQuestionnaire", new SusConQuestionnaire());
             put("NewUserRegistration", new NewUserRegistration());
             put("SusConConsultation", new SusConConsultation());
             put("tourism", new tourismHomePanel());
@@ -83,11 +82,14 @@ public class UserInterfaceController {
     public void changePanel(String panel) {
         //TODO abstract following code to work for all panels
         //ensures SusCon panel data is reset when user navigates to panel
-        if (panel.equals("SusCon")) {
+        if(panel.equals("UserPortal")) {
+            UserPortal up = (UserPortal) panels.get("UserPortal");
+            up.updateEFScore();
+        }else if (panel.equals("SusCon")) {
             //create reference to suscon panel - runs reset method on activation
             SusConPanel suscon = (SusConPanel) panels.get("SusCon");
             suscon.resetText();
-        } else if (panel.equals("SusConConsultation")) {
+        }else if (panel.equals("SusConConsultation")) {
             SusConConsultation susconCon = (SusConConsultation) panels.get("SusConConsultation");
             susconCon.setUser();
         }else if (panel.equals("Login")) {
@@ -100,6 +102,9 @@ public class UserInterfaceController {
         }else if(panel.equals("bikeBooking")){
             bikeBookingGUI bikeBookGUI = (bikeBookingGUI) panels.get("bikeBooking");
             bikeBookGUI.setUserDetails();
+        }else if(panel.equals("SusConQuestionnaire")) {
+            SusConQuestionnaire scq = (SusConQuestionnaire) panels.get("SusConQuestionnaire");
+            scq.setUserDetails();
         }
         ui.showPanel(panel);
     }
