@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import responsibleconsumptionapp.Aaron_Package.bikeBookingGUI;
 import responsibleconsumptionapp.Aaron_Package.custFeedbackGUI;
 import responsibleconsumptionapp.Aaron_Package.tourismHomePanel;
-import responsibleconsumptionapp.Aaron_Package.tourismRouteGUI;
 import responsibleconsumptionapp.Jean_Package.ChemicalWasteGUI;
 import responsibleconsumptionapp.Jean_Package.NonRecyclableWasteGUI;
 import responsibleconsumptionapp.Jean_Package.RecyclableWasteGUI;
@@ -42,7 +41,6 @@ public class UserInterfaceController {
             put("SusConConsultation", new SusConConsultation());
             put("tourism", new tourismHomePanel());
             put("bikeBooking", new bikeBookingGUI());
-            put("tourismRoute", new tourismRouteGUI());
             put("customerFeedback", new custFeedbackGUI());
         }
     };
@@ -98,6 +96,9 @@ public class UserInterfaceController {
             //call get user information(method)
             NonRecyclableWasteGUI NRW = (NonRecyclableWasteGUI) panels.get("NonRecyclable");
             NRW.setUserDetails();
+        }else if(panel.equals("bikeBooking")){
+            bikeBookingGUI bikeBookGUI = (bikeBookingGUI) panels.get("bikeBooking");
+            bikeBookGUI.setUserDetails();
         }
         ui.showPanel(panel);
     }

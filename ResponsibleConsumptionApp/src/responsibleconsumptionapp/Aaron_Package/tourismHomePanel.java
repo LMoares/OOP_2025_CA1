@@ -39,40 +39,33 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
         jButton1 = new javax.swing.JButton();
         welcomeMsgLbl = new javax.swing.JLabel();
         bikeBookLbl = new javax.swing.JLabel();
-        tourismLbl = new javax.swing.JLabel();
         custFeedbackLbl = new javax.swing.JLabel();
         bikeBookingBtn = new javax.swing.JButton();
-        tourismBtn = new javax.swing.JButton();
         surveyBtn = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
+        setBackground(new java.awt.Color(137, 171, 227));
+
         welcomeMsgLbl.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        welcomeMsgLbl.setForeground(new java.awt.Color(0, 128, 0));
+        welcomeMsgLbl.setForeground(new java.awt.Color(0, 0, 0));
         welcomeMsgLbl.setText("Welcome to the Tourism App");
 
         bikeBookLbl.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        bikeBookLbl.setForeground(new java.awt.Color(0, 0, 0));
         bikeBookLbl.setText("Click below for bike booking");
 
-        tourismLbl.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        tourismLbl.setText("Click below for Tourism Route");
-
         custFeedbackLbl.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        custFeedbackLbl.setForeground(new java.awt.Color(0, 0, 0));
         custFeedbackLbl.setText("Click below for the survey");
 
+        bikeBookingBtn.setBackground(new java.awt.Color(0, 54, 99));
+        bikeBookingBtn.setForeground(new java.awt.Color(255, 255, 255));
         bikeBookingBtn.setText("Bike Book");
         bikeBookingBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         bikeBookingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bikeBookingBtnActionPerformed(evt);
-            }
-        });
-
-        tourismBtn.setText("Tourism");
-        tourismBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tourismBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tourismBtnActionPerformed(evt);
             }
         });
 
@@ -89,41 +82,31 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(128, 128, 128)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(bikeBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bikeBookLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tourismLbl)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(tourismBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(custFeedbackLbl)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(surveyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)))
-                .addGap(40, 40, 40))
+                .addGap(141, 141, 141))
             .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addGap(202, 202, 202)
                 .addComponent(welcomeMsgLbl)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(80, 80, 80)
                 .addComponent(welcomeMsgLbl)
-                .addGap(89, 89, 89)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tourismLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tourismBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bikeBookLbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,11 +124,6 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
         UICListener.changePanel("bikeBooking");
     }//GEN-LAST:event_bikeBookingBtnActionPerformed
 
-    private void tourismBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tourismBtnActionPerformed
-        // TODO add your handling code here:
-        UICListener.changePanel("tourismRoute");
-    }//GEN-LAST:event_tourismBtnActionPerformed
-
     private void surveyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surveyBtnActionPerformed
         // TODO add your handling code here:
         UICListener.changePanel("customerFeedback");
@@ -158,8 +136,6 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
     private javax.swing.JLabel custFeedbackLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton surveyBtn;
-    private javax.swing.JButton tourismBtn;
-    private javax.swing.JLabel tourismLbl;
     private javax.swing.JLabel welcomeMsgLbl;
     // End of variables declaration//GEN-END:variables
 }
