@@ -88,8 +88,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         show_user_added.setText(disposalFileReader(fileName));
     }
     
-    //choosen radio button before entry 
-    private String choicBtn(){
+    //choosen radio button before entry & points associated
+    private String choiceBtn(){
         String button = "";
         if(flammable.isSelected()){
             button = "Flammable:";
@@ -118,12 +118,12 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         //input to write to file from user
         //String textAreaInput = text_area.getText();
         String textAreaInput = getTextAreaValue();//text box below radio buttons
-        System.out.println(getTextAreaValue());
+        //System.out.println(getTextAreaValue());
         try(BufferedWriter wr = new BufferedWriter(new FileWriter("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list.txt", true))){
             //this adds the radio button value on top 
-            wr.write(focus.getUserName() + " added Type: " + choicBtn() + "\nDiscription: " + textAreaInput + "\n");
-            //wr.write("\n" + choicBtn()  + "\n");
-            //wr.write(textAreaInput); 
+            wr.write(focus.getUserName() + " added Type: " + choiceBtn() + "\nDiscription: " + textAreaInput + "\n");
+            
+         
         }
         catch(IOException e){
             System.out.println("Error writing to file: " + e.getMessage());
@@ -155,7 +155,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         String method = "";
         try (BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/" + fileName))){
             String item = br.readLine();
-            System.out.println("testing ABC: " + item);
+            //System.out.println("testing ABC: " + item);
             while(item != null){
                 method += item + "\n";
                 item = br.readLine();
@@ -485,7 +485,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
            text_area.setText(""); 
         }else{
             //selected radio btn choice
-            choicBtn();
+            choiceBtn();
             //update and show points
             showPoints();
         }

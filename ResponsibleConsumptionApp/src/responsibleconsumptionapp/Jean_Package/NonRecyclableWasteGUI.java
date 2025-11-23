@@ -114,7 +114,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/" + fileName))){
 
             String item = br.readLine();
-            System.out.println("testing ABC: " + item);
+            //System.out.println("testing ABC: " + item);
             while(item != null){
                method += item + "\n";
                item = br.readLine();
@@ -134,10 +134,8 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     public void writeToNonRecyc(String data){
         
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list_non_recyclable.txt", true))){
-            //this adds the radio button value on top
-            bw.write("\n" + choiceBtn() + "\n");
-            //write data to the file
-            bw.write(data);
+           
+            bw.write(focus.getUserName() + " added Type: " + choiceBtn() + "\nDiscription: " + data + "\n");
         }
         catch(IOException e){
             System.out.println("Error writing to file: " + e.getMessage());
