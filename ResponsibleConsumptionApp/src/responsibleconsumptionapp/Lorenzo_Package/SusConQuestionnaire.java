@@ -8,9 +8,10 @@ import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
-/**
- *
- * @author moare
+/*
+ * Classname SusConQuestionnaire.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConQuestionnaire extends javax.swing.JPanel implements IControllable {
 
@@ -23,13 +24,16 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
 
     public SusConQuestionnaire() {
         initComponents();
+        //prevent user from editing the text in the questionnaire text areas
         q1TA.setEditable(false);
         q2TA.setEditable(false);
         q3TA.setEditable(false);
         q4TA.setEditable(false);
+        //set questionnaire complete boolean to default false value
         questionnaireComplete = false;
     }
-
+    
+    //Pass user and userservice from userinterface controller for retrieving user detail reading and writing
     public void setUserDetails() {
         sc = new SustainableConsumption(UICListener.getUserService(), UICListener.getUser());
     }
@@ -94,12 +98,15 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         q1TA.setText("Which of these is not a benefit of Solar Panels?");
         jScrollPane1.setViewportView(q1TA);
 
+        q1RadioA.setBackground(new java.awt.Color(204, 204, 255));
         q1BG.add(q1RadioA);
         q1RadioA.setText("Selling excess power back to the grid");
 
+        q1RadioB.setBackground(new java.awt.Color(204, 204, 255));
         q1BG.add(q1RadioB);
         q1RadioB.setText("Reducing electricty bills");
 
+        q1RadioC.setBackground(new java.awt.Color(204, 204, 255));
         q1BG.add(q1RadioC);
         q1RadioC.setText("High installation costs");
 
@@ -115,12 +122,15 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         q2TA.setText("Which of the following is an ecological benefit of properly disposing of non-recyclable waste?");
         jScrollPane2.setViewportView(q2TA);
 
+        q2RadioC.setBackground(new java.awt.Color(204, 204, 255));
         q2BG.add(q2RadioC);
         q2RadioC.setText("Fines for non-compliance");
 
+        q2RadioA.setBackground(new java.awt.Color(204, 204, 255));
         q2BG.add(q2RadioA);
         q2RadioA.setText("More space in the black bin");
 
+        q2RadioB.setBackground(new java.awt.Color(204, 204, 255));
         q2BG.add(q2RadioB);
         q2RadioB.setText("Prevents leeching of harmful chemicals into the ground");
 
@@ -136,12 +146,15 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         q3TA.setText("Which of the following can be used in an organic waste compost garden?");
         jScrollPane3.setViewportView(q3TA);
 
+        q3RadioC.setBackground(new java.awt.Color(204, 204, 255));
         q3BG.add(q3RadioC);
         q3RadioC.setText("Produce stickers");
 
+        q3RadioA.setBackground(new java.awt.Color(204, 204, 255));
         q3BG.add(q3RadioA);
         q3RadioA.setText("Eggshells");
 
+        q3RadioB.setBackground(new java.awt.Color(204, 204, 255));
         q3BG.add(q3RadioB);
         q3RadioB.setText("Empty plastic bottles");
 
@@ -165,15 +178,19 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         q4TA.setText("Given the information provided which of the following renewable energy soltutions is a source of positive contribution to\nyour local community?");
         jScrollPane4.setViewportView(q4TA);
 
+        q4RadioC.setBackground(new java.awt.Color(204, 204, 255));
         q4BG.add(q4RadioC);
         q4RadioC.setText("Composting");
 
+        q4RadioA.setBackground(new java.awt.Color(204, 204, 255));
         q4BG.add(q4RadioA);
         q4RadioA.setText("Solar Panels");
 
+        q4RadioB.setBackground(new java.awt.Color(204, 204, 255));
         q4BG.add(q4RadioB);
         q4RadioB.setText("Recycling");
 
+        q4RadioD.setBackground(new java.awt.Color(204, 204, 255));
         q4BG.add(q4RadioD);
         q4RadioD.setText("All of the above");
 
@@ -293,7 +310,6 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
-        // TODO add your handling code here:
         //following used to calculate correct answers and final score
         int score = 0;
         if (q1RadioC.isSelected()) {
@@ -314,16 +330,19 @@ public class SusConQuestionnaire extends javax.swing.JPanel implements IControll
         if (!questionnaireComplete) {
             questionnaireComplete = true;
             JOptionPane.showMessageDialog(this, correctAnswers + " Answers Correct. " + score + " Eco-Friendly Points have been added to your account.");
+            //apply new points to user's overall score
             sc.addCurrentPoints(score);
         } else {
+            //if user has completed the questionnaire in the same session the following message is given
             JOptionPane.showMessageDialog(this, "You have too recently completed this Questionaire. Please try again later.");
         }
-
+        
+        //calls the userinterface controller to change panel
         UICListener.changePanel("SusCon");
     }//GEN-LAST:event_submitBTNActionPerformed
 
     private void returnBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBTNActionPerformed
-        // TODO add your handling code here:
+        //calls the userinterface controller to change panel
         UICListener.changePanel("SusCon");
     }//GEN-LAST:event_returnBTNActionPerformed
 

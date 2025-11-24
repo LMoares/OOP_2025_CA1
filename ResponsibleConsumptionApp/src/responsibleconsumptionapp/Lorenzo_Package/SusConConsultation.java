@@ -13,9 +13,10 @@ import responsibleconsumptionapp.Lorenzo_Package.Model.RecyclingConsultation;
 import responsibleconsumptionapp.Lorenzo_Package.Model.SolarPanelConsultation;
 import responsibleconsumptionapp.Model.User;
 
-/**
- *
- * @author moare
+/*
+ * Classname SusConConsulation.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConConsultation extends javax.swing.JPanel implements IControllable {
 
@@ -23,6 +24,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private EnergyConsultation ec;
     private User user;
     private ConsultationFileWriter fw;
+    private SustainableConsumption sc;
 
     /**
      * Creates new form SusConConsultation
@@ -57,10 +59,13 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         compostFramePane.setVisible(false);
     }
 
-    public void setUser() {
+    public void setUserDetails() {
         user = this.UICListener.getUser();
+        //Fullname textfield automatically set to user's fullname receieved during registration
         fullnameTF.setText(user.getName());
         fw = new ConsultationFileWriter(user.getUsername());
+        sc = new SustainableConsumption(UICListener.getUserService(), user);
+        sc.setFWDetails();
     }
 
     @Override
@@ -134,6 +139,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         typeLBL.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         typeLBL.setText("Type of Renewable Energy Solution");
 
+        solarRB.setBackground(new java.awt.Color(255, 204, 204));
         typeBG.add(solarRB);
         solarRB.setText("Solar Panel");
         solarRB.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +148,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
             }
         });
 
+        recycleRB.setBackground(new java.awt.Color(255, 204, 204));
         typeBG.add(recycleRB);
         recycleRB.setText("Recycling");
         recycleRB.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +157,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
             }
         });
 
+        compostRB.setBackground(new java.awt.Color(255, 204, 204));
         typeBG.add(compostRB);
         compostRB.setText("Composting");
         compostRB.addActionListener(new java.awt.event.ActionListener() {
@@ -440,7 +448,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
-        // TODO add your handling code here:
+        //form validation - using try catch to ensure that user enters correct values - preventing 
         if (solarRB.isSelected()) {
             int quantity = 0;
 
@@ -457,7 +465,8 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
                     if (choice == 0) {
                         //user has approved form
-                        fw.writeFile(ec.toString());
+                        sc.writeFile(ec);
+                        JOptionPane.showMessageDialog(this,"Consultation information saved. Your account has been given 20 Eco-Friendly Points");
                     }
                 }
             } catch (Exception e) {
@@ -485,12 +494,14 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
                     if (choice == 0) {
                         //user has approved form
-                        fw.writeFile(ec.toString());
+                        sc.writeFile(ec);
+                        JOptionPane.showMessageDialog(this,"Consultation information saved. Your account has been given 20 Eco-Friendly Points");
                     }
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Please enter whole numbers for Weight and Green/Brown Bin Quantity");
             }
+            
         } else if (compostRB.isSelected()) {
             int length = 0;
             int width = 0;
@@ -510,7 +521,8 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
                     if (choice == 0) {
                         //user has approved form
-                        fw.writeFile(ec.toString());
+                        sc.writeFile(ec);
+                        JOptionPane.showMessageDialog(this,"Consultation information saved. Your account has been given 20 Eco-Friendly Points");
                     }
                 }
             } catch (Exception e) {
@@ -521,7 +533,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     }//GEN-LAST:event_submitBTNActionPerformed
 
     private void solarRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solarRBActionPerformed
-        // TODO add your handling code here:
+        //reveal and hide radio button fields and labels
         spQuantityLBL.setVisible(true);
         spQuantityTF.setVisible(true);
         spTypeLBL.setVisible(true);
@@ -548,7 +560,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     }//GEN-LAST:event_solarRBActionPerformed
 
     private void recycleRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recycleRBActionPerformed
-        // TODO add your handling code here:
+        //reveal and hide radio button fields and labels
         recycleGBQLBL.setVisible(true);
         recycleGBQTF.setVisible(true);
         recycleBBQLBL.setVisible(true);
@@ -575,7 +587,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     }//GEN-LAST:event_recycleRBActionPerformed
 
     private void compostRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compostRBActionPerformed
-        // TODO add your handling code here:
+        //reveal and hide radio button fields and labels
         compostLengthLBL.setVisible(true);
         compostLengthTF.setVisible(true);
         compostWidthLBL.setVisible(true);
@@ -602,7 +614,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     }//GEN-LAST:event_compostRBActionPerformed
 
     private void returnBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBTNActionPerformed
-        // TODO add your handling code here:
         UICListener.changePanel("SusCon");
     }//GEN-LAST:event_returnBTNActionPerformed
 

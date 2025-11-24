@@ -7,9 +7,10 @@ package responsibleconsumptionapp.View;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
-/**
- *
- * @author moare
+/*
+ * Classname NewUserRegistration.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class NewUserRegistration extends javax.swing.JPanel implements IControllable {
     private UserInterfaceController UICListener;
@@ -51,18 +52,24 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
         gasOilCoalCB = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         panelLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         panelLBL.setText("New User Registration");
 
         headerLBL.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         headerLBL.setText("Check any of the following boxes to calculate your individual Carbon Footprint Score");
 
+        redMeatCB.setBackground(new java.awt.Color(204, 204, 255));
         redMeatCB.setText("Regularly Consume Red Meat");
 
+        plantMealCB.setBackground(new java.awt.Color(204, 204, 255));
         plantMealCB.setText("Regularly Consume Plant-based Meals");
 
+        renewableCB.setBackground(new java.awt.Color(204, 204, 255));
         renewableCB.setText("Home Utilizes Renewable Energy Solutions");
 
+        compostCB.setBackground(new java.awt.Color(204, 204, 255));
         compostCB.setText("Regularly Compost Organic Waste");
         compostCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +77,7 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
             }
         });
 
+        airTravelCB.setBackground(new java.awt.Color(204, 204, 255));
         airTravelCB.setText("Frequently Use Air Travel");
         airTravelCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,12 +96,15 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Modes of Travel / Commute");
 
+        bicycleRB.setBackground(new java.awt.Color(204, 204, 255));
         travelOptionsBG.add(bicycleRB);
         bicycleRB.setText("Bicycle / Walking");
 
+        publicTransRB.setBackground(new java.awt.Color(204, 204, 255));
         travelOptionsBG.add(publicTransRB);
         publicTransRB.setText("Public Transportation / Car-pool");
 
+        personalVehicleRB.setBackground(new java.awt.Color(204, 204, 255));
         travelOptionsBG.add(personalVehicleRB);
         personalVehicleRB.setText("Personal Vehicle");
         personalVehicleRB.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +113,7 @@ public class NewUserRegistration extends javax.swing.JPanel implements IControll
             }
         });
 
+        gasOilCoalCB.setBackground(new java.awt.Color(204, 204, 255));
         gasOilCoalCB.setText("Home Utilizes Natural Gas, Oil, and/or Coal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

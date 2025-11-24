@@ -5,6 +5,11 @@
     <Component class="javax.swing.ButtonGroup" name="travelOptionsBG">
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="cc" red="cc" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -126,21 +131,33 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="redMeatCB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Regularly Consume Red Meat"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="plantMealCB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Regularly Consume Plant-based Meals"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="renewableCB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Home Utilizes Renewable Energy Solutions"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="compostCB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Regularly Compost Organic Waste"/>
       </Properties>
       <Events>
@@ -149,6 +166,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="airTravelCB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Frequently Use Air Travel"/>
       </Properties>
       <Events>
@@ -176,6 +196,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="bicycleRB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="travelOptionsBG"/>
         </Property>
@@ -184,6 +207,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="publicTransRB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="travelOptionsBG"/>
         </Property>
@@ -192,6 +218,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="personalVehicleRB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="travelOptionsBG"/>
         </Property>
@@ -203,6 +232,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="gasOilCoalCB">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Home Utilizes Natural Gas, Oil, and/or Coal"/>
       </Properties>
     </Component>

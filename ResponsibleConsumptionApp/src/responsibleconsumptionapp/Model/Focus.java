@@ -13,8 +13,8 @@ import responsibleconsumptionapp.Service.UserService;
  * @author Jeán Walton, 23405040
  */
 public class Focus {
-    private UserService userService;
-    private User user;
+    protected UserService userService;
+    protected User user;
     
     public Focus(UserService userService, User user ){
         this.userService = userService;

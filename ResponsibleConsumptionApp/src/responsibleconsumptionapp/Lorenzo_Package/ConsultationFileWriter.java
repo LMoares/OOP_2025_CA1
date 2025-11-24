@@ -25,7 +25,10 @@ public class ConsultationFileWriter {
     }
     
     public void writeFile(String message) {
+        //get current date and time to ensure that file names are unique
         String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        //file name e.g. alice123_20251124_165330.txt
+        //username_date_time
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(path+username+"_"+currentTime+".txt"))) {
             bw.append(message);
         }catch (IOException e) {

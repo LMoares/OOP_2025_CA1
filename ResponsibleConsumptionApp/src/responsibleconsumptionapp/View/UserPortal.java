@@ -9,9 +9,10 @@ import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 import responsibleconsumptionapp.Model.User;
 
-/**
- *
- * @author moare
+/*
+ * Classname UserPortal.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class UserPortal extends javax.swing.JPanel implements IControllable{
 
@@ -63,6 +64,8 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         userEfHeaderLBL = new javax.swing.JLabel();
         userEfLBL = new javax.swing.JLabel();
         leaderboardBTN = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(204, 204, 255));
 
         titleLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         titleLBL.setText("Responsible Consumption");
@@ -117,7 +120,7 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(userFnHeaderLBL)
@@ -137,11 +140,8 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
                             .addComponent(logoutBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(leaderboardBTN))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(118, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titleLBL)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleLBL))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -171,14 +171,12 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBTNActionPerformed
-        // TODO add your handling code here:
         UICListener.removeNavbar();
         UICListener.saveUserChanges();
         UICListener.changePanel("Login");
     }//GEN-LAST:event_logoutBTNActionPerformed
 
     private void leaderboardBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardBTNActionPerformed
-        // TODO add your handling code here:
         JOptionPane.showMessageDialog(this,"LeaderBoard:\n1: ...\n2: ...\n3: ...\n...");
     }//GEN-LAST:event_leaderboardBTNActionPerformed
 

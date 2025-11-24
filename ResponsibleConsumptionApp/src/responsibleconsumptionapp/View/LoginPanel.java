@@ -80,6 +80,8 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         titleLBL = new javax.swing.JLabel();
         groupLBL = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         loginLBL.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         loginLBL.setText("Login Existing User");
 
@@ -87,11 +89,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         newUserLBL.setText("Register New User");
 
         loginButton.setText("Login");
-        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginButtonMouseClicked(evt);
-            }
-        });
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -99,11 +96,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         });
 
         registerButton.setText("Register");
-        registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerButtonMouseClicked(evt);
-            }
-        });
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
@@ -111,36 +103,14 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
         });
 
         existingUserPassword.setColumns(8);
-        existingUserPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                existingUserPasswordActionPerformed(evt);
-            }
-        });
 
         newUserPassword.setColumns(8);
         newUserPassword.setToolTipText("Enter Password");
         newUserPassword.setActionCommand("<Not Set>");
-        newUserPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newUserPasswordActionPerformed(evt);
-            }
-        });
 
         newUserPwLBL.setText("Password");
 
         loginUnLBL.setText("Username");
-
-        existingUserUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                existingUserUsernameActionPerformed(evt);
-            }
-        });
-
-        newUserUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newUserUsernameActionPerformed(evt);
-            }
-        });
 
         loginPwLBL.setText("Password");
 
@@ -243,7 +213,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
         if(newUserUsername.getText().isEmpty() || newUserFullName.getText().isEmpty() || getNewUserPassword().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Please fill in all fields to register new user");
         }else if (UICListener != null) {
@@ -255,7 +224,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
         //Ensures UICListener has been correctly referenced
         if(existingUserUsername.getText().isEmpty() || getExistingUserPassword().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Please fill in all fields to login existing user");
@@ -265,30 +233,6 @@ public class LoginPanel extends javax.swing.JPanel implements IControllable {
             resetAllFields();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void existingUserUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingUserUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_existingUserUsernameActionPerformed
-
-    private void newUserUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newUserUsernameActionPerformed
-
-    private void existingUserPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingUserPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_existingUserPasswordActionPerformed
-
-    private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
-
-    }//GEN-LAST:event_registerButtonMouseClicked
-
-    private void newUserPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newUserPasswordActionPerformed
-
-    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-
-    }//GEN-LAST:event_loginButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -60,11 +60,6 @@ public class UserInterfaceController {
         ui.setVisible(true);
     }
 
-    public void repaint() {
-        ui.repaint();
-        ui.revalidate();
-    }
-
     public void initializePanels() {
 
         //iterate through panel dictionary to set panelListener and intialize panels in card layout
@@ -82,30 +77,30 @@ public class UserInterfaceController {
     public void changePanel(String panel) {
         //TODO abstract following code to work for all panels
         //ensures SusCon panel data is reset when user navigates to panel
-        if(panel.equals("UserPortal")) {
+        if (panel.equals("UserPortal")) {
             UserPortal up = (UserPortal) panels.get("UserPortal");
             up.updateEFScore();
-        }else if (panel.equals("SusCon")) {
+        } else if (panel.equals("SusCon")) {
             //create reference to suscon panel - runs reset method on activation
             SusConPanel suscon = (SusConPanel) panels.get("SusCon");
             suscon.resetText();
-        }else if (panel.equals("SusConConsultation")) {
+        } else if (panel.equals("SusConConsultation")) {
             SusConConsultation susconCon = (SusConConsultation) panels.get("SusConConsultation");
-            susconCon.setUser();
-        }else if (panel.equals("Login")) {
+            susconCon.setUserDetails();
+        } else if (panel.equals("Login")) {
             //user has been logged out
             userHandler.setUser(null);
-        }else if(panel.equals("NonRecyclable")){
+        } else if (panel.equals("NonRecyclable")) {
             //call get user information(method)
             NonRecyclableWasteGUI NRW = (NonRecyclableWasteGUI) panels.get("NonRecyclable");
             NRW.setUserDetails();
-        }else if(panel.equals("Recyclable")){
+        } else if (panel.equals("Recyclable")) {
             RecyclableWasteGUI RW = (RecyclableWasteGUI) panels.get("Recyclable");
-            RW.setUserDetails(); 
-        }else if(panel.equals("bikeBooking")){
+            RW.setUserDetails();
+        } else if (panel.equals("bikeBooking")) {
             bikeBookingGUI bikeBookGUI = (bikeBookingGUI) panels.get("bikeBooking");
             bikeBookGUI.setUserDetails();
-        }else if(panel.equals("SusConQuestionnaire")) {
+        } else if (panel.equals("SusConQuestionnaire")) {
             SusConQuestionnaire scq = (SusConQuestionnaire) panels.get("SusConQuestionnaire");
             scq.setUserDetails();
         }
@@ -113,23 +108,30 @@ public class UserInterfaceController {
     }
 
     public void removeNavbar() {
+        //called when user logs out to remove navigation
         ui.removeNavbar();
     }
 
     public User getUser() {
+        //getter for passing user reference
         return userHandler.getUser();
     }
-    
-    public UserService getUserService(){
+
+    public UserService getUserService() {
+        //getter for passing user reference
         return userHandler;
     }
 
     public void saveUserChanges() {
-        userHandler.saveChanges();        
+        //calls the userservice object to save user information
+        userHandler.saveChanges();
     }
 
     public void registrationComplete(int cfscore) {
+        //on registration completion cfscore is attributed to user object
         userHandler.setCFScore(cfscore);
+        //save new user information to file
+        saveUserChanges();
         //create userportal reference to userportal panel and set user before panel change
         UserPortal userportal = (UserPortal) panels.get("UserPortal");
         userportal.setUser();
@@ -142,40 +144,33 @@ public class UserInterfaceController {
         //this method runs once login panel detects user interaction with register button
 
         //ensures password is not empty and is not a series of whitespaces
-        //if (password != null && !password.trim().isEmpty()) {
-        if (true) { //placeholder for login logic
-
-            //TODO create logic to ensure that new user information does not conflict with other users
+        if (!username.isBlank() && !name.isBlank() && !password.isBlank()) {
             //creates reference in user service to current user
-            userHandler.registerNewUser(name, username, password);
+            boolean valid = userHandler.registerNewUser(name, username, password);
 
             //on successful login, panel changes to home panel, navbar made visible
-            changePanel("NewUserRegistration");
+            if (valid) {
+                changePanel("NewUserRegistration");
+            }
         } else {
-            System.out.println("Registration requires password");
+            System.out.println("Please fill in all Registration fields to complete User Registration.");
         }
     }
 
     public void onLoginButtonClicked(String username, String password) {
         //this method runs once login panel detects user interaction with login button
-        //ensures password is not empty and is not a series of whitespaces
-        //if (password != null && !password.trim().isEmpty()) {
 
-        if (true) { //placeholder for login logic
-            userHandler.loginExistingUser(username, password);
+        userHandler.loginExistingUser(username, password);
 
-            if (userHandler.getUser() == null) {
-                JOptionPane.showMessageDialog(null, "Username and/or password does not match any existing users. Please try again or Register.");
-            } else {
-                //on successful login, panel changes to home panel, navbar made visible 
-                ui.displayNavbar();
-                UserPortal up = (UserPortal) panels.get("UserPortal");
-                up.setUser();
-                changePanel("UserPortal");
-            }
-
+        if (userHandler.getUser() == null) {
+            JOptionPane.showMessageDialog(null, "Username and/or password does not match any existing users. Please try again or Register.");
         } else {
-            System.out.println("Login requires password");
+            //on successful login, panel changes to home panel, navbar made visible 
+            ui.displayNavbar();
+            UserPortal up = (UserPortal) panels.get("UserPortal");
+            up.setUser();
+            changePanel("UserPortal");
         }
+
     }
 }
