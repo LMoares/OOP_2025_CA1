@@ -27,17 +27,18 @@ public class UserService {
         getUsersData();
     }
 
-    public void registerNewUser(String name, String username, String password) {
+    public boolean registerNewUser(String name, String username, String password) {
         //placeholder user for checking registration status
-        User tempUser = users.get(searchUsers(username));
+        int index = searchUsers(username);
+        User tempUser = index == -1 ? null : users.get(searchUsers(username));
         if (tempUser == null) {
             //user does not exist -- create new user
-            System.out.println("User service passing user data to user for creation");
             user = new User(name, username, password);
-            System.out.println("Adding user: " + user.getName() + " to list of users");
             users.add(user);
+            return true;
         }else {
             System.out.println("User already exists. Please choose another Username");
+            return false;
         }
 
     }
@@ -64,7 +65,7 @@ public class UserService {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     public User getUser() {

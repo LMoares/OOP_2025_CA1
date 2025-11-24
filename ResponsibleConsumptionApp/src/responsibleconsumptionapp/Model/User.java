@@ -18,7 +18,6 @@ public class User implements Serializable{
     
     //constructor for registering new users that requires their cfscore to be set after registry - Lorenzo
     public User(String name, String username, String password){
-        System.out.println("New user created");
         this.name = name;
         this.username = username;
         this.password = password;

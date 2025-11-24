@@ -9,3 +9,5 @@ admin added Type: Cosmetic:
 Discription: dfdf
 admin added Type: Flammable:
 Discription: dfdfdf
+admin added Type: Flammable:
+Discription: add this plz

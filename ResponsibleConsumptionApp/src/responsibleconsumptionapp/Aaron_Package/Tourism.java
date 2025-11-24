@@ -5,7 +5,6 @@
 
 package responsibleconsumptionapp.Aaron_Package;
 import responsibleconsumptionapp.Model.Focus;
-import responsibleconsumptionapp.Model.IRedeemable;
 
 /*
  * Classname Tourism.java
