@@ -18,7 +18,6 @@ public class UserInterfaceView extends JFrame {
 
     private JPanel navbar_panel;
     private JLabel navbar_UserPortal_label;
-    //private JLabel navbar_login_label;
     private JLabel navbar_menu2_label;
     private JLabel navbar_menu3_label;
     private JLabel navbar_menu4_label;

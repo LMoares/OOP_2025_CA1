@@ -8,9 +8,10 @@ import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
-/**
- *
- * @author moare
+/*
+ * Classname SusConQuestionnaire.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConQuestionnaire extends javax.swing.JPanel implements IControllable {
 

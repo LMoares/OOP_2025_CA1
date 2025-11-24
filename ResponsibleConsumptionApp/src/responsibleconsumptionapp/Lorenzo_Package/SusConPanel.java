@@ -7,9 +7,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
-/**
- *
- * @author moare
+/*
+ * Classname SusConPanel.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConPanel extends javax.swing.JPanel implements IControllable{
 
@@ -77,7 +78,7 @@ public class SusConPanel extends javax.swing.JPanel implements IControllable{
         questionnaireBTN = new javax.swing.JButton();
         consultationBTN = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 255, 204));
+        setBackground(new java.awt.Color(204, 204, 255));
         setLayout(null);
 
         SolarPanelHS.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

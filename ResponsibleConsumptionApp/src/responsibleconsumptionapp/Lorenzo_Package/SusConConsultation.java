@@ -13,9 +13,10 @@ import responsibleconsumptionapp.Lorenzo_Package.Model.RecyclingConsultation;
 import responsibleconsumptionapp.Lorenzo_Package.Model.SolarPanelConsultation;
 import responsibleconsumptionapp.Model.User;
 
-/**
- *
- * @author moare
+/*
+ * Classname SusConConsulation.java
+ * Date 16/11/2025
+ * @author Lorenzo Moares Nunez, 23378441
  */
 public class SusConConsultation extends javax.swing.JPanel implements IControllable {
 

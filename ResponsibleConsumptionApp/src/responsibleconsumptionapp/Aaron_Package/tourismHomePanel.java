@@ -45,7 +45,7 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
 
         jButton1.setText("jButton1");
 
-        setBackground(new java.awt.Color(137, 171, 227));
+        setBackground(new java.awt.Color(204, 204, 255));
 
         welcomeMsgLbl.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         welcomeMsgLbl.setForeground(new java.awt.Color(0, 0, 0));
