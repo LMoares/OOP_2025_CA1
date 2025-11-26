@@ -30,6 +30,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private String selectedWaste;
     private String recyc_method;
     
+    ///lists for  drop down menu(seperated into different types for easy referencing)
     private ArrayList<String> hazFlammable = new ArrayList<String>(List.of("used motor oil", "oil based paints and primers", "uncontaminated solvents(acetone, isopropyl alcohol)", "cooking oil"));
     private ArrayList<String> hazToxic = new ArrayList<String>(List.of("fluorescent light bulbs(contains mercury)", "Mercury thermometers(via mercury recovery"));
     private ArrayList<String> hazMetals = new ArrayList<String>(List.of("car batteries (lead acid)", "rechargeable batteries (ni-cd, li-ion)"));
@@ -38,7 +39,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private ArrayList<String> hazPlastic_rubber = new  ArrayList<String>(List.of("used tires(rubber recycling)", "plastic tubs/bottles", "plastic tools and scraps"));
     
     
-    //file names used
+    ///////file .txt names ///////////
     private String flammable_txt = "recyclableFiles/flammable_recyc.txt";
     private String cosmetic_recyc_txt = "recyclableFiles/cosmetic_recyc.txt";
     private String electronic_recyc_txt = "recyclableFiles/electronic_recyc.txt";
@@ -47,7 +48,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private String toxic_recyc_txt = "recyclableFiles/toxic_recyc.txt";
     private String user_add_to_list_txt = "user_add_to_list.txt";
     
-    
+    //keep score
     private int points = 0;
     
     private Focus focus;
@@ -71,7 +72,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         focus = new Focus(UICListener.getUserService(), UICListener.getUser());
     }
     
-    
+   
+    //text input from user
     private String getTextAreaValue(){
         text_area.setEditable(true);
         return text_area.getText().trim();
@@ -466,6 +468,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         // TODO add your handling code here:
         UICListener.changePanel("ChemWaste");
         focus.addCurrentPoints(points);
+        //let the user know what points were added(when done/exit)
         JOptionPane.showMessageDialog(this, "Name: " + focus.getUserName()  +  "\nTotal points to be added: " + points + "\nOverall points: " + focus.getCurrentPoints());
         resetPanel();
     }//GEN-LAST:event_returnBtnActionPerformed

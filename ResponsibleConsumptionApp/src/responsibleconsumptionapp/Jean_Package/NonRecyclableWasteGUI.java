@@ -28,7 +28,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     private String selectedWaste;
     private String recyc_method;
     
-    ///lists for  drop down menu 
+    ///lists for  drop down menu(seperated into different types for easy referencing) 
     private ArrayList<String> toxic_contaminated_list = new ArrayList<String>(List.of("mixed or contaminated solvents", "bleach and ammonia(especially if mixed)", "mold removers", "expired or unknown cleaning products", "contaminated rags or paper towels", "contaminated motor oil(mixed with other fluids"));
     private ArrayList<String> corrosive_list = new ArrayList<String>(List.of("oven cleaners", "toilet bowl cleaners", "rust removers"));
     private ArrayList<String> flammable_volatile_list = new ArrayList<String>(List.of("old fuel(petrol or diesel)", "nail polish remover(acetone, if contaminated)", "perfumes and colognes (alcohol based)"));
@@ -475,6 +475,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         // TODO add your handling code here:
         UICListener.changePanel("ChemWaste");
         focus.addCurrentPoints(points);
+        //let the user know what points were added
         JOptionPane.showMessageDialog(this, "Name: " + focus.getUserName()  +  "\nTotal points to be added: " + points + "\nOverall points: " + focus.getCurrentPoints());
         resetPanel();
     }//GEN-LAST:event_returnBtnActionPerformed
