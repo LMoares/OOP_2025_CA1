@@ -136,7 +136,7 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
         //Error pop up if a radio button is not selected
         if(wasteType != ""){
             UICListener.changePanel(wasteType);
-            System.out.println(this.UICListener.getUser());
+            //System.out.println(this.UICListener.getUser());
         }else{
            JOptionPane.showMessageDialog(this, "Must select Recyclable or Non-Recyclable");
         }

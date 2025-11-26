@@ -62,12 +62,13 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
          
     }
     
-    
+    //implements Icontrollable
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
     }
     
+    //method for accumulating points for all users
     public void setUserDetails(){
         focus = new Focus(UICListener.getUserService(), UICListener.getUser());
     }
@@ -96,21 +97,27 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         if(flammable.isSelected()){
             button = "Flammable:";
             points += 1;
+            flammable.setSelected(false);
         }else if(toxic.isSelected()){
             button = "Toxic:";
             points += 2;
+            toxic.setSelected(false);
         }else if(heavy_metals.isSelected()){
             button = "Heavy Metals:";
             points += 1;
+            heavy_metals.setSelected(false);
         }else if(electronic_waste.isSelected()){
             button = "Electronic_waste:";
             points += 2;
+            electronic_waste.setSelected(false);
         }else if(rubber_plastics.isSelected()){
             button = "Rubber & Plastic:";
             points += 1;
+            rubber_plastics.setSelected(false);
         }else if(cosmetic.isSelected()){
             button = "Cosmetic:";
             points += 1;
+            cosmetic.setSelected(false);
         }    
         return button;  
     }
@@ -204,16 +211,16 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private void initComponents() {
 
         buttonGroup_type = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        heading = new javax.swing.JLabel();
         recyc_drop_down = new javax.swing.JComboBox<>();
         text_area_scroll = new javax.swing.JScrollPane();
         text_area = new javax.swing.JTextArea();
         image_box = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        displayTextAreaScroll = new javax.swing.JScrollPane();
         displayTextArea = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        show_user_added_scroll = new javax.swing.JScrollPane();
         show_user_added = new javax.swing.JTextPane();
-        jLabel2 = new javax.swing.JLabel();
+        safety_heading = new javax.swing.JLabel();
         returnBtn = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         flammable = new javax.swing.JRadioButton();
@@ -222,15 +229,15 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         cosmetic = new javax.swing.JRadioButton();
         heavy_metals = new javax.swing.JRadioButton();
         rubber_plastics = new javax.swing.JRadioButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        points_display_scroll = new javax.swing.JScrollPane();
         points_display = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
+        not_in_drop_down_heading = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 153, 0));
-        jLabel1.setText("Recyclable Chemical Waste");
+        heading.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        heading.setForeground(new java.awt.Color(51, 153, 0));
+        heading.setText("Recyclable Chemical Waste");
 
         recyc_drop_down.setBackground(new java.awt.Color(255, 255, 255));
         recyc_drop_down.addActionListener(new java.awt.event.ActionListener() {
@@ -252,34 +259,34 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         displayTextArea.setBackground(new java.awt.Color(204, 204, 204));
         displayTextArea.setColumns(20);
         displayTextArea.setRows(5);
-        jScrollPane1.setViewportView(displayTextArea);
+        displayTextAreaScroll.setViewportView(displayTextArea);
 
         show_user_added.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(show_user_added);
+        show_user_added_scroll.setViewportView(show_user_added);
 
-        jLabel2.setBackground(new java.awt.Color(204, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("How to safely handle and dispose :");
+        safety_heading.setBackground(new java.awt.Color(204, 255, 255));
+        safety_heading.setForeground(new java.awt.Color(0, 0, 0));
+        safety_heading.setText("How to safely handle and dispose :");
 
         javax.swing.GroupLayout image_boxLayout = new javax.swing.GroupLayout(image_box);
         image_box.setLayout(image_boxLayout);
         image_boxLayout.setHorizontalGroup(
             image_boxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+            .addComponent(show_user_added_scroll)
+            .addComponent(displayTextAreaScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
             .addGroup(image_boxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(safety_heading, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         image_boxLayout.setVerticalGroup(
             image_boxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(image_boxLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .addComponent(safety_heading, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(displayTextAreaScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(show_user_added_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         returnBtn.setBackground(new java.awt.Color(0, 153, 153));
@@ -339,11 +346,11 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         rubber_plastics.setText("Rubber & Plastics");
 
         points_display.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane3.setViewportView(points_display);
+        points_display_scroll.setViewportView(points_display);
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Not In Drop Down List: add below ");
+        not_in_drop_down_heading.setBackground(new java.awt.Color(204, 204, 255));
+        not_in_drop_down_heading.setForeground(new java.awt.Color(0, 0, 0));
+        not_in_drop_down_heading.setText("Not In Drop Down List: add below ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -373,11 +380,11 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                                         .addComponent(heavy_metals)
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(text_area_scroll)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(not_in_drop_down_heading, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(points_display_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(224, 224, 224)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -385,7 +392,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(recyc_drop_down, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(heading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -397,7 +404,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel1)
+                        .addComponent(heading)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(recyc_drop_down, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -416,12 +423,12 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                                     .addComponent(toxic)
                                     .addComponent(heavy_metals))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
+                                .addComponent(not_in_drop_down_heading)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(text_area_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(points_display_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(13, 13, 13))
         );
@@ -477,7 +484,12 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         //displays what was just written bottom left window  
-        if(!getTextAreaValue().equals("")){//input text area is empty.
+        if(!getTextAreaValue().equals("")){//input text area is not empty.
+           //ensure type radio button is selected
+           if(choiceBtn().equals("")){
+                JOptionPane.showMessageDialog(this, "Must select Type using radio button");
+                return;
+            }
            //write to file user_add_to_list.txt 
            writeRecycleValues(); 
            //displays what was written to file with selected heading
@@ -492,6 +504,8 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
             //update and show points
             showPoints();
         }
+        //clear selected radio button
+        buttonGroup_type.clearSelection();
     }//GEN-LAST:event_addBtnActionPerformed
 
 
@@ -500,21 +514,21 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     private javax.swing.ButtonGroup buttonGroup_type;
     private javax.swing.JRadioButton cosmetic;
     private javax.swing.JTextArea displayTextArea;
+    private javax.swing.JScrollPane displayTextAreaScroll;
     private javax.swing.JRadioButton electronic_waste;
     private javax.swing.JRadioButton flammable;
+    private javax.swing.JLabel heading;
     private javax.swing.JRadioButton heavy_metals;
     private javax.swing.JPanel image_box;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel not_in_drop_down_heading;
     private javax.swing.JTextPane points_display;
+    private javax.swing.JScrollPane points_display_scroll;
     private javax.swing.JComboBox<String> recyc_drop_down;
     private javax.swing.JButton returnBtn;
     private javax.swing.JRadioButton rubber_plastics;
+    private javax.swing.JLabel safety_heading;
     private javax.swing.JTextPane show_user_added;
+    private javax.swing.JScrollPane show_user_added_scroll;
     private javax.swing.JTextArea text_area;
     private javax.swing.JScrollPane text_area_scroll;
     private javax.swing.JRadioButton toxic;
