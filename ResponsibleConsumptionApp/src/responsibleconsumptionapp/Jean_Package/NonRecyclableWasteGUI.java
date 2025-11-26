@@ -475,7 +475,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         // TODO add your handling code here:
         UICListener.changePanel("ChemWaste");
         focus.addCurrentPoints(points);
-        //let the user know what points were added
+        //let the user know what points were added(when done/exit)
         JOptionPane.showMessageDialog(this, "Name: " + focus.getUserName()  +  "\nTotal points to be added: " + points + "\nOverall points: " + focus.getCurrentPoints());
         resetPanel();
     }//GEN-LAST:event_returnBtnActionPerformed
