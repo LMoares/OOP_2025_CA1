@@ -11,3 +11,11 @@ admin added Type: Flammable:
 Discription: dfdfdf
 admin added Type: Flammable:
 Discription: add this plz
+admin added Type: 
+Discription: ddd
+admin added Type: Flammable:
+Discription: rugby
+admin added Type: Flammable:
+Discription: lemon
+admin added Type: Rubber & Plastic:
+Discription: coffee
