@@ -16,6 +16,8 @@ import java.time.format.DateTimeFormatter;
  * Date 23/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+
+//Class is responsible for saving user created consultations to text files and deleting files selected by user
 public class ConsultationFileHandler {
 
     private String path = "./src/responsibleconsumptionapp/Lorenzo_Package/Consultations/";
