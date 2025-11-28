@@ -130,19 +130,19 @@ public class ChemicalWasteGUI extends javax.swing.JPanel implements IControllabl
                 .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedActionPerformed
         // TODO add your handling code here:
-        
+        //Error pop up if a radio button is not selected
         if(wasteType != ""){
             UICListener.changePanel(wasteType);
-            System.out.println(this.UICListener.getUser());
+            //System.out.println(this.UICListener.getUser());
         }else{
            JOptionPane.showMessageDialog(this, "Must select Recyclable or Non-Recyclable");
         }
         
     }//GEN-LAST:event_proceedActionPerformed
-
+    //radio button choices(must be selected)
     private void recyclable_waste_R_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recyclable_waste_R_btnActionPerformed
         // TODO add your handling code here:
         wasteType = "Recyclable";
