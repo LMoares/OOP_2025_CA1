@@ -1,18 +1,4 @@
-#####NOT ON LIST: ADDED BY USER#####
-
-admin added Type: Biohazard:
-Discription: chocolate
-admin added Type: Asbestos & Sludge:
-Discription: dfsgd
-admin added Type: Biohazard:
-Discription: dfdf
-admin added Type: Biohazard:
-Discription: dfgdfrg
-admin added Type: 
-Discription: lemon juice
-admin added Type: 
-Discription: lemon
-admin added Type: Toxic contaminated: 
-Discription: lemonnns
-admin added Type: Toxic contaminated: 
-Discription: tyres
+0: admin added Type: Flammable:Discription: jjj
+1: admin added Type: Flammable:Discription: kkkk
+2: admin added Type: Rubber & Plastic:Discription: llll
+3: admin added Type: Flammable:Discription: lll

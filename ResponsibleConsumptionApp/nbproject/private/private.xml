@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/ChemicalWasteGUI.java</file>
             <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Controller/IControllable.java</file>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Lorenzo_Package/SusConPanel.java</file>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/NonRecyclableWasteGUI.java</file>
             <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/RecyclableWasteGUI.java</file>
+            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list_non_recyclable.txt</file>
+            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list.txt</file>
+            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/NonRecyclableWasteGUI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,21 +1,4 @@
-#####NOT ON LIST: ADDED BY USER#####
-admin added Type: Flammable:
-Discription: lighter fluid
-admin added Type: Flammable:
-Discription: hello
-admin added Type: Toxic:
-Discription: kjklj
-admin added Type: Cosmetic:
-Discription: dfdf
-admin added Type: Flammable:
-Discription: dfdfdf
-admin added Type: Flammable:
-Discription: add this plz
-admin added Type: 
-Discription: ddd
-admin added Type: Flammable:
-Discription: rugby
-admin added Type: Flammable:
-Discription: lemon
-admin added Type: Rubber & Plastic:
-Discription: coffee
+1: admin added Type: Flammable:Discription: kkkk
+2: admin added Type: Rubber & Plastic:Discription: llll
+3: admin added Type: Flammable:Discription: lll
+4: admin added Type: Flammable:Discription: lll

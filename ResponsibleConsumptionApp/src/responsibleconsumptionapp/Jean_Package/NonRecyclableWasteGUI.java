@@ -47,13 +47,14 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     private String pesticides_poisons_non_recyc_txt = "NonRecyclableFiles/pesticides_poisons_non_recyc.txt";
     private String radioactive_non_recyc_txt = "NonRecyclableFiles/radioactive_non_recyc.txt";
     private String asbestos_sludge_non_recyc_txt = "NonRecyclableFiles/asbestos_sludge_non_recyc.txt";
-    
+    private String user_add_to_list_non_recyclable_txt = "user_add_to_list_non_recyclable.txt";
     
     
     
     //keep score
     private int points = 0;
-    
+    //counter for line input reference
+    private int counter = 0;
     //instatiate a focus object to keep track of the user details and score
     Focus focus;
     
@@ -92,7 +93,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
       
     //create a way read and write to populate drop menu from file non_recycle_waste.txt
     public void readNon_recyclable(){
-            String item;
+        String item;
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/non_recycle_list.txt"))){
            item = br.readLine();
            while(item != null){
@@ -108,14 +109,14 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         }
     }
     
-    //method for reading different files and display top left window
+    //method for reading different files some will be used to display top left window
     public String nonRecycDisposalReader(String fileName){
         String method ="";
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/" + fileName))){
 
-            String item = br.readLine();
-            //System.out.println("testing ABC: " + item);
-            while(item != null){
+            String item;
+           
+            while((item = br.readLine()) != null){
                method += item + "\n";
                item = br.readLine();
             }
@@ -129,13 +130,98 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         return method;
     }
     
+    //method to get the last line details as for the counter (last number) so file does not overwrite the current numbers
+    public int getLastLine(){
+        int lastNum = 0;
+        try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list_non_recyclable.txt"))){
+            String line = "";
+            String item = "";
+            
+            while((line = br.readLine()) != null){
+                item = line;
+               
+            }
+            if(item != ""){
+                String[] list = item.split(":");
+                lastNum = Integer.parseInt(list[0]);
+               
+            }
+            return lastNum;
+        }
+        catch(FileNotFoundException e){
+            System.out.println("File was not found." + e.getMessage());
+        }
+        catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return lastNum;
+    }
+    
+    
+    //reader for file that a section will be deleted bw.write(focus.getUserName() + " added Type: " + choiceBtn() + "\nDiscription: " + data + "\n");
+    public String remove(String fileName, String num){
+        String method = "";
+        try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/" + fileName))){
+
+            String item = br.readLine();
+            
+            //check if the user is the same user that inserted the value in the first place
+            String[] list = item.split(":");
+            String userName = list[1].trim();
+            
+            //now to verify that the the correct radio button is selected
+            String radioBtn = list[2].trim()+":";
+            
+            
+            //System.out.println("testing ABC: " + item);counter + ": " + focus.getUserName() + " added Type: " + choiceBtn() + " Discription: " + data
+            while(item != null){
+                if(item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn().trim())){
+                    
+                    //remove the points 
+                    item = br.readLine();
+                    continue; //this will skip writing the line 
+                    
+               }else if (item.trim().startsWith(num) && !userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn().trim())){
+                    JOptionPane.showMessageDialog(this, "Your username and number selected must match the line to remove");
+              
+               }else if (item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && !radioBtn.equalsIgnoreCase(removeChoiceBtn().trim())){
+                    JOptionPane.showMessageDialog(this, "A radio button of Type must be selected and match");
+               } 
+               method += item + "\n";
+               item = br.readLine();
+               //Error handling
+               //System.out.println(radioBtn);
+               //System.out.println(removeChoiceBtn());
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println(fileName + " was not found." + e.getMessage());
+        }
+        catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return method;
+    }
+    
+    
     
     //write to a file user_add_to_list_non_recyclable.txt
     public void writeToNonRecyc(String data){
-        
+        counter = getLastLine();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list_non_recyclable.txt", true))){
-           
-            bw.write(focus.getUserName() + " added Type: " + choiceBtn() + "\nDiscription: " + data + "\n");
+            counter +=1;
+            bw.write(counter + ": " + focus.getUserName() + " added Type: " + choiceBtn() + " Discription: " + data + "\n");
+        }
+        catch(IOException e){
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+    
+    //deleting selected lines from file hold data that is not in current list
+    public void deleteFile(String num){
+        String currentOnFile = remove(user_add_to_list_non_recyclable_txt, num);
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list_non_recyclable.txt"))){
+            bw.write(currentOnFile);
         }
         catch(IOException e){
             System.out.println("Error writing to file: " + e.getMessage());
@@ -174,7 +260,44 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
            points += 10;
         }else if(asbestos_sludge_btn.isSelected()){
            button = "Asbestos & Sludge:";
-           points = 6;
+           points += 6;
+        }
+        return button;
+         
+    }
+    // to minus the values being removed from points
+    private String removeChoiceBtn(){
+        String button = "";
+        if(toxic_contaminated_btn.isSelected()){
+           button = "Toxic contaminated: ";
+           points -= 5;
+           
+        }else if(corrosive_btn.isSelected()){
+           button = "Corrosive:";
+           points -= 3;
+           
+        }else if(flammable_volatile_btn.isSelected()){
+           button = "Flammable Volatile:";
+           points -= 2;
+          
+        }else if(biohazard_btn.isSelected()){
+           button = "Biohazard:";
+           points -= 4;
+           
+        }else if(reactive_btn.isSelected()){
+           button = "Reactive:";
+           points -= 2;
+           
+        }else if(pesticides_btn.isSelected()){
+           button = "Pesticides & Poisons:";
+           points -= 3;
+          
+        }else if(radioactive_btn.isSelected()){
+           button = "Radioactive:";
+           points -= 10;
+        }else if(asbestos_sludge_btn.isSelected()){
+           button = "Asbestos & Sludge:";
+           points -= 6;
         }
         return button;
          
@@ -244,6 +367,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         not_in_list_heading = new javax.swing.JLabel();
         points_display_ui_scroll = new javax.swing.JScrollPane();
         points_display_ui = new javax.swing.JTextPane();
+        remove_BTN = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -384,6 +508,15 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
         points_display_ui.setForeground(new java.awt.Color(0, 0, 0));
         points_display_ui_scroll.setViewportView(points_display_ui);
 
+        remove_BTN.setBackground(new java.awt.Color(255, 51, 51));
+        remove_BTN.setForeground(new java.awt.Color(0, 0, 0));
+        remove_BTN.setText("Remove");
+        remove_BTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remove_BTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -396,7 +529,9 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(points_display_ui_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(236, 236, 236)
+                        .addGap(87, 87, 87)
+                        .addComponent(remove_BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
                         .addComponent(addBTN))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(block_holding_output, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,8 +598,10 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(addBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                            .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(addBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                                .addComponent(remove_BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -569,15 +706,29 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
             text_area_input.setText("");
                
         }else{
-           //selected radion button
-           choiceBtn();
-           //update and show points
-           showPoints();
+            //selected radion button
+            choiceBtn();
+            //update and show points
+            showPoints();
         }
         //clear selected radio button
         hazardButtonGroup.clearSelection();
         
     }//GEN-LAST:event_addBTNActionPerformed
+
+    private void remove_BTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_BTNActionPerformed
+        // TODO add your handling code here:
+        displayInputContentFromFile();
+        String num = JOptionPane.showInputDialog(this, "Enter the number of the line of data to remove").trim();
+        if(num != "" && !removeChoiceBtn().equalsIgnoreCase("")){
+            removeChoiceBtn();
+            deleteFile(num);
+            displayInputContentFromFile();
+            showPoints();
+        }else{
+            JOptionPane.showMessageDialog(this, "A number of line and radio button of type must be selected to remove line");
+        }    
+    }//GEN-LAST:event_remove_BTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -600,6 +751,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
     private javax.swing.JScrollPane points_display_ui_scroll;
     private javax.swing.JRadioButton radioactive_btn;
     private javax.swing.JRadioButton reactive_btn;
+    private javax.swing.JButton remove_BTN;
     private javax.swing.JButton returnBtn;
     private javax.swing.JLabel safety_heading;
     private javax.swing.JTextArea text_area_input;
