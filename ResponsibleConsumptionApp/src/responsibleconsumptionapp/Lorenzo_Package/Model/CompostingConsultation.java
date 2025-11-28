@@ -10,6 +10,8 @@ package responsibleconsumptionapp.Lorenzo_Package.Model;
  * Date 16/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+
+//Sub class for composting consultation from consultation panel
 public class CompostingConsultation extends EnergyConsultation {
     private double length,width;
     private String frame;

@@ -10,6 +10,8 @@ package responsibleconsumptionapp.Lorenzo_Package.Model;
  * Date 16/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+
+//Sub class for solar panel consultation from consultation panel
 public class SolarPanelConsultation extends EnergyConsultation {
     private int quantity;
     private String type;
