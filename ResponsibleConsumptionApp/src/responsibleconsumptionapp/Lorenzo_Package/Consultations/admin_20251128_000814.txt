@@ -1,0 +1,11 @@
+Fullname - ADMIN
+Address 1 - 123 Apple Street
+Address 2 - Apt 2
+City - Swords
+County - Dublin
+Eircode - L12 M3N4
+--Recycling Consultation--
+Green Bin Quantity - 2
+Brown Bin Quantity - 1
+Weight - 30kg
+Interval - Once Per Month

@@ -10,6 +10,8 @@ package responsibleconsumptionapp.Lorenzo_Package.Model;
  * Date 16/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+
+//Abstract class responsible for defining fields and methods used by all subclasses
 public abstract class EnergyConsultation {
     private String fullname,add1,add2,city,county,eircode;
     

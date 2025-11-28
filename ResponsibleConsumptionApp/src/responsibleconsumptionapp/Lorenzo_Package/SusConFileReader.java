@@ -20,7 +20,6 @@ public class SusConFileReader {
     private String SusConSP = new String();
     private String SusConRB = new String();
     private String SusConCT = new String();
-    private String testing = new String();
 
     public SusConFileReader() {
         //Sustainable Consumption Default Text Area Data

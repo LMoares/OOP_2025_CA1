@@ -44,6 +44,6 @@ public class RecyclingConsultation extends EnergyConsultation {
     
     @Override
     public String toString() {
-        return super.toString()+"\n--Recycling Consultation--\nGreen Bin Quantity - "+greenBinQuantity+"\nBrown Bin Quantity - "+brownBinQuantity+"\nWeight - "+weight+"kg\nInterval - "+interval+" weeks";
+        return super.toString()+"\n--Recycling Consultation--\nGreen Bin Quantity - "+greenBinQuantity+"\nBrown Bin Quantity - "+brownBinQuantity+"\nWeight - "+weight+"kg\nInterval - "+interval;
     }
 }
