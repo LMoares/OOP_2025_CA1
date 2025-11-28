@@ -92,7 +92,7 @@ public class custFeedbackGUI extends javax.swing.JPanel implements IControllable
 
         recLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         recLbl.setForeground(new java.awt.Color(255, 255, 255));
-        recLbl.setText("2. Would you reccomend the bike booking service to a friend?");
+        recLbl.setText("2. Would you recommend the bike booking service to a friend?");
 
         feedbackLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         feedbackLbl.setForeground(new java.awt.Color(255, 255, 255));
