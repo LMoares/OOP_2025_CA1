@@ -23,10 +23,6 @@ public abstract class EnergyConsultation {
         this.county = county;
         this.eircode = eircode;
     }
-    
-    public EnergyConsultation() {
-        this("NA","NA","NA","NA","NA","NA");
-    }
 
     public String getAdd1() {
         return add1;

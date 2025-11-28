@@ -14,6 +14,8 @@ import java.io.IOException;
  * Date 13/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+
+//class responsible for reading SusConData to build information stored in textarea on Sustainable Consumption panel
 public class SusConFileReader {
 
     private String SusConIntro = new String();

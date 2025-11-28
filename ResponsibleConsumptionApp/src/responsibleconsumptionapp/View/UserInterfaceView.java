@@ -14,6 +14,7 @@ import responsibleconsumptionapp.Controller.UserInterfaceController;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+//Class acts as main frame for all panels
 public class UserInterfaceView extends JFrame {
 
     private JPanel navbar_panel;
