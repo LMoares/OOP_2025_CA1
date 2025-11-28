@@ -69,6 +69,8 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
             }
         });
 
+        surveyBtn.setBackground(new java.awt.Color(159, 43, 104));
+        surveyBtn.setForeground(new java.awt.Color(255, 255, 255));
         surveyBtn.setText("Survey");
         surveyBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         surveyBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -120,12 +122,10 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
     }// </editor-fold>//GEN-END:initComponents
 
     private void bikeBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bikeBookingBtnActionPerformed
-        // TODO add your handling code here:
         UICListener.changePanel("bikeBooking");
     }//GEN-LAST:event_bikeBookingBtnActionPerformed
 
     private void surveyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surveyBtnActionPerformed
-        // TODO add your handling code here:
         UICListener.changePanel("customerFeedback");
     }//GEN-LAST:event_surveyBtnActionPerformed
 

@@ -30,35 +30,38 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="startLocLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="heustonStartBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="stephenStartBtn" min="-2" max="-2" attributes="0"/>
-                  <Component id="jervisStartBtn" min="-2" max="-2" attributes="0"/>
-                  <Component id="nciStartBtn" min="-2" max="-2" attributes="0"/>
-                  <Component id="connollyStartBtn" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="275" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="endLocLbl" min="-2" max="-2" attributes="0"/>
-                  <Component id="heustonEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="stephenEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jervisEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="nciEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="connollyEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="336" max="-2" attributes="0"/>
-                      <Component id="confirmSelectBtn" min="-2" pref="157" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="startLocLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="heustonStartBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jervisStartBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="nciStartBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="connollyStartBtn" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="275" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="endLocLbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="heustonEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="stephenEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jervisEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="nciEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="connollyEndBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
-                      <Component id="welcomeBikeLb" min="-2" max="-2" attributes="0"/>
+                      <Component id="stephenStartBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="searchBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                      <Component id="confirmSelectBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+              <Component id="welcomeBikeLb" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -97,11 +100,14 @@
                       <Component id="jervisEndBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="stephenEndBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="searchBtn" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="confirmSelectBtn" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
-              <Component id="confirmSelectBtn" min="-2" pref="95" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <EmptySpace pref="133" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -214,9 +220,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Jervis"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jervisStartBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="stephenStartBtn">
       <Properties>
@@ -251,9 +254,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Heuston Station"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="heustonEndBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="connollyEndBtn">
       <Properties>
@@ -288,9 +288,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="NCI"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nciEndBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jervisEndBtn">
       <Properties>
@@ -308,9 +305,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Jervis"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jervisEndBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="stephenEndBtn">
       <Properties>
@@ -328,6 +322,20 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Stephen&apos;s Green"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="searchBtn">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="c0" red="6c" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Search"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[74, 23]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="confirmSelectBtn">
       <Properties>

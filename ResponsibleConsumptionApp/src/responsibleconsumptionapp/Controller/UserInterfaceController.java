@@ -106,6 +106,10 @@ public class UserInterfaceController {
             SusConQuestionnaire scq = (SusConQuestionnaire) panels.get("SusConQuestionnaire");
             scq.setUserDetails();
         }
+        else if (panel.equals("customerFeedback")){
+            custFeedbackGUI cus = (custFeedbackGUI) panels.get("customerFeedback");
+            cus.setUserDetails();
+        }
         ui.showPanel(panel);
     }
 
