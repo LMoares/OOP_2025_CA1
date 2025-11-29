@@ -75,7 +75,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         this.UICListener = UICListener;
 
     }
-    
+
     //ensures address fields are filled by user
     public boolean checkAddressFields() {
         boolean valid = false;
@@ -84,7 +84,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         }
         return valid;
     }
-    
+
     //method for searching for specific dictionary element - requires manual searching
     public String searchConsultationDetails(int item) {
         int count = 0;
@@ -686,10 +686,13 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private void displayBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBTNActionPerformed
         //display each element of consultation dictionary to user
         int count = 1;
-        for (Map.Entry<String, String> entry : consultationDetails.entrySet()) {
-            JOptionPane.showMessageDialog(this, count + ".\n" + entry.getValue());
-            count++;
-        }
+        if (consultationDetails.size() == 0)
+            JOptionPane.showMessageDialog(this, "No consultations to display. Please submit a consultation.");
+        else
+            for (Map.Entry<String, String> entry : consultationDetails.entrySet()) {
+                JOptionPane.showMessageDialog(this, count + ".\n" + entry.getValue());
+                count++;
+            }
     }//GEN-LAST:event_displayBTNActionPerformed
 
     private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
@@ -712,18 +715,19 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                             consultationDetails.remove(key);
                             JOptionPane.showMessageDialog(this, "Consultation has been deleted.");
                             valid = true;
-                        } else if (choice == 1){
+                        } else if (choice == 1) {
                             JOptionPane.showMessageDialog(this, "Consultation has not deleted.");
                             valid = true;
-                        }else {
-                            JOptionPane.showMessageDialog(this,"Deletion cancelled.");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Deletion cancelled.");
                         }
                     }
                 }
                 valid = true;
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Error: Please enter a positive whole number and try again");
+                //catch breaks above while loop
+                break;
             }
         }
     }//GEN-LAST:event_deleteBTNActionPerformed
@@ -744,7 +748,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: Please enter a positive whole number and try again");
+
         }
     }//GEN-LAST:event_searchBTNActionPerformed
 
