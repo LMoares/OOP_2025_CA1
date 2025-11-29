@@ -94,61 +94,85 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
     }
     
     //choosen radio button before entry & points associated
-    private String choiceBtn(){
+    private String choiceBtn(boolean isPoints){
         String button = "";
         if(flammable.isSelected()){
             button = "Flammable:";
-            points += 1;
+            if(isPoints){
+                points += 1;
+            }
             flammable.setSelected(false);
         }else if(toxic.isSelected()){
             button = "Toxic:";
-            points += 2;
+            if(isPoints){
+                points += 2;
+            }
             toxic.setSelected(false);
         }else if(heavy_metals.isSelected()){
             button = "Heavy Metals:";
-            points += 1;
+            if(isPoints){
+                points += 1;
+            }
             heavy_metals.setSelected(false);
         }else if(electronic_waste.isSelected()){
             button = "Electronic_waste:";
-            points += 2;
+            if(isPoints){
+                points += 2;
+            }
             electronic_waste.setSelected(false);
         }else if(rubber_plastics.isSelected()){
             button = "Rubber & Plastic:";
-            points += 1;
+            if(isPoints){
+                points += 1;
+            }
             rubber_plastics.setSelected(false);
         }else if(cosmetic.isSelected()){
             button = "Cosmetic:";
-            points += 1;
+            if(isPoints){
+                points += 1;
+            }
             cosmetic.setSelected(false);
         }    
         return button;  
     }
     //removes the points when removing data entered by user which was not in the drop down menu
-    private String removeChoiceBtn(){
+    private String removeChoiceBtn(boolean isPoints){
         String button = "";
         if(flammable.isSelected()){
             button = "Flammable:";
-            points -= 1;
+            if(isPoints){//to ensure when called and true, is when points will be deducted else return String
+                points -= 1;
+            }
             flammable.setSelected(false);
         }else if(toxic.isSelected()){
             button = "Toxic:";
-            points -= 2;
+            if(isPoints){
+                points -= 2;
+            }    
             toxic.setSelected(false);
         }else if(heavy_metals.isSelected()){
             button = "Heavy Metals:";
-            points -= 1;
+            if(isPoints){
+                points -= 1;
+            }    
             heavy_metals.setSelected(false);
         }else if(electronic_waste.isSelected()){
             button = "Electronic_waste:";
-            points -= 2;
+            if(isPoints){
+                points -= 2;
+            }    
             electronic_waste.setSelected(false);
         }else if(rubber_plastics.isSelected()){
             button = "Rubber & Plastic:";
-            points -= 1;
+            if(isPoints){
+                points -= 1;
+            }    
             rubber_plastics.setSelected(false);
         }else if(cosmetic.isSelected()){
             button = "Cosmetic:";
-            points -= 1;
+            if(isPoints){
+                points -= 1;
+            }
             cosmetic.setSelected(false);
         }    
         return button;  
@@ -187,34 +211,43 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         try(BufferedReader br = new BufferedReader(new FileReader("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list.txt"))){
 
             String item = br.readLine();
-            
-            //check if the user is the same user that inserted the value in the first place
-            String[] list = item.split(":");
-            String userName = list[1].trim();
-            
-            //now to verify that the the correct radio button is selected
-            String radioBtn = list[2].trim()+":";
-            
-            
-            //System.out.println("testing ABC: " + item);counter + ": " + focus.getUserName() + " added Type: " + choiceBtn() + " Discription: " + data
-            while(item != null){
-                if(item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn().trim())){
+            //this is to ensure that if one should try to remove from an empty file that there are no errors and user is informed
+            if(item != null){
+                
+                //System.out.println("testing ABC: " + item);counter + ": " + focus.getUserName() + " added Type: " + choiceBtn() + " Discription: " + data
+                while(item != null){
+                    //check if the user is the same user that inserted the value in the first place
+                    String[] list = item.split(":");
+                    String userName = list[1].trim();
+
+                    //now to verify that the the correct radio button is selected
+                    String radioBtn = list[2].trim()+":";
                     
-                    //remove the points 
-                    item = br.readLine();
-                    continue; //this will skip writing the line 
-                    
-               }else if (item.trim().startsWith(num) && !userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn().trim())){
-                    JOptionPane.showMessageDialog(this, "Your username and number selected must match the line to remove");
-              
-               }else if (item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && !radioBtn.equalsIgnoreCase(removeChoiceBtn().trim())){
-                    JOptionPane.showMessageDialog(this, "A radio button of Type must be selected and match");
-               } 
-               method += item + "\n";
-               item = br.readLine();
-               //Error handling
-               System.out.println(radioBtn);
-               System.out.println(removeChoiceBtn());
+                    if(item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn(false).trim())){
+
+                      
+                        item = br.readLine();
+                        //remove points
+                        removeChoiceBtn(true);
+                        continue; //this will skip writing the line 
+
+                   }else if (item.trim().startsWith(num) && !userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn(false).trim())){
+                        JOptionPane.showMessageDialog(this, "Your username and number selected must match the line to remove");
+                        
+                   }else if (!item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && radioBtn.equalsIgnoreCase(removeChoiceBtn(false).trim())){
+                        JOptionPane.showMessageDialog(this, "The number entered: No Match Found");
+                        
+                   }else if (item.trim().startsWith(num) && userName.equalsIgnoreCase(focus.getUserName() + " added Type") && !radioBtn.equalsIgnoreCase(removeChoiceBtn(false).trim())){
+                        JOptionPane.showMessageDialog(this, "A radio button of Type must be selected and match");
+                   } 
+                   method += item + "\n";
+                   item = br.readLine();
+                   //Error handling
+                   //System.out.println(radioBtn);
+                   //System.out.println(removeChoiceBtn(false));
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Cannot remove from a empty file");
             }
         }
         catch(FileNotFoundException e){
@@ -248,7 +281,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         try(BufferedWriter wr = new BufferedWriter(new FileWriter("./src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list.txt", true))){
             counter += 1;
             //this adds the radio button value on top 
-            wr.write(counter + ": " + focus.getUserName() + " added Type: " + choiceBtn() + "Discription: " + textAreaInput + "\n");
+            wr.write(counter + ": " + focus.getUserName() + " added Type: " + choiceBtn(false) + "Discription: " + textAreaInput + "\n");
             
          
         }
@@ -618,10 +651,12 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
         //displays what was just written bottom left window  
         if(!getTextAreaValue().equals("")){//input text area is not empty.
            //ensure type radio button is selected
-           if(choiceBtn().equals("")){
+           if(choiceBtn(false).equals("")){
                 JOptionPane.showMessageDialog(this, "Must select Type using radio button");
                 return;
             }
+           //add points from radio button choice
+           choiceBtn(true);
            //write to file user_add_to_list.txt 
            writeRecycleValues(); 
            //displays what was written to file with selected heading
@@ -632,29 +667,55 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
            text_area.setText(""); 
         }else{
             //selected radio btn choice
-            choiceBtn();
+            choiceBtn(true);
             //update and show points
             showPoints();
+            //recyc_drop_down.setSelectedIndex(-1);
+           
         }
+        //resets drop down
+        recyc_drop_down.setSelectedIndex(0);
         //clear selected radio button
         buttonGroup_type.clearSelection();
     }//GEN-LAST:event_addBtnActionPerformed
-
+    //to remove added data and allocataed points
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
-        //displays what was written to file with selected heading
-        displayUserAdded(user_add_to_list_txt);
-        //displayInputContentFromFile();
-        String num = JOptionPane.showInputDialog(this, "Enter the number of the line of data to remove").trim();
-        if(num != "" && !removeChoiceBtn().equalsIgnoreCase("")){
-            removeChoiceBtn();
-            deleteFile(num);
-            displayUserAdded(user_add_to_list_txt);
+        String dropDown = (String)recyc_drop_down.getSelectedItem();
+        //if a drop down selection has been selected
+        if(!dropDown.equals("Drop Down Menu select(info)")){
+            removeChoiceBtn(true);
             showPoints();
-        }else{
-            JOptionPane.showMessageDialog(this, "A number of line and radio button of type must be selected to remove line");
-        }    
+        //if nothing is selected when clicking button    
+        }else if(removeChoiceBtn(false).equalsIgnoreCase("") && dropDown.equals("Drop Down Menu select(info)")){
+            //displays what was written to file with selected heading
+            JOptionPane.showMessageDialog(this, "A radio button of type must be selected to remove from added list\nor\nA section from the drop down menu must be selected");
+            return;
+        //if radio button is selected     
+        }else if(!removeChoiceBtn(false).equalsIgnoreCase("") && dropDown.equals("Drop Down Menu select(info)")){
+            //before removing data from file first check if file is not empty
+            String list_txt = disposalFileReader(user_add_to_list_txt);
+            if(list_txt.equals("")){
+                JOptionPane.showMessageDialog(this, "Cannot Remove items from an empty file");
+                return;
+            }
+            //if file not empty display file content
+            displayUserAdded(user_add_to_list_txt);
+            //inform user what line to verify content to be removed
+            String num = JOptionPane.showInputDialog(this, "(not in drop down)Added List:\nEnter the number of the line of data to remove").trim();
+            if(num != "" && !removeChoiceBtn(false).equalsIgnoreCase("")){
+
+                deleteFile(num);
+                displayUserAdded(user_add_to_list_txt);
+                showPoints();
+            }else{
+                JOptionPane.showMessageDialog(this, "A number of line and radio button of type must be selected to remove line");
+            }
+        }
+        //resets drop down
+        recyc_drop_down.setSelectedIndex(0);
+        //clear selected radio button
+        buttonGroup_type.clearSelection();
     }//GEN-LAST:event_removeBtnActionPerformed
 
 
