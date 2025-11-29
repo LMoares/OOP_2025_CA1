@@ -4,6 +4,8 @@
  */
 package responsibleconsumptionapp.Lorenzo_Package;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
@@ -23,14 +25,15 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private UserInterfaceController UICListener;
     private EnergyConsultation ec;
     private User user;
-    private ConsultationFileWriter fw;
     private SustainableConsumption sc;
+    private Map<String, String> consultationDetails = new HashMap<>();
 
     /**
      * Creates new form SusConConsultation
      */
     public SusConConsultation() {
         initComponents();
+
         //set default radio button
         solarRB.setSelected(true);
         spQuantityLBL.setVisible(true);
@@ -63,7 +66,6 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         user = this.UICListener.getUser();
         //Fullname textfield automatically set to user's fullname receieved during registration
         fullnameTF.setText(user.getName());
-        fw = new ConsultationFileWriter(user.getUsername());
         sc = new SustainableConsumption(UICListener.getUserService(), user);
         sc.setFWDetails();
     }
@@ -73,13 +75,28 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         this.UICListener = UICListener;
 
     }
-
+    
+    //ensures address fields are filled by user
     public boolean checkAddressFields() {
         boolean valid = false;
         if (!(fullnameTF.getText().isBlank() || add1TF.getText().isBlank() || cityTF.getText().isBlank() || countyTF.getText().isBlank() || eircodeTF.getText().isBlank())) {
             valid = true;
         }
         return valid;
+    }
+    
+    //method for searching for specific dictionary element - requires manual searching
+    public String searchConsultationDetails(int item) {
+        int count = 0;
+        for (Map.Entry<String, String> entry : consultationDetails.entrySet()) {
+            if (count == item) {
+                return entry.getKey();
+            } else {
+                count++;
+            }
+        }
+
+        return "";
     }
 
     /**
@@ -133,6 +150,9 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         returnBTN = new javax.swing.JButton();
         recycTypePane = new javax.swing.JScrollPane();
         recycTypeList = new javax.swing.JList<>();
+        displayBTN = new javax.swing.JButton();
+        deleteBTN = new javax.swing.JButton();
+        searchBTN = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -268,60 +288,94 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         });
         recycTypePane.setViewportView(recycTypeList);
 
+        displayBTN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        displayBTN.setText("Display");
+        displayBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayBTNActionPerformed(evt);
+            }
+        });
+
+        deleteBTN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        deleteBTN.setText("Delete");
+        deleteBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTNActionPerformed(evt);
+            }
+        });
+
+        searchBTN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        searchBTN.setText("Search");
+        searchBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(typeLBL)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(recycleRB)
-                            .addComponent(compostRB)
-                            .addComponent(solarRB))
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
+                        .addComponent(typeLBL))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(recycleBBQLBL)
-                                    .addComponent(recycleGBQLBL)
-                                    .addComponent(recycleIntervalLBL)
-                                    .addComponent(recycleWeightLBL))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(recycleWeightTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(recycleGBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(recycleBBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(recycTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(recycleRB)
+                                    .addComponent(compostRB)
+                                    .addComponent(solarRB))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(spQuantityLBL)
-                                    .addComponent(spTypeLBL))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(spTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(compostFrameLBL)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(compostFramePane, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(recycleBBQLBL)
+                                            .addComponent(recycleGBQLBL)
+                                            .addComponent(recycleIntervalLBL)
+                                            .addComponent(recycleWeightLBL))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(recycleWeightTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(recycleGBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(recycleBBQTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(recycTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(spQuantityLBL)
+                                            .addComponent(spTypeLBL))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(spTypePane, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(spQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(compostLengthLBL)
-                                            .addGap(47, 47, 47))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(compostWidthLBL)
-                                            .addGap(51, 51, 51)))
-                                    .addGap(2, 2, 2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(compostLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(compostWidthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                                            .addComponent(compostFrameLBL)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(compostFramePane, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(compostLengthLBL)
+                                                    .addGap(47, 47, 47))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(compostWidthLBL)
+                                                    .addGap(51, 51, 51)))
+                                            .addGap(2, 2, 2)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(compostLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(compostWidthTF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(displayBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(AddressLBL)
@@ -435,7 +489,10 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(returnBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(returnBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(displayBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(solarRB)
@@ -465,8 +522,11 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
                     if (choice == 0) {
                         //user has approved form
+                        //file to be created
                         sc.writeFile(ec);
-                        JOptionPane.showMessageDialog(this,"Consultation information saved. Your account has been given 20 Eco-Friendly Points");
+                        //dictionary updated with file path and file content for displaying & deletion on user request
+                        consultationDetails.put(sc.getLastFilePath(), ec.toString());
+                        JOptionPane.showMessageDialog(this, "Consultation information saved. Your account has been given 20 Eco-Friendly Points");
                     }
                 }
             } catch (Exception e) {
@@ -494,14 +554,17 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
                     if (choice == 0) {
                         //user has approved form
+                        //file to be created
                         sc.writeFile(ec);
-                        JOptionPane.showMessageDialog(this,"Consultation information saved. Your account has been given 20 Eco-Friendly Points");
+                        //dictionary updated with file path and file content for displaying & deletion on user request
+                        consultationDetails.put(sc.getLastFilePath(), ec.toString());
+                        JOptionPane.showMessageDialog(this, "Consultation information saved. Your account has been given 20 Eco-Friendly Points");
                     }
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Please enter whole numbers for Weight and Green/Brown Bin Quantity");
             }
-            
+
         } else if (compostRB.isSelected()) {
             int length = 0;
             int width = 0;
@@ -521,8 +584,11 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
                     int choice = JOptionPane.showConfirmDialog(this, "Is this Information Correct?\n" + ec);
                     if (choice == 0) {
                         //user has approved form
+                        //file to be created
                         sc.writeFile(ec);
-                        JOptionPane.showMessageDialog(this,"Consultation information saved. Your account has been given 20 Eco-Friendly Points");
+                        //dictionary updated with file path and file content for displaying & deletion on user request
+                        consultationDetails.put(sc.getLastFilePath(), ec.toString());
+                        JOptionPane.showMessageDialog(this, "Consultation information saved. Your account has been given 20 Eco-Friendly Points");
                     }
                 }
             } catch (Exception e) {
@@ -617,6 +683,71 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
         UICListener.changePanel("SusCon");
     }//GEN-LAST:event_returnBTNActionPerformed
 
+    private void displayBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBTNActionPerformed
+        //display each element of consultation dictionary to user
+        int count = 1;
+        for (Map.Entry<String, String> entry : consultationDetails.entrySet()) {
+            JOptionPane.showMessageDialog(this, count + ".\n" + entry.getValue());
+            count++;
+        }
+    }//GEN-LAST:event_displayBTNActionPerformed
+
+    private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
+        boolean valid = false;
+        while (!valid) {
+            inner:
+            try {
+                int selection = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter number of consultation you wish to delete")) - 1;
+                if (selection < 0) {
+                    JOptionPane.showMessageDialog(this, "Error: Please enter a positive whole number and try again");
+                    break inner;
+                } else if (selection > consultationDetails.size()) {
+                    JOptionPane.showMessageDialog(this, "Error: entered number is too great. Please enter a number between 0 and " + consultationDetails.size());
+                } else {
+                    String key = searchConsultationDetails(selection);
+                    if (!key.isEmpty()) {
+                        int choice = JOptionPane.showConfirmDialog(this, "Consultation found. Are you sure you want to delete:\n" + consultationDetails.get(key));
+                        if (choice == 0) {
+                            sc.deleteFile(key);
+                            consultationDetails.remove(key);
+                            JOptionPane.showMessageDialog(this, "Consultation has been deleted.");
+                            valid = true;
+                        } else if (choice == 1){
+                            JOptionPane.showMessageDialog(this, "Consultation has not deleted.");
+                            valid = true;
+                        }else {
+                            JOptionPane.showMessageDialog(this,"Deletion cancelled.");
+                        }
+                    }
+                }
+                valid = true;
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error: Please enter a positive whole number and try again");
+            }
+        }
+    }//GEN-LAST:event_deleteBTNActionPerformed
+
+    private void searchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTNActionPerformed
+        try {
+            int selection = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter number of consultation you wish to delete")) - 1;
+            if (selection < 0) {
+                JOptionPane.showMessageDialog(this, "Error: Please enter a positive whole number and try again");
+            } else if (selection > consultationDetails.size()) {
+                JOptionPane.showMessageDialog(this, "Error: entered number is too great. Please enter a number between 0 and " + consultationDetails.size());
+            } else {
+                String key = searchConsultationDetails(selection);
+                if (!key.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Consultation found:\n" + consultationDetails.get(key));
+                } else {
+                    JOptionPane.showMessageDialog(this, "Consultation not found.");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: Please enter a positive whole number and try again");
+        }
+    }//GEN-LAST:event_searchBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddressLBL;
@@ -636,7 +767,9 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private javax.swing.JTextField compostWidthTF;
     private javax.swing.JLabel countyLBL;
     private javax.swing.JTextField countyTF;
+    private javax.swing.JButton deleteBTN;
     private javax.swing.JLabel detailsLBL;
+    private javax.swing.JButton displayBTN;
     private javax.swing.JLabel eircodeLBL;
     private javax.swing.JTextField eircodeTF;
     private javax.swing.JLabel fullnameLBL;
@@ -652,6 +785,7 @@ public class SusConConsultation extends javax.swing.JPanel implements IControlla
     private javax.swing.JLabel recycleWeightLBL;
     private javax.swing.JTextField recycleWeightTF;
     private javax.swing.JButton returnBTN;
+    private javax.swing.JButton searchBTN;
     private javax.swing.JRadioButton solarRB;
     private javax.swing.JLabel spQuantityLBL;
     private javax.swing.JTextField spQuantityTF;

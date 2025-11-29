@@ -25,7 +25,7 @@ public class User implements Serializable{
         this.ef_score = 0;
         
     }
-    //constructor for existing users whose information will be provided by leaderboard data - Lorenzo
+    //constructor for existing users whose information will be provided by users data file - Lorenzo
     public User(String name, String username, String password, int cf_score) {
         this.name = name;
         this.username = username;

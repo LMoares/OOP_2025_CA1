@@ -24,10 +24,13 @@ import responsibleconsumptionapp.Service.UserService;
  * Date 11/10/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
+
+//class responsible for detecting user requesting panel changes and handling ui changes via manipulation of the user interface view object
 public class UserInterfaceController {
 
     private UserInterfaceView ui;
     private UserService userHandler;
+    //all panels are stored via this dictionary so that user actions can be monitored and responded to via this class
     private Map<String, IControllable> panels = new HashMap<>() {
         {
             put("Login", new LoginPanel());
@@ -66,17 +69,16 @@ public class UserInterfaceController {
         for (Map.Entry<String, IControllable> card : panels.entrySet()) {
             String key = card.getKey();
             IControllable panel = card.getValue();
-
+            //setPanelListener implemented from IControllable interface
             panel.setPanelListener(this);
-            //Cast panel from IControllable to JPanel for card initialization
+            //Cast panel from IControllable to JPanel for card addition to ui view cardlayout
             JPanel panelfix = (JPanel) panel;
             ui.initializeCards(panelfix, key);
         }
     }
 
     public void changePanel(String panel) {
-        //TODO abstract following code to work for all panels
-        //ensures SusCon panel data is reset when user navigates to panel
+        //ensures panel specific logic runs before panel is swapped into frame
         if (panel.equals("UserPortal")) {
             UserPortal up = (UserPortal) panels.get("UserPortal");
             up.updateEFScore();
@@ -103,6 +105,10 @@ public class UserInterfaceController {
         } else if (panel.equals("SusConQuestionnaire")) {
             SusConQuestionnaire scq = (SusConQuestionnaire) panels.get("SusConQuestionnaire");
             scq.setUserDetails();
+        }
+        else if (panel.equals("customerFeedback")){
+            custFeedbackGUI cus = (custFeedbackGUI) panels.get("customerFeedback");
+            cus.setUserDetails();
         }
         ui.showPanel(panel);
     }

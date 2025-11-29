@@ -58,6 +58,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
         nciEndBtn = new javax.swing.JRadioButton();
         jervisEndBtn = new javax.swing.JRadioButton();
         stephenEndBtn = new javax.swing.JRadioButton();
+        searchBtn = new javax.swing.JButton();
         confirmSelectBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 54, 99));
@@ -100,11 +101,6 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
         jervisStartBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jervisStartBtn.setForeground(new java.awt.Color(240, 248, 255));
         jervisStartBtn.setText("Jervis");
-        jervisStartBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jervisStartBtnActionPerformed(evt);
-            }
-        });
 
         stephenStartBtn.setBackground(new java.awt.Color(0, 54, 99));
         startButtonGroup.add(stephenStartBtn);
@@ -117,11 +113,6 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
         heustonEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         heustonEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         heustonEndBtn.setText("Heuston Station");
-        heustonEndBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                heustonEndBtnActionPerformed(evt);
-            }
-        });
 
         connollyEndBtn.setBackground(new java.awt.Color(0, 54, 99));
         endButtonGroup.add(connollyEndBtn);
@@ -134,28 +125,27 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
         nciEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         nciEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         nciEndBtn.setText("NCI");
-        nciEndBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nciEndBtnActionPerformed(evt);
-            }
-        });
 
         jervisEndBtn.setBackground(new java.awt.Color(0, 54, 99));
         endButtonGroup.add(jervisEndBtn);
         jervisEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jervisEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         jervisEndBtn.setText("Jervis");
-        jervisEndBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jervisEndBtnActionPerformed(evt);
-            }
-        });
 
         stephenEndBtn.setBackground(new java.awt.Color(0, 54, 99));
         endButtonGroup.add(stephenEndBtn);
         stephenEndBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         stephenEndBtn.setForeground(new java.awt.Color(240, 248, 255));
         stephenEndBtn.setText("Stephen's Green");
+
+        searchBtn.setBackground(new java.awt.Color(108, 192, 112));
+        searchBtn.setText("Search");
+        searchBtn.setMaximumSize(new java.awt.Dimension(74, 23));
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         confirmSelectBtn.setBackground(new java.awt.Color(108, 192, 112));
         confirmSelectBtn.setText("Confirm");
@@ -172,29 +162,32 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(startLocLbl)
-                    .addComponent(heustonStartBtn)
-                    .addComponent(stephenStartBtn)
-                    .addComponent(jervisStartBtn)
-                    .addComponent(nciStartBtn)
-                    .addComponent(connollyStartBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(endLocLbl)
-                    .addComponent(heustonEndBtn)
-                    .addComponent(stephenEndBtn)
-                    .addComponent(jervisEndBtn)
-                    .addComponent(nciEndBtn)
-                    .addComponent(connollyEndBtn))
-                .addGap(68, 68, 68))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(startLocLbl)
+                            .addComponent(heustonStartBtn)
+                            .addComponent(jervisStartBtn)
+                            .addComponent(nciStartBtn)
+                            .addComponent(connollyStartBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(endLocLbl)
+                            .addComponent(heustonEndBtn)
+                            .addComponent(stephenEndBtn)
+                            .addComponent(jervisEndBtn)
+                            .addComponent(nciEndBtn)
+                            .addComponent(connollyEndBtn))
+                        .addGap(68, 68, 68))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(stephenStartBtn)
+                        .addGap(60, 60, 60)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(165, 165, 165)
+                        .addComponent(confirmSelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(336, 336, 336)
-                        .addComponent(confirmSelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(welcomeBikeLb)))
+                .addGap(179, 179, 179)
+                .addComponent(welcomeBikeLb)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -228,27 +221,86 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
                         .addGap(18, 18, 18)
                         .addComponent(jervisEndBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(stephenEndBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(confirmSelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                        .addComponent(stephenEndBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmSelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jervisStartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jervisStartBtnActionPerformed
-    }//GEN-LAST:event_jervisStartBtnActionPerformed
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // Heuston as Start
+        if (heustonStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (heustonStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to Connolly is a 15 minute journey. (15 points)");
+        } else if (heustonStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to NCI is a 18 minute journey. (18 points)");
+        } else if (heustonStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to Jervis is a 10 minute journey. (10 points)");
+        } else if (heustonStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Heuston to Stephen's Green is a 15 minute journey. (15 points)");
 
-    private void jervisEndBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jervisEndBtnActionPerformed
-    }//GEN-LAST:event_jervisEndBtnActionPerformed
+            // Connolly as Start
+        } else if (connollyStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (connollyStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to Heuston is a 15 minute journey. (15 points)");
+        } else if (connollyStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to NCI is a 3 minute journey. (3 points)");
+        } else if (connollyStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to Jervis is a 7 minute journey. (7 points)");
+        } else if (connollyStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Connolly to Stephen's Green is a 7 minute journey. (7 points)");
 
-    private void heustonEndBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heustonEndBtnActionPerformed
-    }//GEN-LAST:event_heustonEndBtnActionPerformed
+            // NCI as Start
+        } else if (nciStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (nciStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Heuston is a 18 minute journey. (18 points)");
+        } else if (nciStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Connolly is a 3 minute journey. (3 points)");
+        } else if (nciStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Jervis is a 13 minute journey. (13 points)");
+        } else if (nciStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "NCI to Stephen's Green is a 10 minute journey. (10 points)");
 
-    private void nciEndBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nciEndBtnActionPerformed
-    }//GEN-LAST:event_nciEndBtnActionPerformed
+            // Jervis as Start
+        } else if (jervisStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (jervisStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to Heuston is a 10 minute journey. (10 points)");
+        } else if (jervisStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to Connolly is a 7 minute journey. (7 points)");
+        } else if (jervisStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to NCI is a 13 minute journey. (13 points)");
+        } else if (jervisStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Jervis to Stephen's Green is a 6 minute journey. (6 points)");
+
+            // Stephen's Green as Start
+        } else if (stephenStartBtn.isSelected() && stephenEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please select two different locations");
+        } else if (stephenStartBtn.isSelected() && heustonEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to Heuston is a 15 minute journey. (15 points)");
+        } else if (stephenStartBtn.isSelected() && connollyEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to Connolly is a 7 minute journey. (7 points)");
+        } else if (stephenStartBtn.isSelected() && nciEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to NCI is a 10 minute journey. (10 points)");
+        } else if (stephenStartBtn.isSelected() && jervisEndBtn.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Stephen's Green to Jervis is a 6 minute journey. (6 points)");
+
+            // Error Handling: If either no or only one selection is made
+        } else {
+            JOptionPane.showMessageDialog(this, "Error, please make a starting and ending selection.");
+        }
+
+
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void confirmSelectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmSelectBtnActionPerformed
-        // TODO add your handling code here:
+        //Heuston as Start
         if (heustonStartBtn.isSelected() && heustonEndBtn.isSelected()) {
             JOptionPane.showMessageDialog(this, "Please select two different locations");
         } else if (heustonStartBtn.isSelected() && connollyEndBtn.isSelected()) {
@@ -266,6 +318,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
             JOptionPane.showMessageDialog(this, "Heuston to Stephen's Green is a 15 minute journey. 15 points will be added");
             focus.addCurrentPoints(15);
 
+            //Connolly as Start
         } else if (connollyStartBtn.isSelected() && connollyEndBtn.isSelected()) {
             JOptionPane.showMessageDialog(this, "Please select two different locations");
         } else if (connollyStartBtn.isSelected() && heustonEndBtn.isSelected()) {
@@ -284,6 +337,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
             JOptionPane.showMessageDialog(this, "Connolly to Stephen's Green is a 7 minute journey. 7 points will be added");
             focus.addCurrentPoints(7);
 
+            //NCI as Start
         } else if (nciStartBtn.isSelected() && nciEndBtn.isSelected()) {
             JOptionPane.showMessageDialog(this, "Please select two different locations");
         } else if (nciStartBtn.isSelected() && heustonEndBtn.isSelected()) {
@@ -302,6 +356,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
             JOptionPane.showMessageDialog(this, "NCI to Stephen's Green is a 10 minute journey. 10 points will be added");
             focus.addCurrentPoints(10);
 
+            //Jervis as Start
         } else if (jervisStartBtn.isSelected() && jervisEndBtn.isSelected()) {
             JOptionPane.showMessageDialog(this, "Please select two different locations");
         } else if (jervisStartBtn.isSelected() && heustonEndBtn.isSelected()) {
@@ -320,6 +375,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
             JOptionPane.showMessageDialog(this, "Jervis to Stephen's Green is a 6 minute journey. 6 points will be added");
             focus.addCurrentPoints(6);
 
+            //Stephen's Green as Start
         } else if (stephenStartBtn.isSelected() && stephenEndBtn.isSelected()) {
             JOptionPane.showMessageDialog(this, "Please select two different locations");
         } else if (stephenStartBtn.isSelected() && heustonEndBtn.isSelected()) {
@@ -358,6 +414,7 @@ public class bikeBookingGUI extends javax.swing.JPanel implements IControllable 
     private javax.swing.JRadioButton jervisStartBtn;
     private javax.swing.JRadioButton nciEndBtn;
     private javax.swing.JRadioButton nciStartBtn;
+    private javax.swing.JButton searchBtn;
     private javax.swing.ButtonGroup startButtonGroup;
     private javax.swing.JLabel startLocLbl;
     private javax.swing.JRadioButton stephenEndBtn;

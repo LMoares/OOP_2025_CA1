@@ -4,8 +4,16 @@
  */
 package responsibleconsumptionapp.Aaron_Package;
 
+import java.io.BufferedReader;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JOptionPane;
+import responsibleconsumptionapp.Model.User;
 
 /**
  *
@@ -16,16 +24,24 @@ public class custFeedbackGUI extends javax.swing.JPanel implements IControllable
     /**
      * Creates new form custFeedbackGUI
      */
-    private UserInterfaceController UICListener;
+    private UserInterfaceController UICListener;//Controller reference 
 
     public custFeedbackGUI() {
         initComponents();
     }
-    
+
+    private String[] userTxtInputs = new String[2];//Array which stores whatever the user inputs from questions 3 and 4
+    User user;//User details
+
+    public void setUserDetails() {
+        this.user = UICListener.getUser();
+    }//Gets current logged in user's details
+
     @Override
     public void setPanelListener(UserInterfaceController UICListener) {
         this.UICListener = UICListener;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,149 +51,228 @@ public class custFeedbackGUI extends javax.swing.JPanel implements IControllable
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        recGroup = new javax.swing.ButtonGroup();
         welcomeTourLbl = new javax.swing.JLabel();
-        selectTransportLbl = new javax.swing.JLabel();
-        yesTourBtn = new javax.swing.JButton();
-        noTourBtn = new javax.swing.JButton();
-        yesTourBtn1 = new javax.swing.JButton();
-        noTourBtn1 = new javax.swing.JButton();
-        selectTransportLbl1 = new javax.swing.JLabel();
-        selectTransportLbl2 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
-        selectTransportLbl3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        yesTourBtn2 = new javax.swing.JButton();
+        easyLbl = new javax.swing.JLabel();
+        easySlide = new javax.swing.JSlider();
+        issueLbl = new javax.swing.JLabel();
+        recLbl = new javax.swing.JLabel();
+        issuesTxt = new javax.swing.JTextField();
+        feedbackLbl = new javax.swing.JLabel();
+        feedbackTxt = new javax.swing.JTextField();
+        submitBtn = new javax.swing.JButton();
+        viewBtn = new javax.swing.JButton();
+        yesRecBtn = new javax.swing.JRadioButton();
+        noRecBtn = new javax.swing.JRadioButton();
+
+        setBackground(new java.awt.Color(159, 43, 104));
 
         welcomeTourLbl.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-        welcomeTourLbl.setText("Welcome to the feedback form");
+        welcomeTourLbl.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeTourLbl.setText("Feedback Form");
         welcomeTourLbl.setAlignmentX(0.5F);
 
-        selectTransportLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        selectTransportLbl.setText("Would you reccomend this service to a friend?");
+        easyLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        easyLbl.setForeground(new java.awt.Color(255, 255, 255));
+        easyLbl.setText("1. On a scale of 1-5, how easy was it to select a start and end destination?");
 
-        yesTourBtn.setBackground(new java.awt.Color(90, 100, 49));
-        yesTourBtn.setText("Yes");
+        easySlide.setBackground(new java.awt.Color(159, 43, 104));
+        easySlide.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        easySlide.setForeground(new java.awt.Color(255, 255, 255));
+        easySlide.setMajorTickSpacing(1);
+        easySlide.setMaximum(5);
+        easySlide.setMinimum(1);
+        easySlide.setPaintLabels(true);
+        easySlide.setPaintTicks(true);
+        easySlide.setValue(3);
 
-        noTourBtn.setBackground(new java.awt.Color(255, 0, 0));
-        noTourBtn.setText("No");
+        issueLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        issueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        issueLbl.setText("3.Please input any issues you ran into e.g. heavy traffic, roadworks etc. ");
 
-        yesTourBtn1.setBackground(new java.awt.Color(90, 100, 49));
-        yesTourBtn1.setText("Yes");
+        recLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        recLbl.setForeground(new java.awt.Color(255, 255, 255));
+        recLbl.setText("2. Would you recommend the bike booking service to a friend?");
 
-        noTourBtn1.setBackground(new java.awt.Color(255, 0, 0));
-        noTourBtn1.setText("No");
+        feedbackLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        feedbackLbl.setForeground(new java.awt.Color(255, 255, 255));
+        feedbackLbl.setText("4.Do you have any feedback to help improve the bike booking app?");
 
-        selectTransportLbl1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        selectTransportLbl1.setText("Was the service easy to use?");
-
-        selectTransportLbl2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        selectTransportLbl2.setText("How would you rate the tourism app on a scale of 1-10?");
-
-        selectTransportLbl3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        selectTransportLbl3.setText("Do you have any feedback about the tourism app?");
-
-        jTextField1.setText("Please insert here");
-
-        yesTourBtn2.setBackground(new java.awt.Color(0, 0, 255));
-        yesTourBtn2.setText("Submit");
-        yesTourBtn2.addActionListener(new java.awt.event.ActionListener() {
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yesTourBtn2ActionPerformed(evt);
+                submitBtnActionPerformed(evt);
             }
         });
+
+        viewBtn.setText("View");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
+
+        yesRecBtn.setBackground(new java.awt.Color(159, 43, 104));
+        recGroup.add(yesRecBtn);
+        yesRecBtn.setForeground(new java.awt.Color(255, 255, 255));
+        yesRecBtn.setText("Yes");
+
+        noRecBtn.setBackground(new java.awt.Color(159, 43, 104));
+        recGroup.add(noRecBtn);
+        noRecBtn.setForeground(new java.awt.Color(255, 255, 255));
+        noRecBtn.setText("No");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(206, 206, 206)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(feedbackTxt)
+                    .addComponent(easySlide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(easyLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(issuesTxt)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(yesTourBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(noTourBtn)
-                        .addGap(432, 432, 432))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yesTourBtn1)
-                        .addGap(18, 18, 18)
-                        .addComponent(noTourBtn1)
-                        .addGap(426, 426, 426))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(296, 296, 296)
-                        .addComponent(selectTransportLbl1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(selectTransportLbl2)
-                            .addComponent(selectTransportLbl)
-                            .addComponent(selectTransportLbl3)))
+                            .addComponent(issueLbl)
+                            .addComponent(feedbackLbl)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(welcomeTourLbl))
+                            .addComponent(recLbl))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(300, 300, 300)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addComponent(yesRecBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(noRecBtn)
+                        .addGap(107, 107, 107))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(yesTourBtn2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(welcomeTourLbl)))
-                .addGap(0, 219, Short.MAX_VALUE))
+                        .addGap(94, 94, 94)
+                        .addComponent(submitBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewBtn)
+                        .addGap(112, 112, 112)))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addComponent(welcomeTourLbl)
                 .addGap(18, 18, 18)
-                .addComponent(selectTransportLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yesTourBtn)
-                    .addComponent(noTourBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectTransportLbl1)
+                .addComponent(easyLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yesTourBtn1)
-                    .addComponent(noTourBtn1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectTransportLbl2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectTransportLbl3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(easySlide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(yesTourBtn2)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addComponent(recLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yesRecBtn)
+                    .addComponent(noRecBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(issueLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(issuesTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(feedbackLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(feedbackTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitBtn)
+                    .addComponent(viewBtn))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void yesTourBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesTourBtn2ActionPerformed
-        // TODO add your handling code here:
-        UICListener.changePanel("tourism");
-    }//GEN-LAST:event_yesTourBtn2ActionPerformed
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+
+        int q1_ans = easySlide.getValue();//Rating from slider stored as int
+        String q2_ans;
+
+        if (yesRecBtn.isSelected()) {
+            q2_ans = "Yes";
+        } else if (noRecBtn.isSelected()) {
+            q2_ans = "No";
+        } else {
+            q2_ans = "";//If neither button in the group is selected, "" will be outputted to the txt file
+        }
+
+        userTxtInputs[0] = issuesTxt.getText().trim();//Getting inputs and removing the whitespace
+        userTxtInputs[1] = feedbackTxt.getText().trim();
+
+        String feedback = "NEW FEEDBACK FROM " + user.getUsername() + "\n"//This string will be outputted to the bike_feedback.txt file
+                + "1. Ease of Selection Rating: " + q1_ans + "/5\n"
+                + "2. Recommendation Status: " + q2_ans + "\n"
+                + "3. Specific Issues Reported:"
+                + (userTxtInputs[0]) + "\n"
+                + "4. General Feedback for Improvement:"
+                + (userTxtInputs[1]) + "\n"
+                + "END OF THIS CUSTOMERS FEEDBACK\n";
+
+        String fileName = "./src/responsibleconsumptionapp/Aaron_Package/bike_feedback.txt";//bike_feedback.txt file path
+
+        try (
+                FileWriter fileWriter = new FileWriter(fileName, true); BufferedWriter bufferFilewriter = new BufferedWriter(fileWriter)) {
+            bufferFilewriter.write(feedback);
+            bufferFilewriter.newLine();
+
+            JOptionPane.showMessageDialog(this, "Thank you for your submission!");//Message displayed to the user upon correct file writing
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error, We couldn't save to file");//Error message displayed to the user in event of error with the txt file
+        }
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        String fileName = "./src/responsibleconsumptionapp/Aaron_Package/bike_feedback.txt";
+        File inFile = new File(fileName);//File object
+        StringBuilder fullFeedback = new StringBuilder();
+        String line;
+
+        try (FileReader fr = new FileReader(inFile); BufferedReader br = new BufferedReader(fr)) {
+
+            // Read line by line until the end of the file
+            while ((line = br.readLine()) != null) {
+                // Append the line and a newline character
+                fullFeedback.append(line).append("\n");
+            }
+
+            String feedbackText = fullFeedback.toString();
+
+            if (!feedbackText.trim().isEmpty()) {//If the content of the feedBack file isn't empty, display all of the information
+
+                JOptionPane.showMessageDialog(this,
+                        feedbackText
+                        + "All Customer Feedback Has Been Shown Successfully");
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "No feedback has been recorded yet");
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error reading feedback file: " + e.getMessage());
+        }
+
+
+    }//GEN-LAST:event_viewBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton noTourBtn;
-    private javax.swing.JButton noTourBtn1;
-    private javax.swing.JLabel selectTransportLbl;
-    private javax.swing.JLabel selectTransportLbl1;
-    private javax.swing.JLabel selectTransportLbl2;
-    private javax.swing.JLabel selectTransportLbl3;
+    private javax.swing.JLabel easyLbl;
+    private javax.swing.JSlider easySlide;
+    private javax.swing.JLabel feedbackLbl;
+    private javax.swing.JTextField feedbackTxt;
+    private javax.swing.JLabel issueLbl;
+    private javax.swing.JTextField issuesTxt;
+    private javax.swing.JRadioButton noRecBtn;
+    private javax.swing.ButtonGroup recGroup;
+    private javax.swing.JLabel recLbl;
+    private javax.swing.JButton submitBtn;
+    private javax.swing.JButton viewBtn;
     private javax.swing.JLabel welcomeTourLbl;
-    private javax.swing.JButton yesTourBtn;
-    private javax.swing.JButton yesTourBtn1;
-    private javax.swing.JButton yesTourBtn2;
+    private javax.swing.JRadioButton yesRecBtn;
     // End of variables declaration//GEN-END:variables
 }
