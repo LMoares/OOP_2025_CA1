@@ -118,7 +118,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
            
             while((item = br.readLine()) != null){
                method += item + "\n";
-               item = br.readLine();
+               
             }
         }
         catch(FileNotFoundException e){
@@ -141,7 +141,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
                 item = line;
                
             }
-            if(item != ""){
+            if(!item.equals("")){
                 String[] list = item.split(":");
                 lastNum = Integer.parseInt(list[0]);
                
@@ -485,6 +485,7 @@ public class NonRecyclableWasteGUI extends javax.swing.JPanel implements IContro
 
         pesticides_btn.setBackground(new java.awt.Color(204, 204, 255));
         hazardButtonGroup.add(pesticides_btn);
+        pesticides_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pesticides_btn.setForeground(new java.awt.Color(0, 0, 0));
         pesticides_btn.setText("Pesticides & Poisons");
 

@@ -165,7 +165,7 @@ public class RecyclableWasteGUI extends javax.swing.JPanel implements IControlla
                 item = line;
                
             }
-            if(item != ""){
+            if(!item.equals("")){
                 String[] list = item.split(":");
                 lastNum = Integer.parseInt(list[0]);
                
