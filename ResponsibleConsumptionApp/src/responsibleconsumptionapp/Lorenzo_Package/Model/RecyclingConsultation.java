@@ -10,7 +10,7 @@ package responsibleconsumptionapp.Lorenzo_Package.Model;
  * Date 16/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-//Sub class for composting consultation from consultation panel
+//Sub class for recycling consultation from consultation panel
 public class RecyclingConsultation extends EnergyConsultation {
     private int weight, greenBinQuantity, brownBinQuantity;
     private String interval;
