@@ -8,16 +8,13 @@ import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 
 /**
- *
- * @author gamer
+ *Classname tourismHomePanel.java
+ * @author Aaron Bynre 24437136
  */
 public class tourismHomePanel extends javax.swing.JPanel implements IControllable {
 
     private UserInterfaceController UICListener;
 
-    /**
-     * Creates new form tourismHomePanel
-     */
     public tourismHomePanel() {
         initComponents();
     }
@@ -122,11 +119,11 @@ public class tourismHomePanel extends javax.swing.JPanel implements IControllabl
     }// </editor-fold>//GEN-END:initComponents
 
     private void bikeBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bikeBookingBtnActionPerformed
-        UICListener.changePanel("bikeBooking");
+        UICListener.changePanel("bikeBooking");//change to the bikeBookingGUI
     }//GEN-LAST:event_bikeBookingBtnActionPerformed
 
     private void surveyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surveyBtnActionPerformed
-        UICListener.changePanel("customerFeedback");
+        UICListener.changePanel("customerFeedback");//change to the custFeedbackGUI
     }//GEN-LAST:event_surveyBtnActionPerformed
 
 

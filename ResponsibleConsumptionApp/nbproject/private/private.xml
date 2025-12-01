@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/ChemicalWasteGUI.java</file>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/RecyclableWasteGUI.java</file>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list_non_recyclable.txt</file>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Jean_Package/disposal_list/user_add_to_list.txt</file>
-            <file>file:/C:/Users/walco/Desktop/github%20java/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Model/Focus.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Service/UserService.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/View/UserInterfaceView.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/View/UserPortal.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Controller/UserInterfaceController.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Aaron_Package/custFeedbackGUI.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Service/LeaderboardService.java</file>
+            <file>file:/C:/Users/gamer/Desktop/Java%20Project%20YR2%20Sem%201/OOP_2025_CA1/ResponsibleConsumptionApp/src/responsibleconsumptionapp/Aaron_Package/bikeBookingGUI.java</file>
         </group>
     </open-files>
 </project-private>

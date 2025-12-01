@@ -9,9 +9,8 @@ import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 import responsibleconsumptionapp.Model.Focus;
 
-/**
- *
- * @author gamer
+/*Classname bikeBookingGUI.java
+ * @author Aaron Byrne 24437136
  */
 public class bikeBookingGUI extends javax.swing.JPanel implements IControllable {
 

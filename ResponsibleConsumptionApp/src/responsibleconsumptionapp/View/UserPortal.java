@@ -8,35 +8,40 @@ import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Controller.IControllable;
 import responsibleconsumptionapp.Controller.UserInterfaceController;
 import responsibleconsumptionapp.Model.User;
+import responsibleconsumptionapp.Service.LeaderboardService;
 
 /*
  * Classname UserPortal.java
  * Date 16/11/2025
  * @author Lorenzo Moares Nunez, 23378441
  */
-public class UserPortal extends javax.swing.JPanel implements IControllable{
+public class UserPortal extends javax.swing.JPanel implements IControllable {
 
     /**
      * Creates new form UserPortal
      */
     UserInterfaceController UICListener;
     User user;
-    
+
+    public LeaderboardService leaderboardService;
+
     public UserPortal() {
         initComponents();
         userTA.setEditable(false);
     }
-    
-    public void setUser(){
+
+    public void setUser() {
         this.user = UICListener.getUser();
         userFnLBL.setText(user.getName());
-        userCfLBL.setText(user.getCf_score()+"");
-        userEfLBL.setText(user.getEf_score()+"");
+        userCfLBL.setText(user.getCf_score() + "");
+        userEfLBL.setText(user.getEf_score() + "");
     }
     
+
     public void updateEFScore() {
-        userEfLBL.setText(user.getEf_score()+"");
+        userEfLBL.setText(user.getEf_score() + "");
     }
+
     
     
     @Override
@@ -177,7 +182,10 @@ public class UserPortal extends javax.swing.JPanel implements IControllable{
     }//GEN-LAST:event_logoutBTNActionPerformed
 
     private void leaderboardBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardBTNActionPerformed
-        JOptionPane.showMessageDialog(this,"LeaderBoard:\n1: ...\n2: ...\n3: ...\n...");
+         LeaderboardService ls = new LeaderboardService();
+         ls.setUserDetails(user);
+         ls.scoreSet();
+         JOptionPane.showMessageDialog(this, ls.getLeaderboardMessage());
     }//GEN-LAST:event_leaderboardBTNActionPerformed
 
 
