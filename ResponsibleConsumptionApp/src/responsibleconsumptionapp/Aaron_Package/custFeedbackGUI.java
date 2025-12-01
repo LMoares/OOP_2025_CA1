@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 import responsibleconsumptionapp.Model.User;
 
 /**
- *
- * @author gamer
+ *Classname custFeedbackGUI.java
+ * @author Aaron Byrne 24437136
  */
 public class custFeedbackGUI extends javax.swing.JPanel implements IControllable {
 
@@ -253,7 +253,7 @@ public class custFeedbackGUI extends javax.swing.JPanel implements IControllable
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this,
-                    "Error reading feedback file: " + e.getMessage());
+                    "Error reading feedback file: " + e.getMessage());//Error handling
         }
 
 
