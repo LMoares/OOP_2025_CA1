@@ -29,9 +29,9 @@ public class LeaderboardService {
         userEfScore = user.getEf_score();//Getting users score and inputted name
         userName = user.getName();
 
-        if (userEfScore >= 1 && userEfScore <= 99) {
+        if (userEfScore >= 0 && userEfScore <= 99) {
             message = "You are 5th in the leaderboard\n"
-                    + "CURRENT LEADERBOARD\n:"
+                    + "CURRENT LEADERBOARD:\n"
                     + "1.Jane 400 points\n"
                     + "2.Lucas 300 points\n"
                     + "3.Dustin 200 points\n"
@@ -40,7 +40,7 @@ public class LeaderboardService {
 
         } else if (userEfScore >= 100 && userEfScore <= 199) {
             message = "You are 4th in the leaderboard\n"
-                    + "CURRENT LEADERBOARD\n:"
+                    + "CURRENT LEADERBOARD:\n"
                     + "1.Jane 400 points\n"
                     + "2.Lucas 300 points\n"
                     + "3.Dustin 200 points\n"

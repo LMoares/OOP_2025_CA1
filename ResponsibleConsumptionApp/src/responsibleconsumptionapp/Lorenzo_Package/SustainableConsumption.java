@@ -16,8 +16,8 @@ import responsibleconsumptionapp.Service.UserService;
  * @author Lorenzo Moares Nunez, 23378441
  */
 public class SustainableConsumption extends Focus {
-    ConsultationFileHandler fw;
-    ArrayList<String> filePaths = new ArrayList<String>();
+    private ConsultationFileHandler fw;
+    private ArrayList<String> filePaths = new ArrayList<String>();
     
     public SustainableConsumption(UserService userService, User user) {
         //passes information to base class constructor
