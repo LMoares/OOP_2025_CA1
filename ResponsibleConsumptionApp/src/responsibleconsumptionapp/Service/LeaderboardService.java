@@ -36,7 +36,7 @@ public class LeaderboardService {
                     + "2.Lucas 300 points\n"
                     + "3.Dustin 200 points\n"
                     + "4.Steve 100 points\n"
-                    + "5. " + userName + userEfScore + "points";
+                    + "5. " + userName +" "+ userEfScore + "points";
 
         } else if (userEfScore >= 100 && userEfScore <= 199) {
             message = "You are 4th in the leaderboard\n"
@@ -44,7 +44,7 @@ public class LeaderboardService {
                     + "1.Jane 400 points\n"
                     + "2.Lucas 300 points\n"
                     + "3.Dustin 200 points\n"
-                    + "4. " + userName + userEfScore + "points \n"
+                    + "4. " + userName +" "+ userEfScore + " points \n"
                     + "5.Steve 100 points";
 
         } else if (userEfScore >= 200 && userEfScore <= 299) {
@@ -52,7 +52,7 @@ public class LeaderboardService {
                     + "CURRENT LEADERBOARD:\n"
                     + "1.Jane 400 points\n"
                     + "2.Lucas 300 points\n"
-                    + "3. " + userName + userEfScore + "points \n"
+                    + "3. " + userName +" "+ userEfScore + "points \n"
                     + "4.Dustin 200  points\n"
                     + "5.Steve 100 points\n";
 
@@ -60,7 +60,7 @@ public class LeaderboardService {
             message = "You are 2rd in the leaderboard\n"
                     + "CURRENT LEADERBOARD:\n"
                     + "1.Jane 400 points\n"
-                    + "2. " + userName + userEfScore + "points \n"
+                    + "2. " + userName +" "+ userEfScore + "points \n"
                     + "3.Lucas 300 points\n"
                     + "4.Dustin 200 points\n"
                     + "5.Steve 100 points\n";
